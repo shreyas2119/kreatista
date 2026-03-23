@@ -6,6 +6,11 @@ import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 export const metadata: Metadata = {
   title: "CreatiSocial — From Design to Market",
   description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
