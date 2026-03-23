@@ -1,6 +1,5 @@
 "use client";
 
-import ShaderBackground from "@/components/ui/shader-background";
 import { LogoCarouselAnimated, type Logo } from "@/components/ui/logo-carousel-animated";
 import {
   InstagramIcon,
@@ -23,10 +22,19 @@ const tools: Logo[] = [
 export default function ToolsStack() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* WebGL Shader Background - Centered */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[800px] z-0 opacity-40">
-        <ShaderBackground />
-      </div>
+      {/* CSS gradient orbs replacing WebGL shader */}
+      <div
+        className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, #6d28d9, #1e1b4b)", animation: "orbFloat1 8s ease-in-out infinite", transform: "translate(-50%, -50%)" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full opacity-20 blur-2xl"
+        style={{ background: "radial-gradient(circle, #7c3aed, #312e81)", animation: "orbFloat2 11s ease-in-out infinite", transform: "translate(-50%, -50%)" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full opacity-25 blur-2xl"
+        style={{ background: "radial-gradient(circle, #4c1d95, #0f172a)", animation: "orbFloat3 14s ease-in-out infinite", transform: "translate(-50%, -50%)" }}
+      />
 
       {/* Content */}
       <div className="relative z-10 w-full py-28">

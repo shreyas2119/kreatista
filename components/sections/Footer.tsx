@@ -11,7 +11,7 @@ export default function Footer() {
             <a
               key={link}
               href="#"
-              className="hover:text-violet-400 transition-colors duration-200"
+              className="hover:text-violet-300 transition-colors duration-200"
             >
               {link}
             </a>

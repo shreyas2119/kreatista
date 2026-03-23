@@ -1,56 +1,39 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface OrbProps {
   className?: string;
-  delay?: number;
-  duration?: number;
-  parallaxSpeed?: number;
+  style?: React.CSSProperties;
 }
 
-function Orb({ className = "", delay = 0, duration = 8, parallaxSpeed = 50 }: OrbProps) {
+function Orb({ className = "", style }: OrbProps) {
   return (
-    <motion.div
-      className={`absolute rounded-full blur-3xl opacity-20 ${className}`}
-      animate={{
-        y: [0, -30, 0],
-        scale: [1, 1.08, 1],
-        opacity: [0.15, 0.25, 0.15],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
+    <div
+      className={cn(
+        "absolute rounded-full blur-3xl will-change-transform",
+        className
+      )}
+      style={style}
     />
   );
 }
 
 export function OrbBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-
   return (
-    <div ref={ref} className="pointer-events-none absolute inset-0 overflow-hidden">
-      <motion.div style={{ y: y1 }}>
-        <Orb className="w-[600px] h-[600px] bg-violet-600 -top-40 -left-32" delay={0} duration={9} />
-      </motion.div>
-      <motion.div style={{ y: y2 }}>
-        <Orb className="w-[400px] h-[400px] bg-violet-400 top-1/3 right-0" delay={2} duration={11} />
-      </motion.div>
-      <motion.div style={{ y: y3 }}>
-        <Orb className="w-[300px] h-[300px] bg-indigo-600 bottom-0 left-1/3" delay={4} duration={8} />
-      </motion.div>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Large violet orb — top left */}
+      <Orb
+        className="w-[600px] h-[600px] bg-violet-600/20 -top-40 -left-32 animate-orb-1"
+      />
+      {/* Medium violet orb — right */}
+      <Orb
+        className="w-[400px] h-[400px] bg-violet-400/15 top-1/3 right-0 animate-orb-2"
+      />
+      {/* Small indigo orb — bottom center */}
+      <Orb
+        className="w-[300px] h-[300px] bg-indigo-600/20 bottom-0 left-1/3 animate-orb-3"
+      />
     </div>
   );
 }

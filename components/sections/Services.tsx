@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { WordReveal } from "@/components/ui/word-reveal";
 import { GlowingStarsBackgroundCard, Illustration } from "@/components/ui/glowing-stars";
@@ -11,37 +12,37 @@ const services = [
     emoji: "🚀",
     title: "SaaS Marketing",
     desc: "We help SaaS brands grow with data-driven strategies—from user acquisition to retention—optimizing every step to build a scalable and profitable growth engine. End-to-end growth strategy tailored for your SaaS, conversion-focused funnel design, user acquisition systems, retention & lifecycle marketing, and continuous optimization.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
   },
   {
     emoji: "📦",
     title: "Product Marketing",
     desc: "If you have a great product but people don't know about it, it won't grow. We help you build a strong online presence, create engaging content, and showcase your product in a way that attracts the right audience. From branding to promotion across social media platforms.",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
   },
   {
     emoji: "🎬",
     title: "Content Creation",
     desc: "We don't just create content, we create impact. From scroll-stopping visuals to engaging storytelling, we design content that connects with your audience and drives real engagement. Social media creatives, ad creatives & copywriting, brand storytelling, and content strategy & planning.",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
   },
   {
     emoji: "📱",
     title: "Social Media Management",
     desc: "Your social media isn't just a page—it's your brand's personality. We actively engage with your audience, build meaningful relationships, and turn interactions into trust. Daily content posting, active audience engagement, community building, and consistent brand communication with performance tracking.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7",
   },
   {
     emoji: "🤝",
     title: "Influencer Collaborations",
     desc: "We connect your brand with the right influencers who actually convert, not just create noise. Our campaigns are built to generate trust, awareness, and measurable ROI. Influencer sourcing & outreach, campaign planning & execution, performance tracking, and ROI-focused collaborations.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
   },
   {
     emoji: "🎥",
     title: "Video Production",
     desc: "Video is the most powerful way to capture attention. We create high-quality videos that tell your brand story, showcase your product, and convert viewers into customers. Ad videos (Reels, Shorts, YouTube Ads), product demos & explainers, brand storytelling videos, and professional editing & post-production.",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
   },
 ];
 
@@ -96,7 +97,7 @@ function ServiceCard({
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/50 to-black/70 z-10" />
-          <img src={image} alt={title} className="w-full h-full object-cover opacity-60" />
+          <Image src={image} alt={title} fill className="object-cover opacity-60" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" />
         </motion.div>
 
         {/* Title - Always visible */}
