@@ -10,37 +10,37 @@ const services = [
   {
     emoji: "🚀",
     title: "SaaS Marketing",
-    desc: "Demand gen and growth campaigns for SaaS products.",
+    desc: "We help SaaS brands grow with data-driven strategies—from user acquisition to retention—optimizing every step to build a scalable and profitable growth engine. End-to-end growth strategy tailored for your SaaS, conversion-focused funnel design, user acquisition systems, retention & lifecycle marketing, and continuous optimization.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
   },
   {
     emoji: "📦",
     title: "Product Marketing",
-    desc: "Positioning, messaging, and launch strategy.",
+    desc: "If you have a great product but people don't know about it, it won't grow. We help you build a strong online presence, create engaging content, and showcase your product in a way that attracts the right audience. From branding to promotion across social media platforms.",
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80",
   },
   {
     emoji: "🎬",
     title: "Content Creation",
-    desc: "Scroll-stopping content tailored to your brand voice.",
+    desc: "We don't just create content, we create impact. From scroll-stopping visuals to engaging storytelling, we design content that connects with your audience and drives real engagement. Social media creatives, ad creatives & copywriting, brand storytelling, and content strategy & planning.",
     image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80",
   },
   {
     emoji: "📱",
     title: "Social Media Management",
-    desc: "Consistent presence across every major platform.",
+    desc: "Your social media isn't just a page—it's your brand's personality. We actively engage with your audience, build meaningful relationships, and turn interactions into trust. Daily content posting, active audience engagement, community building, and consistent brand communication with performance tracking.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
   },
   {
     emoji: "🤝",
     title: "Influencer Collaborations",
-    desc: "Curated creator partnerships that convert.",
+    desc: "We connect your brand with the right influencers who actually convert, not just create noise. Our campaigns are built to generate trust, awareness, and measurable ROI. Influencer sourcing & outreach, campaign planning & execution, performance tracking, and ROI-focused collaborations.",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80",
   },
   {
     emoji: "🎥",
     title: "Video Production",
-    desc: "High-quality video from concept to final cut.",
+    desc: "Video is the most powerful way to capture attention. We create high-quality videos that tell your brand story, showcase your product, and convert viewers into customers. Ad videos (Reels, Shorts, YouTube Ads), product demos & explainers, brand storytelling videos, and professional editing & post-production.",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80",
   },
 ];
@@ -82,41 +82,105 @@ function ServiceCard({
   return (
     <motion.div style={{ x, y, rotate, scale, opacity }} className="h-full">
       <div
-        className="relative h-56 sm:h-64 lg:h-72 rounded-2xl overflow-hidden cursor-none group"
+        className="relative h-56 sm:h-64 lg:h-72 rounded-2xl overflow-hidden group"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* ── image layer — slides right on hover ── */}
+        {/* Background Image */}
         <motion.div
-          className="absolute inset-0 z-10"
-          animate={{ x: hovered ? "100%" : "0%" }}
-          transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
+          className="absolute inset-0"
+          animate={{ 
+            filter: hovered ? "blur(8px) brightness(0.4)" : "blur(0px) brightness(0.6)",
+            scale: hovered ? 1.05 : 1
+          }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/50 to-black/70 z-10" />
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-            <span className="text-2xl sm:text-3xl mr-2">{emoji}</span>
-            <span className="text-white font-semibold text-base sm:text-lg">{title}</span>
-          </div>
+          <img src={image} alt={title} className="w-full h-full object-cover opacity-60" />
         </motion.div>
 
-        {/* ── text layer — revealed underneath with glowing stars ── */}
-        <GlowingStarsBackgroundCard className="absolute inset-0 z-0 rounded-2xl flex flex-col justify-between p-5 sm:p-7 border-white/[0.05]">
-          <div className="w-10 h-[2px] bg-gradient-to-r from-violet-500 to-violet-600 rounded-full shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
-          <div>
-            <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">{desc}</p>
-            <motion.span
-              className="inline-flex items-center gap-1 text-violet-400 text-xs font-medium tracking-wide"
-              whileHover={{ x: 3 }}
-              transition={{ duration: 0.2 }}
+        {/* Title - Always visible */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+          <motion.span 
+            className="text-white font-black text-xl sm:text-2xl lg:text-3xl uppercase tracking-wider"
+            style={{
+              fontFamily: '"Righteous", sans-serif',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+              letterSpacing: '0.1em'
+            }}
+            animate={{
+              opacity: hovered ? 0 : 1,
+              y: hovered ? 20 : 0
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {title}
+          </motion.span>
+        </div>
+
+        {/* Description Overlay - Appears on hover */}
+        <motion.div
+          className="absolute inset-0 z-30 flex flex-col justify-center p-6 sm:p-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+          style={{ pointerEvents: hovered ? 'auto' : 'none' }}
+        >
+          <div className="relative">
+            {/* Decorative line */}
+            <motion.div 
+              className="w-16 h-1 bg-gradient-to-r from-violet-500 to-violet-600 rounded-full mb-4"
+              initial={{ width: 0 }}
+              animate={{ width: hovered ? 64 : 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            />
+            
+            {/* Title on hover */}
+            <motion.h3
+              className="text-white font-bold text-lg sm:text-xl mb-3"
+              style={{
+                fontFamily: '"Righteous", sans-serif',
+                letterSpacing: '0.05em'
+              }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: hovered ? 0 : 20, opacity: hovered ? 1 : 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
             >
-              Learn more <ArrowRight className="w-3 h-3" />
-            </motion.span>
+              {title}
+            </motion.h3>
+
+            {/* Description */}
+            <motion.p
+              className="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-4"
+              style={{
+                fontFamily: '"Inter", sans-serif',
+                fontWeight: 300,
+                lineHeight: '1.6'
+              }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: hovered ? 0 : 20, opacity: hovered ? 1 : 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              {desc}
+            </motion.p>
+
+            {/* Learn more link */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: hovered ? 0 : 20, opacity: hovered ? 1 : 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+            >
+              <motion.span
+                className="inline-flex items-center gap-2 text-violet-400 text-sm font-medium"
+                style={{ fontFamily: '"Inter", sans-serif' }}
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                Learn more <ArrowRight className="w-4 h-4" />
+              </motion.span>
+            </motion.div>
           </div>
-          <span className="absolute bottom-4 right-5 sm:bottom-5 sm:right-6 text-6xl sm:text-7xl opacity-[0.06] select-none blur-[1px]">
-            {emoji}
-          </span>
-        </GlowingStarsBackgroundCard>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -131,23 +195,23 @@ export default function Services() {
 
   return (
     <section ref={ref} className="relative py-16 sm:py-20 px-4 max-w-7xl mx-auto" style={{ minHeight: "300vh" }}>
-      <div className="sticky top-0 min-h-screen flex flex-col justify-center py-8">
+      <div className="sticky top-0 min-h-screen flex flex-col justify-center py-4">
         <motion.p
           style={{ opacity: useTransform(scrollYProgress, [0.1, 0.25], [0, 1]) }}
-          className="text-center text-xs text-violet-400 font-medium tracking-[0.2em] uppercase mb-3"
+          className="text-center text-xs text-violet-400 font-medium tracking-[0.2em] uppercase mb-2"
         >
           Services
         </motion.p>
 
         <motion.div style={{ opacity: useTransform(scrollYProgress, [0.1, 0.25], [0, 1]) }}>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-center mb-3 leading-tight px-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-center mb-2 leading-tight px-4">
             <WordReveal text="What We Do" delay={0.05} trigger="animate" />
           </h2>
         </motion.div>
 
         <motion.p
           style={{ opacity: useTransform(scrollYProgress, [0.1, 0.25], [0, 1]) }}
-          className="text-center text-zinc-500 mb-8 sm:mb-12 text-xs sm:text-sm max-w-md mx-auto px-4"
+          className="text-center text-zinc-500 mb-6 sm:mb-8 text-xs sm:text-sm max-w-md mx-auto px-4"
         >
           Everything your brand needs to grow — under one roof.
         </motion.p>
