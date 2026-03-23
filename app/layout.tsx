@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Righteous, Inter } from "next/font/google";
 import "./globals.css";
 import { Cursor } from "@/components/ui/cursor";
@@ -11,11 +11,12 @@ const righteous = Righteous({ subsets: ["latin"], weight: "400", variable: "--fo
 export const metadata: Metadata = {
   title: "CreatiSocial — From Design to Market",
   description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

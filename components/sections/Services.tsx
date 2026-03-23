@@ -11,37 +11,37 @@ const services = [
   {
     emoji: "🚀",
     title: "SaaS Marketing",
-    desc: "We help SaaS brands grow with data-driven strategies—from user acquisition to retention—optimizing every step to build a scalable and profitable growth engine. End-to-end growth strategy tailored for your SaaS, conversion-focused funnel design, user acquisition systems, retention & lifecycle marketing, and continuous optimization.",
+    desc: "We help SaaS brands stop guessing and start growing. From pulling in the right users to making sure they actually stick around, we've got the whole journey covered. Think conversion-obsessed funnels, smart acquisition systems, retention strategies that actually work, and non-stop optimization to keep things scaling. Basically, your end-to-end growth engine, built different.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
   },
   {
     emoji: "📦",
     title: "Product Marketing",
-    desc: "If you have a great product but people don't know about it, it won't grow. We help you build a strong online presence, create engaging content, and showcase your product in a way that attracts the right audience. From branding to promotion across social media platforms.",
+    desc: "Your product is great. The problem? Nobody knows it yet. We fix that. We build you a presence that turns heads, create content that actually gets people hooked, and position your product in front of exactly the right audience. Branding, promotion, social media, all working together to make sure your product sells itself. Let's get you seen.",
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
   },
   {
     emoji: "🎬",
     title: "Content Creation",
-    desc: "We don't just create content, we create impact. From scroll-stopping visuals to engaging storytelling, we design content that connects with your audience and drives real engagement. Social media creatives, ad creatives & copywriting, brand storytelling, and content strategy & planning.",
+    desc: "Forget boring content nobody asked for. We make stuff people actually stop and look at. Scroll-stopping visuals, stories that hit different, copy that converts, and a strategy that keeps your brand consistent. Social media creatives, ads, storytelling, all crafted to make your audience feel something and do something. Content that works.",
     image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
   },
   {
     emoji: "📱",
     title: "Social Media Management",
-    desc: "Your social media isn't just a page—it's your brand's personality. We actively engage with your audience, build meaningful relationships, and turn interactions into trust. Daily content posting, active audience engagement, community building, and consistent brand communication with performance tracking.",
+    desc: "Your social media is your brand's vibe and we make sure it hits right. We show up daily, keep your audience engaged, build real community, and turn casual followers into loyal fans. Consistent posting, real interactions, and performance tracking to make sure everything's actually working. Your brand, always on.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7",
   },
   {
     emoji: "🤝",
     title: "Influencer Collaborations",
-    desc: "We connect your brand with the right influencers who actually convert, not just create noise. Our campaigns are built to generate trust, awareness, and measurable ROI. Influencer sourcing & outreach, campaign planning & execution, performance tracking, and ROI-focused collaborations.",
+    desc: "Not every influencer is your influencer. We find the ones whose audience is already your audience, and build campaigns that do more than just make noise. Real trust, real awareness, and ROI you can actually measure. From sourcing to execution to tracking, we handle it all so every collab counts.",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
   },
   {
     emoji: "🎥",
     title: "Video Production",
-    desc: "Video is the most powerful way to capture attention. We create high-quality videos that tell your brand story, showcase your product, and convert viewers into customers. Ad videos (Reels, Shorts, YouTube Ads), product demos & explainers, brand storytelling videos, and professional editing & post-production.",
+    desc: "Video is how brands win attention and we make sure yours does exactly that. From punchy ad videos to product demos that actually explain things, to brand stories that stick, we produce content that turns viewers into customers. Reels, Shorts, YouTube Ads, explainers, all shot and edited to hit hard and convert harder.",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
   },
 ];
@@ -83,7 +83,7 @@ function ServiceCard({
   return (
     <motion.div style={{ x, y, rotate, scale, opacity }} className="h-full">
       <div
-        className="relative h-56 sm:h-64 lg:h-72 rounded-2xl overflow-hidden group"
+        className="relative h-64 sm:h-72 lg:h-80 rounded-2xl overflow-hidden group"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -217,7 +217,7 @@ export default function Services() {
           Everything your brand needs to grow — under one roof.
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 px-2">
           {services.map((s, i) => (
             <ServiceCard key={s.title} {...s} index={i} scrollYProgress={scrollYProgress} />
           ))}
