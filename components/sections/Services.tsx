@@ -10,38 +10,38 @@ const services = [
   {
     title: "Websites That\nMean Business",
     desc: "We build websites that do more than just look good. From the first click to the final conversion, every page is designed with purpose. Clean code, killer design, and a seamless user experience that keeps visitors hooked and turning into customers. Fast, responsive, and built to scale with your business.",
-    image: "/images/web.jpg",
+    image: "/images/web.webp",
     size: "large",
     flagship: true,
   },
   {
     title: "Product Marketing",
     desc: "Your product is great. The problem? Nobody knows it yet. We fix that.",
-    image: "/images/product.jpg",
+    image: "/images/product.webp",
     size: "tall", // col-span-1 row-span-2
   },
   {
     title: "Content\nCreation",
     desc: "Scroll-stopping visuals, stories that hit different, copy that converts.",
-    image: "/images/content.jpg",
+    image: "/images/content.webp",
     size: "small",
   },
   {
     title: "Social Media Management",
     desc: "Your brand, always on. Real community, real engagement, real results.",
-    image: "/images/social.jpg",
+    image: "/images/social.webp",
     size: "small",
   },
   {
     title: "Influencer Collaborations",
     desc: "We find the ones whose audience is already your audience.",
-    image: "/images/influencer.jpg",
+    image: "/images/influencer.webp",
     size: "small",
   },
   {
     title: "Video\nProduction",
     desc: "Video is how brands win attention — and we make sure yours does exactly that.",
-    image: "/images/video.jpg",
+    image: "/images/video.webp",
     size: "small",
   },
 ];

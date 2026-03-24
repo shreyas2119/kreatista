@@ -10,7 +10,7 @@ const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--f
 const righteous = Righteous({ subsets: ["latin"], weight: "400", variable: "--font-righteous", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "CreatiSocial — From Design to Market",
+  title: "Kreatista — Full-Stack Content Marketing",
   description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
 };
 
