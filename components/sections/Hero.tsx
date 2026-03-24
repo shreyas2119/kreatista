@@ -33,17 +33,17 @@ export default function Hero() {
           </motion.p>
 
           <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight max-w-4xl px-2">
-            <WordReveal text="From Design to Market —" delay={0.1} trigger="animate" />
+            <WordReveal text="One Team." delay={0.1} trigger="animate" />
             <br />
-            <WordReveal text="We Handle" delay={0.3} trigger="animate" />
+            <WordReveal text="Every Channel." delay={0.3} trigger="animate" />
             <br />
             <motion.span {...fadeUp(0.6)} className="flex justify-center">
               <Typewriter
-                words={["Everything", "Marketing", "Websites", "Content", "Strategy", "Growth"]}
+                words={["Unstoppable Growth.", "Real Results.", "Your Brand, Everywhere.", "Content That Converts."]}
                 className="text-violet-500"
-                typingSpeed={120}
-                deletingSpeed={60}
-                delayBetweenWords={2000}
+                typingSpeed={80}
+                deletingSpeed={50}
+                delayBetweenWords={2500}
               />
             </motion.span>
           </h1>
