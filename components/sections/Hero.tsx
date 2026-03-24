@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion, type Transition } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { OrbBackground } from "@/components/ui/orb-background";
@@ -8,7 +7,7 @@ import { GridBackground } from "@/components/ui/grid-background";
 import { WordReveal } from "@/components/ui/word-reveal";
 import { FloatingShapes } from "@/components/ui/floating-shapes";
 import { Typewriter } from "@/components/ui/typewriter";
-import { ContactFormModal } from "@/components/ui/contact-form-modal";
+import { useContactModal } from "@/components/providers/contact-modal";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -17,11 +16,10 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { open: openModal } = useContactModal();
 
   return (
-    <>
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-20 sm:pt-16 overflow-hidden">
         <OrbBackground />
         <GridBackground />
         <FloatingShapes />
@@ -61,7 +59,7 @@ export default function Hero() {
             {...fadeUp(0.9)}
             className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 items-center w-full sm:w-auto px-4 sm:px-0"
           >
-            <Button size="lg" className="w-full sm:w-auto" onClick={() => setIsModalOpen(true)}>
+            <Button size="lg" className="w-full sm:w-auto" onClick={openModal}>
               Book a Free Call
             </Button>
             <Button variant="ghost" size="lg" className="w-full sm:w-auto">
@@ -84,8 +82,5 @@ export default function Hero() {
 
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#09090b] to-transparent" />
       </section>
-
-      <ContactFormModal open={isModalOpen} onOpenChange={setIsModalOpen} />
-    </>
   );
 }

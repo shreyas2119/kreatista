@@ -3,6 +3,7 @@ import { Bebas_Neue, Righteous, Inter } from "next/font/google";
 import "./globals.css";
 import { Cursor } from "@/components/ui/cursor";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
+import { ContactModalProvider } from "@/components/providers/contact-modal";
 
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-inter", display: "swap" });
 const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas", display: "swap" });
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`dark ${inter.variable} ${bebasNeue.variable} ${righteous.variable}`}>
       <body className="bg-[#09090b] text-[#fafafa] antialiased">
         <SmoothScrollProvider>
-          {children}
+          <ContactModalProvider>
+            {children}
+          </ContactModalProvider>
         </SmoothScrollProvider>
       </body>
     </html>

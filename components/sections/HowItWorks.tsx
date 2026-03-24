@@ -104,14 +104,14 @@ export default function HowItWorks() {
                     transition={{ duration: 0.7, delay: i * 0.15 + 0.2, ease: "easeOut" }}
                     className={`hidden sm:flex items-center justify-center ${isEven ? "sm:col-start-1 sm:row-start-1" : ""}`}
                   >
-                    <Image
-                      src={step.illustration}
-                      alt={step.title}
-                      width={220}
-                      height={180}
-                      className="object-contain opacity-90"
-                      style={{ width: "220px", height: "auto" }}
-                    />
+                    <div className="relative w-[220px] h-[180px]">
+                      <Image
+                        src={step.illustration}
+                        alt={step.title}
+                        fill
+                        className="object-contain opacity-90"
+                      />
+                    </div>
                   </motion.div>
                 </motion.div>
               );
