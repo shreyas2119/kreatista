@@ -124,26 +124,27 @@ function ServiceCard({
 
         {/* Default state — title at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-20 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-          {flagship && (
-            <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full bg-violet-500 text-white mb-2 tracking-wider uppercase">
-              Most Popular
-            </span>
-          )}
-          <motion.p
-            className="text-xs text-violet-400 font-medium tracking-widest uppercase mb-1"
-            animate={{ opacity: hovered ? 0 : 1, y: hovered ? 10 : 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </motion.p>
-          <motion.span
-            className={`text-white font-black uppercase tracking-wider whitespace-pre-line ${isLarge ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"}`}
-            style={{ fontFamily: '"Righteous", sans-serif', textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
+          <motion.div
             animate={{ opacity: hovered ? 0 : 1, y: hovered ? 20 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            {title}
-          </motion.span>
+            {flagship && (
+              <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full bg-violet-500 text-white mb-2 tracking-wider uppercase">
+                Most Popular
+              </span>
+            )}
+            <motion.p
+              className="text-xs text-violet-400 font-medium tracking-widest uppercase mb-1"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </motion.p>
+            <span
+              className={`text-white font-black uppercase tracking-wider whitespace-pre-line ${isLarge ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"}`}
+              style={{ fontFamily: '"Righteous", sans-serif', textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
+            >
+              {title}
+            </span>
+          </motion.div>
         </div>
 
         {/* Hover overlay */}
