@@ -35,7 +35,7 @@ function StatCard({ value, suffix, label, index }: { value: number; suffix: stri
         />
         <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        <span className="relative text-5xl sm:text-6xl font-bold text-white block mb-2">
+        <span className="relative text-5xl sm:text-6xl font-bold text-white block mb-2 tabular-nums">
           {count}{suffix}
         </span>
         <span className="relative text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300">

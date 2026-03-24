@@ -10,38 +10,38 @@ const services = [
   {
     title: "Websites That\nMean Business",
     desc: "We build websites that do more than just look good. From the first click to the final conversion, every page is designed with purpose. Clean code, killer design, and a seamless user experience that keeps visitors hooked and turning into customers. Fast, responsive, and built to scale with your business.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+    image: "/images/web.jpg",
     size: "large",
     flagship: true,
   },
   {
     title: "Product Marketing",
     desc: "Your product is great. The problem? Nobody knows it yet. We fix that.",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    image: "/images/product.jpg",
     size: "tall", // col-span-1 row-span-2
   },
   {
     title: "Content\nCreation",
     desc: "Scroll-stopping visuals, stories that hit different, copy that converts.",
-    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
+    image: "/images/content.jpg",
     size: "small",
   },
   {
     title: "Social Media Management",
     desc: "Your brand, always on. Real community, real engagement, real results.",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7",
+    image: "/images/social.jpg",
     size: "small",
   },
   {
     title: "Influencer Collaborations",
     desc: "We find the ones whose audience is already your audience.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+    image: "/images/influencer.jpg",
     size: "small",
   },
   {
     title: "Video\nProduction",
     desc: "Video is how brands win attention — and we make sure yours does exactly that.",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d",
+    image: "/images/video.jpg",
     size: "small",
   },
 ];
@@ -106,10 +106,7 @@ function ServiceCard({
         {/* Background */}
         <motion.div
           className="absolute inset-0"
-          animate={{
-            filter: hovered ? "blur(6px) brightness(0.35)" : "blur(0px) brightness(0.55)",
-            scale: hovered ? 1.05 : 1,
-          }}
+          animate={{ scale: hovered ? 1.05 : 1 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/40 to-black/70 z-10" />
@@ -119,8 +116,16 @@ function ServiceCard({
             fill
             className="object-cover opacity-60"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+            loading={index === 0 ? "eager" : "lazy"}
+            priority={index === 0}
           />
         </motion.div>
+        {/* Extra dark overlay on hover — opacity only, GPU composited */}
+        <motion.div
+          className="absolute inset-0 bg-black z-[5]"
+          animate={{ opacity: hovered ? 0.45 : 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        />
 
         {/* Default state — title at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-20 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
@@ -155,8 +160,8 @@ function ServiceCard({
           style={{ pointerEvents: hovered ? "auto" : "none" }}
         >
           <motion.div
-            className="w-10 h-0.5 bg-violet-500 rounded-full mb-3"
-            animate={{ width: hovered ? 40 : 0 }}
+            className="w-10 h-0.5 bg-violet-500 rounded-full mb-3 origin-left"
+            animate={{ scaleX: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
             transition={{ duration: 0.4, delay: 0.05 }}
           />
           <motion.h3
@@ -226,3 +231,4 @@ export default function Services() {
     </section>
   );
 }
+
