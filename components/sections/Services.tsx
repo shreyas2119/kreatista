@@ -10,8 +10,8 @@ import { ArrowRight } from "lucide-react";
 const services = [
   {
     emoji: "🚀",
-    title: "SaaS Marketing",
-    desc: "We help SaaS brands stop guessing and start growing. From pulling in the right users to making sure they actually stick around, we've got the whole journey covered. Think conversion-obsessed funnels, smart acquisition systems, retention strategies that actually work, and non-stop optimization to keep things scaling. Basically, your end-to-end growth engine, built different.",
+    title: "Websites That Mean Business",
+    desc: "We build websites that do more than just look good. From the first click to the final conversion, every page is designed with purpose. Clean code, killer design, and a seamless user experience that keeps visitors hooked and turning into customers. Fast, responsive, and built to scale with your business.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
   },
   {
