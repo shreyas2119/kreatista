@@ -11,7 +11,7 @@ const steps = [
     icon: Search,
     illustration: "/illustrations/find.svg",
     desc: "We dig into your brand, audience, and competitors to build a strategy that actually makes sense.",
-    details: "Deep dive into your market positioning, competitor moves, audience personas, and content gaps. We spot the opportunities others miss and map out a roadmap built around your goals.",
+    details: "Deep dive into your market positioning, competitor moves, audience personas, and content gaps. We spot the opportunities others miss.",
     tags: ["Market Research", "Competitor Analysis", "Audience Mapping"],
   },
   {
@@ -20,7 +20,7 @@ const steps = [
     icon: Paintbrush,
     illustration: "/illustrations/create.svg",
     desc: "Our team builds content, creatives, and campaigns that are made to perform, not just look pretty.",
-    details: "From idea to execution, we craft scroll-stopping content across every format — video, graphics, copy, and campaigns that hit different and actually get your audience to do something.",
+    details: "From idea to execution — scroll-stopping content across every format. Video, graphics, copy, and campaigns that get your audience to act.",
     tags: ["Content Production", "Ad Creatives", "Copywriting"],
   },
   {
@@ -29,94 +29,89 @@ const steps = [
     icon: TrendingUp,
     illustration: "/illustrations/grow.svg",
     desc: "We publish, optimize, and scale what works — no guessing, just results.",
-    details: "Non-stop testing, data-driven decisions, and smart scaling. We double down on what converts, cut what doesn't, and keep the growth engine running consistently.",
+    details: "Non-stop testing, data-driven decisions, and smart scaling. We double down on what converts and keep the growth engine running.",
     tags: ["Performance Tracking", "A/B Testing", "Scaling"],
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="relative py-20 sm:py-32 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(139,92,246,0.08),transparent)]" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="relative py-20 sm:py-32 bg-[#1b1b22]">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 sm:mb-20"
+          className="mb-14 sm:mb-20"
         >
-          <p className="text-xs sm:text-sm text-violet-400 font-medium tracking-widest uppercase mb-3">The Process</p>
-          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">How It Works</h2>
-          <p className="mt-4 text-sm sm:text-base text-zinc-500 max-w-md mx-auto">
+          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">The Process</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.03em" }}>
+            How It Works
+          </h2>
+          <p className="mt-3 text-sm text-[#ddc1b5]/60 max-w-xs">
             Three steps. Zero fluff. Real growth.
           </p>
         </motion.div>
 
-        <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-violet-500/30 via-violet-500/10 to-transparent -translate-x-1/2 hidden sm:block" />
+        <div className="space-y-12 sm:space-y-0">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            const isEven = i % 2 === 1;
+            return (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="relative sm:grid sm:grid-cols-2 sm:gap-16 sm:items-center sm:mb-20"
+              >
+                {/* Connector line — desktop only */}
+                {i < steps.length - 1 && (
+                  <div className="hidden sm:block absolute left-1/2 top-full w-px h-20 bg-gradient-to-b from-[#c8622a]/40 to-transparent -translate-x-1/2" />
+                )}
 
-          <div className="space-y-8 sm:space-y-0">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              const isEven = i % 2 === 1;
-              return (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
-                  className="relative sm:grid sm:grid-cols-2 sm:gap-12 sm:items-center sm:mb-20"
-                >
-                  <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-violet-500 ring-4 ring-violet-500/20 z-10" />
-
-                  {/* card */}
-                  <div className={isEven ? "sm:col-start-2 sm:row-start-1" : ""}>
-                    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 sm:p-8 hover:border-violet-500/20 transition-colors duration-300 group">
-                      <div className="flex items-center gap-4 mb-5">
-                        <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-violet-500/15 transition-colors duration-300">
-                          <Icon className="w-4 h-4 text-violet-400" />
-                        </div>
-                        <div>
-                          <span className="text-xs text-violet-400 font-medium tracking-widest uppercase">{step.number}</span>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white leading-none">{step.title}</h3>
-                        </div>
+                {/* Card */}
+                <div className={isEven ? "sm:col-start-2 sm:row-start-1" : ""}>
+                  <div className="bg-[#13131a] p-6 sm:p-8 group">
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-9 h-9 flex items-center justify-center bg-[#2a2931] flex-shrink-0">
+                        <Icon className="w-4 h-4 text-[#ddc1b5]" />
                       </div>
-                      <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-3">{step.desc}</p>
-                      <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed mb-5">{step.details}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {step.tags.map((tag) => (
-                          <span key={tag} className="text-xs px-3 py-1 rounded-full border border-violet-500/20 text-violet-400 bg-violet-500/5">
-                            {tag}
-                          </span>
-                        ))}
+                      <div>
+                        <span className="text-[10px] text-[#c8622a] font-medium tracking-[0.15em] uppercase block">{step.number}</span>
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.02em" }}>{step.title}</h3>
                       </div>
+                    </div>
+                    <p className="text-sm text-[#e4e1ec]/80 leading-relaxed mb-2">{step.desc}</p>
+                    <p className="text-xs text-[#ddc1b5]/50 leading-relaxed mb-5">{step.details}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {step.tags.map((tag) => (
+                        <span key={tag} className="text-[10px] px-2.5 py-1 text-[#ddc1b5]/60 bg-[#2a2931] tracking-wide">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
+                </div>
 
-                  {/* illustration */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: i * 0.15 + 0.2, ease: "easeOut" }}
-                    className={`hidden sm:flex items-center justify-center ${isEven ? "sm:col-start-1 sm:row-start-1" : ""}`}
-                  >
-                    <div className="relative w-[220px] h-[180px]">
-                      <Image
-                        src={step.illustration}
-                        alt={step.title}
-                        fill
-                        className="object-contain opacity-90"
-                      />
-                    </div>
-                  </motion.div>
+                {/* Illustration */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: i * 0.1 + 0.15 }}
+                  className={`hidden sm:flex items-center justify-center ${isEven ? "sm:col-start-1 sm:row-start-1" : ""}`}
+                >
+                  <div className="relative w-[200px] h-[160px] opacity-70">
+                    <Image src={step.illustration} alt={step.title} fill className="object-contain" />
+                  </div>
                 </motion.div>
-              );
-            })}
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

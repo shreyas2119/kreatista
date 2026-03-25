@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Dialog,
   DialogContent,
@@ -17,18 +17,26 @@ import { Loader2 } from "lucide-react"
 interface ContactFormModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  initialSubject?: string
 }
 
-export function ContactFormModal({ open, onOpenChange }: ContactFormModalProps) {
+export function ContactFormModal({ open, onOpenChange, initialSubject }: ContactFormModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    subject: "",
+    subject: initialSubject ?? "",
     message: "",
   })
+
+  // Pre-fill subject whenever modal opens with a new service
+  useEffect(() => {
+    if (open && initialSubject) {
+      setFormData((prev) => ({ ...prev, subject: initialSubject }))
+    }
+  }, [open, initialSubject])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

@@ -22,18 +22,9 @@ function Orb({ className = "", style }: OrbProps) {
 export function OrbBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Large violet orb — top left */}
-      <Orb
-        className="w-[600px] h-[600px] bg-violet-600/20 -top-40 -left-32 animate-orb-1"
-      />
-      {/* Medium violet orb — right */}
-      <Orb
-        className="w-[400px] h-[400px] bg-violet-400/15 top-1/3 right-0 animate-orb-2"
-      />
-      {/* Small indigo orb — bottom center */}
-      <Orb
-        className="w-[300px] h-[300px] bg-indigo-600/20 bottom-0 left-1/3 animate-orb-3"
-      />
+      <Orb className="w-[500px] h-[500px] bg-[#c8622a]/[0.05] -top-40 -left-32 animate-orb-1" />
+      <Orb className="w-[350px] h-[350px] bg-[#c8622a]/[0.03] top-1/3 right-0 animate-orb-2" />
+      <Orb className="w-[250px] h-[250px] bg-[#c8622a]/[0.04] bottom-0 left-1/3 animate-orb-3" />
     </div>
   );
 }

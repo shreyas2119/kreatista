@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
-  { value: 50, suffix: "+", label: "Brands Worked With" },
+  { value: 50,  suffix: "+", label: "Brands Worked With" },
   { value: 200, suffix: "+", label: "Videos Produced" },
-  { value: 6, suffix: "", label: "Platforms Managed" },
+  { value: 6,   suffix: "",  label: "Platforms Managed" },
 ];
 
 function StatCard({ value, suffix, label, index }: { value: number; suffix: string; label: string; index: number }) {
@@ -19,37 +19,24 @@ function StatCard({ value, suffix, label, index }: { value: number; suffix: stri
   return (
     <motion.div
       ref={ref}
-      initial={{ clipPath: "inset(100% 0% 0% 0%)", opacity: 0 }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-      className="flex-1"
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="flex-1 bg-[#1b1b22] p-8 sm:p-10 text-center sm:text-left"
     >
-      <motion.div
-        whileHover={{ scale: 1.03, y: -3 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className="relative rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-md p-8 text-center overflow-hidden group"
-      >
-        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ background: "radial-gradient(200px circle at 50% 0%, rgba(139,92,246,0.12), transparent 70%)" }}
-        />
-        <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <span className="relative text-5xl sm:text-6xl font-bold text-white block mb-2 tabular-nums">
-          {count}{suffix}
-        </span>
-        <span className="relative text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors duration-300">
-          {label}
-        </span>
-      </motion.div>
+      <span className="text-4xl sm:text-5xl font-extrabold text-[#e4e1ec] block mb-1 tabular-nums" style={{ letterSpacing: "-0.03em" }}>
+        {count}{suffix}
+      </span>
+      <span className="text-xs text-[#ddc1b5]/50 tracking-wide">{label}</span>
     </motion.div>
   );
 }
 
 export default function SocialProof() {
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4" style={{ perspective: "800px" }}>
+    <section className="py-16 sm:py-20 px-5 sm:px-8 lg:px-16 bg-[#13131a]">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-3 sm:gap-4">
         {stats.map((s, i) => (
           <StatCard key={s.label} {...s} index={i} />
         ))}

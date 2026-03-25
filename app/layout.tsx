@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Righteous, Inter } from "next/font/google";
+import { Epilogue, Inter } from "next/font/google";
 import "./globals.css";
-import { Cursor } from "@/components/ui/cursor";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
+import { AuthProvider } from "@/components/providers/auth-provider";
 
-const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-inter", display: "swap" });
-const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas", display: "swap" });
-const righteous = Righteous({ subsets: ["latin"], weight: "400", variable: "--font-righteous", display: "swap" });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
+const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-epilogue", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Kreatista — Full-Stack Content Marketing",
@@ -22,12 +21,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${bebasNeue.variable} ${righteous.variable}`}>
-      <body className="bg-[#09090b] text-[#fafafa] antialiased">
+    <html lang="en" className={`dark ${inter.variable} ${epilogue.variable}`}>
+      <body className="bg-[#13131a] text-[#e4e1ec] antialiased">
         <SmoothScrollProvider>
-          <ContactModalProvider>
-            {children}
-          </ContactModalProvider>
+          <AuthProvider>
+            <ContactModalProvider>
+              {children}
+            </ContactModalProvider>
+          </AuthProvider>
         </SmoothScrollProvider>
       </body>
     </html>

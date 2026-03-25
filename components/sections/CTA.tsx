@@ -1,54 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ButtonWithIcon from "@/components/ui/button-with-icon";
+import Link from "next/link";
 import { useContactModal } from "@/components/providers/contact-modal";
 
 export default function CTA() {
   const { open: openModal } = useContactModal();
 
   return (
-    <section className="py-24 px-4">
-      <div className="relative max-w-3xl mx-auto">
-        <motion.div
-          className="pointer-events-none absolute -inset-1 rounded-3xl bg-violet-500/20 blur-2xl"
-          animate={{ opacity: [0.3, 0.6, 0.3], scale: [1, 1.02, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
+    <section className="py-20 sm:py-32 px-5 sm:px-8 lg:px-16 bg-[#0e0e15]">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative rounded-2xl bg-gradient-to-br from-violet-600/25 via-violet-500/10 to-zinc-900 border border-violet-500/30 p-12 text-center overflow-hidden"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.div
-            className="pointer-events-none absolute inset-0"
-            animate={{ backgroundPosition: ["200% 0%", "-200% 0%"] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            style={{
-              background: "linear-gradient(105deg, transparent 40%, rgba(139,92,246,0.08) 50%, transparent 60%)",
-              backgroundSize: "200% 100%",
-            }}
-          />
-          <h2 className="relative text-3xl sm:text-4xl font-bold mb-4">Ready to Grow Your Brand?</h2>
-          <p className="relative text-zinc-400 mb-8 text-base">
-            Let&apos;s build a content engine that works while you sleep.
-          </p>
-          <motion.div
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="relative inline-block"
-          >
-            <ButtonWithIcon
-              className="bg-violet-500 hover:bg-violet-600 text-white text-base h-14"
-              onClick={openModal}
+          <h2 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-[#e4e1ec] leading-none tracking-[-0.04em] mb-8">
+            Ready to build your{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, #c8622a 0%, #e8956a 50%, #c8622a 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
-              Book a Free Strategy Call
-            </ButtonWithIcon>
-          </motion.div>
-          <p className="relative mt-5 text-sm text-zinc-600">No commitment. Just a conversation.</p>
+              Powerhouse?
+            </span>
+          </h2>
+
+          <p className="text-base sm:text-xl text-[#ddc1b5]/60 mb-10 max-w-xl mx-auto leading-relaxed">
+            Limited availability for partnerships. Let's discuss your vision before someone else does.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => openModal()}
+              className="px-10 py-5 bg-[#c8622a] text-[#e4e1ec] text-base font-bold hover:bg-[#b5561f] transition-colors shadow-2xl shadow-[#c8622a]/20"
+            >
+              Get Started
+            </motion.button>
+            <Link href="/portfolio">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 text-[#e4e1ec] text-base font-bold flex items-center justify-center gap-2 hover:bg-white/[0.05] transition-colors border border-[#e4e1ec]/10 cursor-pointer"
+              >
+                View Portfolio ↗
+              </motion.span>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

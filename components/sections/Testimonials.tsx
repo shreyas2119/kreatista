@@ -1,90 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 
 const testimonials = [
   {
     name: "Arjun Mehta",
-    role: "Founder, NovaSaaS",
-    avatar: "AM",
-    text: "Kreatista took our content from zero to consistent in 3 weeks. Our LinkedIn impressions tripled and we started getting inbound leads we never had before. Worth every rupee.",
+    role: "CEO at NovaSaaS",
+    text: "Kreatista completely revamped our SaaS branding. Our conversion rate increased by 40% within the first month of the new site launch.",
     stars: 5,
   },
   {
     name: "Priya Sharma",
-    role: "D2C Brand Owner, Lumière",
-    avatar: "PS",
-    text: "The video content they produced for our product launch was insane. Reels hit 200k+ views organically. The team just gets what works on social — no hand-holding needed.",
+    role: "Founder of Lumière",
+    text: "The social content they produced for our D2C launch went viral overnight. They understand exactly how to stop the scroll.",
     stars: 5,
+    featured: true,
   },
   {
     name: "Rohan Kapoor",
     role: "CEO, BuildFast",
-    avatar: "RK",
-    text: "We tried two other agencies before Kreatista. The difference is they actually understand SaaS marketing — not just pretty posts. Our trial signups went up 40% in 6 weeks.",
-    stars: 5,
-  },
-  {
-    name: "Sneha Iyer",
-    role: "Creator & Coach",
-    avatar: "SI",
-    text: "I was skeptical about outsourcing my content but they matched my voice perfectly. My audience couldn't even tell. Engagement is up and I finally have time to focus on my actual work.",
+    text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Kreatista scaled our trial signups 40% in 6 weeks.",
     stars: 5,
   },
 ];
 
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5 mb-3">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} className="w-3.5 h-3.5 fill-violet-400 text-violet-400" />
-      ))}
-    </div>
-  );
-}
-
 export default function Testimonials() {
   return (
-    <section className="relative py-20 sm:py-32 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(139,92,246,0.07),transparent)]" />
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="py-20 sm:py-32 px-5 sm:px-8 lg:px-16 overflow-hidden bg-[#13131a]">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-14 sm:mb-20"
         >
-          <p className="text-xs sm:text-sm text-violet-400 font-medium tracking-widest uppercase mb-3">Social Proof</p>
-          <h2 className="text-3xl sm:text-5xl font-bold text-foreground">What Clients Say</h2>
-          <p className="mt-4 text-sm sm:text-base text-zinc-500 max-w-md mx-auto">
-            Real results from real brands. No fluff.
-          </p>
+          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Social Proof</p>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#e4e1ec] leading-none tracking-[-0.04em]">
+            Wall of Results
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-              className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6 sm:p-7 hover:border-violet-500/20 transition-colors duration-300 group"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className={`p-7 sm:p-8 relative ${
+                t.featured
+                  ? "bg-[#2a2931] sm:scale-105 sm:z-10 shadow-2xl shadow-black/40 outline outline-1 outline-[#c8622a]/20"
+                  : "bg-[#1b1b22]"
+              }`}
             >
-              <Stars count={t.stars} />
-              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-5">
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {Array.from({ length: t.stars }).map((_, j) => (
+                  <svg key={j} className="w-3.5 h-3.5 fill-[#c8622a]" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+
+              <p className={`leading-relaxed mb-6 italic ${t.featured ? "text-base text-[#e4e1ec]/90" : "text-sm text-[#e4e1ec]/70"}`}>
                 &ldquo;{t.text}&rdquo;
               </p>
+
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xs font-bold text-violet-400">{t.avatar}</span>
+                <div className="w-9 h-9 bg-[#34343c] flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-[#ddc1b5]">
+                  {t.name.split(" ").map(n => n[0]).join("")}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-zinc-500">{t.role}</p>
+                  <p className="text-sm font-bold text-[#e4e1ec]">{t.name}</p>
+                  <p className="text-xs text-[#ddc1b5]/50">{t.role}</p>
                 </div>
               </div>
             </motion.div>
