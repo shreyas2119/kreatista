@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
 import { AuthProvider } from "@/components/providers/auth-provider";
+import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
 const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-epilogue", display: "swap" });
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScrollProvider>
           <AuthProvider>
             <ContactModalProvider>
-              {children}
+              <div className="pb-16 md:pb-0">
+                {children}
+              </div>
+              <BottomTabBar />
             </ContactModalProvider>
           </AuthProvider>
         </SmoothScrollProvider>
