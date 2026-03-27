@@ -4,6 +4,7 @@ import { motion, type Transition } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useContactModal } from "@/components/providers/contact-modal";
+import { HeroShader } from "@/components/ui/hero-shader";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -16,7 +17,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 pb-16 px-5 sm:px-8 lg:px-16 overflow-hidden bg-[#13131a]">
-      {/* Background glows */}
+      <HeroShader />
+      {/* Terracotta glow top right */}
       <div className="pointer-events-none absolute top-[10%] right-[5%] w-[500px] h-[500px] rounded-full bg-[#c8622a]/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#c8622a]/05 blur-[100px]" />
 

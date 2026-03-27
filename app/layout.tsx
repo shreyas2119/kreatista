@@ -10,8 +10,53 @@ const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variabl
 const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-epilogue", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Kreatista — Full-Stack Content Marketing",
-  description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
+  metadataBase: new URL("https://kreatista.in"),
+  title: {
+    default: "Kreatista — Full-Stack Content Marketing",
+    template: "%s | Kreatista",
+  },
+  description: "Full-stack content marketing for D2C brands, SaaS startups & creators. Websites, video, social media, influencer collabs — all under one roof.",
+  keywords: ["content marketing", "D2C marketing", "SaaS marketing", "social media agency", "video production", "influencer marketing", "India"],
+  authors: [{ name: "Kreatista" }],
+  creator: "Kreatista",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://kreatista.in",
+    siteName: "Kreatista",
+    title: "Kreatista — Full-Stack Content Marketing",
+    description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kreatista — Full-Stack Content Marketing",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kreatista — Full-Stack Content Marketing",
+    description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
