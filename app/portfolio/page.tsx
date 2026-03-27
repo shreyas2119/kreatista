@@ -5,7 +5,7 @@ import PortfolioPageContent from "@/components/sections/PortfolioPageContent";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Explore Kreatista's work — case studies, results and campaigns for D2C brands, SaaS startups and creators.",
+  description: "Explore Socioryx's work — case studies, results and campaigns for D2C brands, SaaS startups and creators.",
 };
 
 export default function PortfolioPage() {

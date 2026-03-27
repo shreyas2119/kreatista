@@ -67,7 +67,7 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16"
         >
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Pricing</p>
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Pricing</p>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.03em" }}>
             No Fixed Packages.<br className="hidden sm:block" /> Just Results.
           </h2>
@@ -99,7 +99,7 @@ export default function Pricing() {
               )}
 
               <div className="mb-6">
-                <p className="text-[10px] text-[#c8622a] font-medium tracking-[0.15em] uppercase mb-3">{plan.name}</p>
+                <p className="text-xs text-[#c8622a] font-medium tracking-[0.15em] uppercase mb-3">{plan.name}</p>
                 {plan.price ? (
                   <div className="flex items-end gap-1.5 mb-2">
                     <span className="text-2xl sm:text-3xl font-extrabold text-[#e4e1ec]" style={{ letterSpacing: "-0.02em" }}>{plan.price}</span>

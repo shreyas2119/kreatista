@@ -46,7 +46,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="mb-14 sm:mb-20"
         >
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">The Process</p>
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">The Process</p>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.03em" }}>
             How It Works
           </h2>
@@ -81,15 +81,15 @@ export default function HowItWorks() {
                         <Icon className="w-4 h-4 text-[#ddc1b5]" />
                       </div>
                       <div>
-                        <span className="text-[10px] text-[#c8622a] font-medium tracking-[0.15em] uppercase block">{step.number}</span>
+                        <span className="text-xs text-[#c8622a] font-medium tracking-[0.15em] uppercase block">{step.number}</span>
                         <h3 className="text-xl sm:text-2xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.02em" }}>{step.title}</h3>
                       </div>
                     </div>
                     <p className="text-sm text-[#e4e1ec]/80 leading-relaxed mb-2">{step.desc}</p>
-                    <p className="text-xs text-[#ddc1b5]/50 leading-relaxed mb-5">{step.details}</p>
+                    <p className="text-sm text-[#ddc1b5]/50 leading-relaxed mb-5">{step.details}</p>
                     <div className="flex flex-wrap gap-2">
                       {step.tags.map((tag) => (
-                        <span key={tag} className="text-[10px] px-2.5 py-1 text-[#ddc1b5]/60 bg-[#2a2931] tracking-wide">
+                        <span key={tag} className="text-xs px-2.5 py-1 text-[#ddc1b5]/60 bg-[#2a2931] tracking-wide">
                           {tag}
                         </span>
                       ))}

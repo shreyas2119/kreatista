@@ -18,19 +18,19 @@ export default function MeetTheTeam() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16"
         >
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">
             Our Team
           </p>
           <h2
             className="text-4xl sm:text-6xl font-black tracking-[-0.04em] leading-none text-[#e4e1ec]"
             style={{ fontFamily: "var(--font-epilogue)" }}
           >
-            The Minds Behind Kreatista
+            The Minds Behind Socioryx
           </h2>
         </motion.div>
 
         {/* Preview cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 sm:mb-12">
           {teamPreview.map((member, i) => (
             <motion.div
               key={member.name + i}
@@ -86,7 +86,7 @@ export default function MeetTheTeam() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#c8622a] text-[#e4e1ec] text-sm font-bold hover:bg-[#b5561f] transition-colors cursor-pointer"
               style={{ fontFamily: "var(--font-epilogue)" }}
             >
-              Connect with the Team
+              Meet Everyone
               <ArrowRight className="w-4 h-4" />
             </motion.span>
           </Link>

@@ -94,7 +94,7 @@ export default function PortfolioPageContent() {
           {/* Left — context */}
           <div className="p-10 md:p-14 flex flex-col justify-center bg-[#1f1f26]">
             <div className="mb-8">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#c8622a]/10 text-[#c8622a] text-[10px] font-bold tracking-widest uppercase mb-5">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#c8622a]/10 text-[#c8622a] text-xs font-bold tracking-widest uppercase mb-5">
                 <Lock className="w-3 h-3" />
                 Exclusive Access
               </span>
@@ -186,7 +186,7 @@ export default function PortfolioPageContent() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
-                <p className="text-center text-[10px] text-[#ddc1b5]/30 mt-4">
+                <p className="text-center text-xs text-[#ddc1b5]/30 mt-4">
                   By signing in, you agree to our{" "}
                   <a href="#" className="text-[#c8622a] hover:underline">Privacy Policy</a>.
                   We never spam.

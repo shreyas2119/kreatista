@@ -43,7 +43,7 @@ export function Header() {
           className="text-xl sm:text-2xl font-black tracking-tighter text-[#e4e1ec] uppercase hover:opacity-80 transition-opacity flex-shrink-0"
           style={{ fontFamily: 'var(--font-epilogue)' }}
         >
-          KREATISTA
+          SOCIORYX
         </Link>
 
         {/* Desktop nav */}

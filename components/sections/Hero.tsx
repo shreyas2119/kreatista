@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion, type Transition } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,10 +15,59 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   const { open: openModal } = useContactModal();
+  const circleRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const circle = circleRef.current;
+    const heading = headingRef.current;
+    if (!circle || !heading) return;
+    const section = heading.closest("section");
+    if (!section) return;
+
+    let raf: number;
+
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        circle.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        circle.style.opacity = "1";
+      });
+    };
+
+    const onLeave = () => {
+      circle.style.opacity = "0";
+    };
+
+    heading.addEventListener("mousemove", onMove);
+    heading.addEventListener("mouseleave", onLeave);
+    return () => {
+      heading.removeEventListener("mousemove", onMove);
+      heading.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 pb-16 px-5 sm:px-8 lg:px-16 overflow-hidden bg-[#13131a]">
       <HeroShader />
+
+      {/* Invert cursor circle — mix-blend-mode difference inverts text colour on overlap */}
+      <div
+        ref={circleRef}
+        className="absolute top-0 left-0 w-48 h-48 rounded-full pointer-events-none z-20"
+        style={{
+          background: "white",
+          mixBlendMode: "difference",
+          opacity: 0,
+          transition: "opacity 0.2s ease",
+          willChange: "transform",
+        }}
+      />
       {/* Terracotta glow top right */}
       <div className="pointer-events-none absolute top-[10%] right-[5%] w-[500px] h-[500px] rounded-full bg-[#c8622a]/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[#c8622a]/05 blur-[100px]" />
@@ -35,7 +85,7 @@ export default function Hero() {
           </motion.span>
 
           {/* Headline */}
-          <h1 className="text-[clamp(2.6rem,7vw,6rem)] font-extrabold tracking-[-0.04em] leading-[0.92] text-[#e4e1ec] mb-6 sm:mb-8">
+          <h1 ref={headingRef} className="text-[clamp(2.6rem,7vw,6rem)] font-extrabold tracking-[-0.04em] leading-[0.92] text-[#e4e1ec] mb-6 sm:mb-8 cursor-none">
             <motion.span {...fadeUp(0.1)} className="block">
               The Content
             </motion.span>
@@ -69,13 +119,13 @@ export default function Hero() {
           <motion.div {...fadeUp(0.45)} className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => openModal()}
-              className="px-8 py-4 bg-[#c8622a] text-[#e4e1ec] text-sm font-bold hover:bg-[#b5561f] active:scale-95 transition-all duration-200 shadow-lg shadow-[#c8622a]/20"
+              className="px-8 py-4 bg-[#c8622a] text-[#e4e1ec] text-base font-bold hover:bg-[#b5561f] active:scale-95 transition-all duration-200 shadow-lg shadow-[#c8622a]/20"
             >
               Book a Call
             </button>
             <Link
               href="/portfolio"
-              className="px-8 py-4 border border-[#e4e1ec]/20 text-[#e4e1ec] text-sm font-bold hover:bg-white/[0.04] hover:border-[#e4e1ec]/40 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
+              className="px-8 py-4 border border-[#e4e1ec]/20 text-[#e4e1ec] text-base font-bold hover:bg-white/[0.04] hover:border-[#e4e1ec]/40 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
             >
               See Our Work ↗
             </Link>
@@ -105,7 +155,7 @@ export default function Hero() {
           <div className="aspect-[4/5] bg-[#2a2931] overflow-hidden shadow-2xl">
             <Image
               src="/images/web.webp"
-              alt="Kreatista creative workspace"
+              alt="Socioryx creative workspace"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 opacity-70"
               priority

@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-1">
             <span className="text-lg font-extrabold text-[#e4e1ec] tracking-[-0.02em] block mb-3">
-              KREA<span className="text-[#c8622a]">TISTA</span>
+              SOCIO<span className="text-[#c8622a]">RYX</span>
             </span>
             <p className="text-xs text-[#ddc1b5]/40 leading-relaxed max-w-[180px]">
               Architecting digital dominance for the next generation of industry leaders.
@@ -49,7 +49,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-[#e4e1ec]/[0.06] pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <p className="text-xs text-[#ddc1b5]/30">© 2026 Kreatista Agency. All rights reserved.</p>
+          <p className="text-xs text-[#ddc1b5]/30">© 2026 Socioryx Agency. All rights reserved.</p>
           <div className="flex gap-6">
             <span className="text-xs text-[#ddc1b5]/20">Based in India</span>
             <span className="text-xs text-[#ddc1b5]/20">Global Production</span>

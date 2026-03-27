@@ -1,63 +1,59 @@
 "use client";
 
 export function HeroShader() {
+  const dotGrid = {
+    backgroundImage: "radial-gradient(circle, #e4e1ec 1px, transparent 1px)",
+    backgroundSize: "32px 32px",
+  };
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      {/* Base noise texture via SVG filter */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-        <filter id="hero-noise">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.65"
-            numOctaves="3"
-            stitchTiles="stitch"
+
+      {/* Base dim dot grid */}
+      <div
+        className="absolute inset-0 opacity-[0.12]"
+        style={{
+          ...dotGrid,
+          maskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 100%)",
+        }}
+      />
+
+      {/* Ambient terracotta glow — top right */}
+      <div
+        className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full"
+        style={{
+          background: "radial-gradient(circle, rgba(200,98,42,0.08) 0%, transparent 65%)",
+          animation: "hero-drift 16s ease-in-out infinite",
+        }}
+      />
+
+      {/* Pulse rings */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="absolute rounded-full border border-[#c8622a]/[0.07]"
+            style={{
+              width: `${300 + i * 180}px`,
+              height: `${300 + i * 180}px`,
+              animation: `hero-pulse ${5 + i * 1.3}s ease-out infinite`,
+              animationDelay: `${i * 1.3}s`,
+              opacity: 0,
+            }}
           />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#hero-noise)" />
-      </svg>
-
-      {/* Terracotta glow — top right */}
-      <div
-        className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(200,98,42,0.12) 0%, rgba(200,98,42,0.04) 40%, transparent 70%)",
-          animation: "hero-glow-1 12s ease-in-out infinite",
-        }}
-      />
-
-      {/* Secondary faint glow — bottom left */}
-      <div
-        className="absolute -bottom-40 -left-20 w-[500px] h-[500px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(200,98,42,0.07) 0%, transparent 65%)",
-          animation: "hero-glow-2 16s ease-in-out infinite",
-        }}
-      />
-
-      {/* Slow drifting mid glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full"
-        style={{
-          background: "radial-gradient(ellipse, rgba(200,98,42,0.04) 0%, transparent 60%)",
-          animation: "hero-glow-3 20s ease-in-out infinite",
-        }}
-      />
+        ))}
+      </div>
 
       <style>{`
-        @keyframes hero-glow-1 {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-          33%       { transform: translate(-40px, 30px) scale(1.1); opacity: 0.7; }
-          66%       { transform: translate(20px, -20px) scale(0.95); opacity: 0.9; }
+        @keyframes hero-drift {
+          0%, 100% { transform: translate(0, 0); }
+          50%       { transform: translate(-20px, 15px); }
         }
-        @keyframes hero-glow-2 {
-          0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-          50%       { transform: translate(30px, -40px) scale(1.15); opacity: 0.6; }
-        }
-        @keyframes hero-glow-3 {
-          0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
-          25%       { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 0.5; }
-          75%       { transform: translate(-50%, -50%) scale(0.9) rotate(-5deg); opacity: 0.8; }
+        @keyframes hero-pulse {
+          0%   { transform: scale(0.5); opacity: 0; }
+          15%  { opacity: 1; }
+          100% { transform: scale(2); opacity: 0; }
         }
       `}</style>
     </div>

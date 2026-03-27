@@ -5,7 +5,7 @@ import TeamPageContent from "@/components/sections/TeamPageContent";
 
 export const metadata: Metadata = {
   title: "Our Team",
-  description: "Meet the minds behind Kreatista — strategists, creators and builders obsessed with making brands impossible to ignore.",
+  description: "Meet the minds behind Socioryx — strategists, creators and builders obsessed with making brands impossible to ignore.",
 };
 
 export default function TeamPage() {

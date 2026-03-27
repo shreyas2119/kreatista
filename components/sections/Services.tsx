@@ -68,7 +68,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16"
         >
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Services</p>
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Services</p>
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#e4e1ec] leading-none tracking-[-0.04em] mb-4">
             Our Ecosystem
           </h2>

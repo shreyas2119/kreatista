@@ -210,7 +210,7 @@ export default function ServicesPageContent() {
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {["Creator Vetting", "Campaign Mgmt", "Contracting"].map((tag) => (
-                <span key={tag} className="px-3 py-1.5 bg-[#2a2931] text-[10px] font-bold text-[#e4e1ec] uppercase tracking-widest">
+                <span key={tag} className="px-3 py-1.5 bg-[#2a2931] text-xs font-bold text-[#e4e1ec] uppercase tracking-widest">
                   {tag}
                 </span>
               ))}
@@ -292,7 +292,7 @@ export default function ServicesPageContent() {
                   {i > 0 && <div className="w-px bg-[#e4e1ec]/10" />}
                   <div>
                     <span className="block text-[#e4e1ec] font-black text-2xl mb-1" style={{ fontFamily: "var(--font-epilogue)" }}>{item.stat}</span>
-                    <span className="text-[#ddc1b5]/40 text-[10px] uppercase tracking-widest">{item.label}</span>
+                    <span className="text-[#ddc1b5]/40 text-xs uppercase tracking-widest">{item.label}</span>
                   </div>
                 </div>
               ))}
@@ -366,7 +366,7 @@ function ContactForm() {
           { label: "Last Name",  name: "lastName",  type: "text", placeholder: "Doe" },
         ].map((f) => (
           <div key={f.name}>
-            <label className="block text-[10px] font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">{f.label}</label>
+            <label className="block text-xs font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">{f.label}</label>
             <input
               type={f.type}
               name={f.name}
@@ -380,7 +380,7 @@ function ContactForm() {
         ))}
       </div>
       <div>
-        <label className="block text-[10px] font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Email</label>
+        <label className="block text-xs font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Email</label>
         <input
           type="email"
           name="email"
@@ -392,7 +392,7 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-[10px] font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Service of Interest</label>
+        <label className="block text-xs font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Service of Interest</label>
         <select
           name="subject"
           value={formData.subject}
@@ -410,7 +410,7 @@ function ContactForm() {
         </select>
       </div>
       <div>
-        <label className="block text-[10px] font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Project Brief</label>
+        <label className="block text-xs font-bold uppercase tracking-widest text-[#ddc1b5]/50 mb-2">Project Brief</label>
         <textarea
           name="message"
           value={formData.message}

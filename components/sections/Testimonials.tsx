@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Arjun Mehta",
     role: "CEO at NovaSaaS",
-    text: "Kreatista completely revamped our SaaS branding. Our conversion rate increased by 40% within the first month of the new site launch.",
+    text: "Socioryx completely revamped our SaaS branding. Our conversion rate increased by 40% within the first month of the new site launch.",
     stars: 5,
   },
   {
@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Rohan Kapoor",
     role: "CEO, BuildFast",
-    text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Kreatista scaled our trial signups 40% in 6 weeks.",
+    text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Socioryx scaled our trial signups 40% in 6 weeks.",
     stars: 5,
   },
 ];
@@ -35,7 +35,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14 sm:mb-20"
         >
-          <p className="text-[10px] font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Social Proof</p>
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">Social Proof</p>
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#e4e1ec] leading-none tracking-[-0.04em]">
             Wall of Results
           </h2>
@@ -69,7 +69,7 @@ export default function Testimonials() {
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-[#34343c] flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-[#ddc1b5]">
+                <div className="w-9 h-9 bg-[#34343c] flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#ddc1b5]">
                   {t.name.split(" ").map(n => n[0]).join("")}
                 </div>
                 <div>
