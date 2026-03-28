@@ -72,7 +72,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => openModal()}
-            className="text-sm font-bold px-5 py-2 bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors"
+            className="text-sm font-bold px-5 py-2 bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors rounded-lg"
             style={{ fontFamily: 'var(--font-epilogue)' }}
           >
             Book a Call
@@ -116,7 +116,7 @@ export function Header() {
         <div className="flex flex-col gap-2 pt-4 border-t border-[#e4e1ec]/[0.08]">
           <button
             onClick={() => { setOpen(false); openModal(); }}
-            className="w-full py-3 text-sm font-bold bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors"
+            className="w-full py-3 text-sm font-bold bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors rounded-lg"
             style={{ fontFamily: 'var(--font-epilogue)' }}
           >
             Book a Call
@@ -149,3 +149,4 @@ function useScroll(threshold: number) {
   React.useEffect(() => { onScroll(); }, [onScroll]);
   return scrolled;
 }
+
