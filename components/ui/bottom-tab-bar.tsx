@@ -15,7 +15,7 @@ export function BottomTabBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#13131a]/90 backdrop-blur-xl border-t border-[#e4e1ec]/[0.08]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#0f1419]/90 backdrop-blur-xl border-t border-[#F8F8FF]/[0.08]">
       <div className="flex items-stretch">
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -26,18 +26,17 @@ export function BottomTabBar() {
               href={tab.href}
               className={cn(
                 "flex-1 flex flex-col items-center justify-center gap-1 py-3 transition-colors duration-200",
-                isActive ? "text-[#c8622a]" : "text-[#ddc1b5]/40 hover:text-[#ddc1b5]/70"
+                isActive ? "text-[#E5E4E2]" : "text-[#B8C5D6]/40 hover:text-[#B8C5D6]/70"
               )}
             >
               <Icon className="w-5 h-5" strokeWidth={isActive ? 2.5 : 1.5} />
               <span
-                className="text-[10px] font-bold tracking-wide"
-                style={{ fontFamily: "var(--font-epilogue)" }}
+                className="text-[10px] font-medium tracking-wide font-heading"
               >
                 {tab.label}
               </span>
               {isActive && (
-                <span className="absolute bottom-0 w-8 h-0.5 bg-[#c8622a] rounded-full" />
+                <span className="absolute bottom-0 w-8 h-0.5 bg-[#E5E4E2] rounded-full" />
               )}
             </Link>
           );

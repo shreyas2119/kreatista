@@ -1,13 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Epilogue, Inter } from "next/font/google";
+import { Space_Grotesk, Inter, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-inter", display: "swap" });
-const epilogue = Epilogue({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-epilogue", display: "swap" });
+// Premium font system
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"], 
+  weight: ["400", "500", "600", "700"], 
+  variable: "--font-heading", 
+  display: "swap" 
+});
+
+const inter = Inter({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "500"], 
+  variable: "--font-body", 
+  display: "swap" 
+});
+
+const instrumentSerif = Instrument_Serif({ 
+  subsets: ["latin"], 
+  weight: ["400"], 
+  variable: "--font-accent", 
+  display: "swap",
+  style: ["normal", "italic"]
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kreatista.in"),
@@ -54,8 +75,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -67,18 +86,19 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${epilogue.variable}`}>
-      <head>
+    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable}`}>
+      <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
         {/* Microsoft Clarity */}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
-          <script
+          <Script
+            id="clarity-script"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_ID}");`,
             }}
           />
         )}
-      </head>
-      <body className="bg-[#13131a] text-[#e4e1ec] antialiased">
+        
         <SmoothScrollProvider>
           <AuthProvider>
             <ContactModalProvider>

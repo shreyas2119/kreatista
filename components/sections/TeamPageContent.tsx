@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { team } from "@/lib/team";
 import TeamShowcase from "@/components/ui/team-showcase";
 
@@ -14,20 +16,28 @@ export default function TeamPageContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
         >
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-4">Our Team</p>
+          {/* Back Button */}
+          <Link 
+            href="/#team" 
+            className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-6 group font-body"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+
+          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-4 font-body">Our Team</p>
           <h1
-            className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-[-0.04em] leading-none text-[#e4e1ec] mb-5"
-            style={{ fontFamily: "var(--font-epilogue)" }}
+            className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-[-0.04em] leading-none text-[#F8F8FF] mb-5 font-heading"
           >
             The Minds Behind<br className="hidden sm:block" /> Socioryx
           </h1>
-          <p className="text-sm sm:text-base text-[#ddc1b5]/60 max-w-lg leading-relaxed">
+          <p className="text-sm sm:text-base text-[#B8C5D6]/60 max-w-lg leading-relaxed font-body">
             A collective of strategists, creators, and builders obsessed with making brands impossible to ignore.
           </p>
         </motion.div>
       </section>
 
-      <div className="w-full h-px bg-[#e4e1ec]/[0.06]" />
+      <div className="w-full h-px bg-[#F8F8FF]/[0.06]" />
 
       {/* Team showcase */}
       <section className="py-16 sm:py-24">

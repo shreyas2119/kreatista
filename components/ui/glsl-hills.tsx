@@ -12,6 +12,7 @@ interface GLSLHillsProps {
 
 export function GLSLHills({ width = '100%', height = '100%', cameraZ = 125, planeSize = 256, speed = 0.5 }: GLSLHillsProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const elapsedTimeRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -20,7 +21,6 @@ export function GLSLHills({ width = '100%', height = '100%', cameraZ = 125, plan
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-    const clock = new THREE.Clock();
 
     const uniforms = { time: { value: 0 } };
 
@@ -96,8 +96,13 @@ void main(void){
     scene.add(mesh);
 
     let animId: number;
+    let lastTime = performance.now();
     const render = () => {
-      uniforms.time.value += clock.getDelta() * speed;
+      const currentTime = performance.now();
+      const deltaTime = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+      elapsedTimeRef.current += deltaTime * speed;
+      uniforms.time.value = elapsedTimeRef.current;
       renderer.render(scene, camera);
       animId = requestAnimationFrame(render);
     };

@@ -6,7 +6,6 @@ const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const Services = dynamic(() => import("@/components/sections/Services"));
 const HowItWorks = dynamic(() => import("@/components/sections/HowItWorks"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
-const Pricing = dynamic(() => import("@/components/sections/Pricing"));
 const MeetTheTeam = dynamic(() => import("@/components/sections/MeetTheTeam"));
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof"));
 const CTA = dynamic(() => import("@/components/sections/CTA"));
@@ -21,7 +20,6 @@ export default function Home() {
       <Services />
       <HowItWorks />
       <Testimonials />
-      <Pricing />
       <MeetTheTeam />
       <SocialProof />
       <CTA />

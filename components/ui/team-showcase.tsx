@@ -23,27 +23,27 @@ export default function TeamShowcase({ members }: TeamShowcaseProps) {
       {/* Mobile — simple 2-col grid */}
       <div className="lg:hidden w-full max-w-2xl mx-auto px-5 sm:px-8 grid grid-cols-2 gap-5 py-8">
         {members.map((member, i) => (
-          <div key={member.name} className="bg-[#1b1b22] rounded-xl overflow-hidden">
-            <div className="aspect-square w-full bg-[#2a2931] flex items-center justify-center">
+          <div key={member.name} className="bg-[#151a21] rounded-xl overflow-hidden">
+            <div className="aspect-square w-full bg-[#1a1f26] flex items-center justify-center">
               {member.photo ? (
                 <img src={member.photo} alt={member.name} className="w-full h-full object-cover grayscale" />
               ) : (
-                <span className="text-3xl font-black text-[#e4e1ec]/15" style={{ fontFamily: "var(--font-epilogue)" }}>
+                <span className="text-3xl font-semibold text-[#F8F8FF]/15 font-heading">
                   {member.name.split(" ").map((n) => n[0]).join("").toUpperCase()}
                 </span>
               )}
             </div>
             <div className="p-4">
-              <p className="text-base font-black text-[#e4e1ec] tracking-tight mb-0.5" style={{ fontFamily: "var(--font-epilogue)" }}>
+              <p className="text-base font-semibold text-[#F8F8FF] tracking-tight mb-0.5 font-heading">
                 {member.name}
               </p>
-              <p className="text-xs text-[#ddc1b5]/50 mb-3">{member.role}</p>
+              <p className="text-xs text-[#B8C5D6]/50 mb-3 font-body">{member.role}</p>
               {member.socials && (
                 <div className="flex gap-2">
-                  {member.socials.x && <a href={member.socials.x} target="_blank" rel="noopener noreferrer" className="text-[#ddc1b5]/40 hover:text-[#c8622a]"><FaTwitter size={13} /></a>}
-                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#ddc1b5]/40 hover:text-[#c8622a]"><FaLinkedinIn size={13} /></a>}
-                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-[#ddc1b5]/40 hover:text-[#c8622a]"><FaInstagram size={13} /></a>}
-                  {member.socials.email && <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`} target="_blank" rel="noopener noreferrer" className="text-[#ddc1b5]/40 hover:text-[#c8622a]"><MdEmail size={15} /></a>}
+                  {member.socials.x && <a href={member.socials.x} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaTwitter size={13} /></a>}
+                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaLinkedinIn size={13} /></a>}
+                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaInstagram size={13} /></a>}
+                  {member.socials.email && <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><MdEmail size={15} /></a>}
                 </div>
               )}
             </div>
@@ -95,7 +95,7 @@ function PhotoCard({ member, className, hoveredId, onHover }: {
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-300 bg-[#2a2931]",
+        "overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-300 bg-[#1a1f26]",
         className,
         isDimmed ? "opacity-40" : "opacity-100"
       )}
@@ -115,10 +115,9 @@ function PhotoCard({ member, className, hoveredId, onHover }: {
         <div className="w-full h-full flex items-center justify-center">
           <span
             className={cn(
-              "text-4xl font-black transition-colors duration-300",
-              isActive ? "text-[#e4e1ec]/40" : "text-[#e4e1ec]/10"
+              "text-4xl font-semibold transition-colors duration-300 font-heading",
+              isActive ? "text-[#F8F8FF]/40" : "text-[#F8F8FF]/10"
             )}
-            style={{ fontFamily: "var(--font-epilogue)" }}
           >
             {member.name.split(" ").map((n) => n[0]).join("").toUpperCase()}
           </span>
@@ -145,14 +144,14 @@ function MemberRow({ member, hoveredId, onHover }: {
       <div className="flex items-center gap-3">
         {/* Active indicator */}
         <span className={cn(
-          "h-2.5 rounded-full flex-shrink-0 transition-all duration-300 bg-[#c8622a]",
+          "h-2.5 rounded-full flex-shrink-0 transition-all duration-300 bg-[#E5E4E2]",
           isActive ? "w-5 opacity-100" : "w-2.5 opacity-20"
         )} />
 
         <span className={cn(
-          "text-xl lg:text-2xl font-black leading-none tracking-tight transition-colors duration-300",
-          isActive ? "text-[#e4e1ec]" : "text-[#e4e1ec]/60"
-        )} style={{ fontFamily: "var(--font-epilogue)" }}>
+          "text-xl lg:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300 font-heading",
+          isActive ? "text-[#F8F8FF]" : "text-[#F8F8FF]/60"
+        )}>
           {member.name}
         </span>
 
@@ -164,26 +163,26 @@ function MemberRow({ member, hoveredId, onHover }: {
           )}>
             {member.socials.x && (
               <a href={member.socials.x} target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded text-[#ddc1b5]/50 hover:text-[#c8622a] hover:bg-[#c8622a]/10 transition-all duration-150">
+                className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaTwitter size={14} />
               </a>
             )}
             {member.socials.linkedin && (
               <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded text-[#ddc1b5]/50 hover:text-[#c8622a] hover:bg-[#c8622a]/10 transition-all duration-150">
+                className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaLinkedinIn size={14} />
               </a>
             )}
             {member.socials.instagram && (
               <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded text-[#ddc1b5]/50 hover:text-[#c8622a] hover:bg-[#c8622a]/10 transition-all duration-150">
+                className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaInstagram size={14} />
               </a>
             )}
             {member.socials.email && (
               <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`}
                 target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded text-[#ddc1b5]/50 hover:text-[#c8622a] hover:bg-[#c8622a]/10 transition-all duration-150">
+                className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <MdEmail size={16} />
               </a>
             )}
@@ -191,7 +190,7 @@ function MemberRow({ member, hoveredId, onHover }: {
         )}
       </div>
 
-      <p className="mt-1.5 pl-[22px] text-xs font-medium uppercase tracking-[0.18em] text-[#ddc1b5]/40">
+      <p className="mt-1.5 pl-[22px] text-xs font-medium uppercase tracking-[0.18em] text-[#B8C5D6]/40 font-body">
         {member.role}
       </p>
     </div>

@@ -20,7 +20,7 @@ export function Header() {
   const [authOpen, setAuthOpen] = React.useState(false);
   const pathname = usePathname();
   const scrolled = useScroll(10);
-  const { open: openModal } = useContactModal();
+  const { openCalendly } = useContactModal();
   const { user } = useAuth();
 
   React.useEffect(() => {
@@ -32,16 +32,15 @@ export function Header() {
     <header className={cn(
       'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
       scrolled
-        ? 'bg-[#13131a]/80 backdrop-blur-xl border-b border-[#e4e1ec]/[0.06]'
+        ? 'bg-[#0f1419]/80 backdrop-blur-xl border-b border-[#F8F8FF]/[0.06]'
         : 'bg-transparent'
     )}>
       <nav className="mx-auto flex h-14 sm:h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-16">
 
-        {/* Logo — Epilogue font, all caps, bold */}
+        {/* Logo — Space Grotesk font, all caps, semibold */}
         <Link
           href="/"
-          className="text-xl sm:text-2xl font-black tracking-tighter text-[#e4e1ec] uppercase hover:opacity-80 transition-opacity flex-shrink-0"
-          style={{ fontFamily: 'var(--font-epilogue)' }}
+          className="text-xl sm:text-2xl font-semibold tracking-tighter text-[#F8F8FF] uppercase hover:opacity-80 transition-opacity flex-shrink-0 font-heading"
         >
           SOCIORYX
         </Link>
@@ -55,12 +54,11 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  'px-4 py-2 text-sm font-bold tracking-tight transition-all duration-200',
+                  'px-4 py-2 text-sm font-medium tracking-tight transition-all duration-200 font-heading',
                   isActive
-                    ? 'text-[#c8622a] border-b-2 border-[#c8622a] pb-1.5'
-                    : 'text-[#ddc1b5]/60 hover:text-[#e4e1ec] hover:bg-white/[0.04]'
+                    ? 'text-[#E5E4E2] border-b-2 border-[#E5E4E2] pb-1.5'
+                    : 'text-[#B8C5D6]/60 hover:text-[#F8F8FF] hover:bg-white/[0.04]'
                 )}
-                style={{ fontFamily: 'var(--font-epilogue)' }}
               >
                 {item.label}
               </Link>
@@ -71,9 +69,8 @@ export function Header() {
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
           <button
-            onClick={() => openModal()}
-            className="text-sm font-bold px-5 py-2 bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors rounded-lg"
-            style={{ fontFamily: 'var(--font-epilogue)' }}
+            onClick={() => openCalendly()}
+            className="text-sm font-extrabold px-5 py-2 bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
             Book a Call
           </button>
@@ -82,7 +79,7 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden p-2 text-[#e4e1ec]"
+          className="md:hidden p-2 text-[#F8F8FF]"
           aria-expanded={open}
           aria-label="Toggle menu"
         >
@@ -101,23 +98,21 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  'px-3 py-3.5 text-base font-bold transition-colors',
+                  'px-3 py-3.5 text-base font-medium transition-colors font-heading',
                   isActive
-                    ? 'text-[#c8622a] border-l-2 border-[#c8622a] pl-4 bg-[#c8622a]/[0.06]'
-                    : 'text-[#e4e1ec] hover:bg-[#2a2931]'
+                    ? 'text-[#E5E4E2] border-l-2 border-[#E5E4E2] pl-4 bg-[#E5E4E2]/[0.06]'
+                    : 'text-[#F8F8FF] hover:bg-[#1a1f26]'
                 )}
-                style={{ fontFamily: 'var(--font-epilogue)' }}
               >
                 {item.label}
               </Link>
             );
           })}
         </nav>
-        <div className="flex flex-col gap-2 pt-4 border-t border-[#e4e1ec]/[0.08]">
+        <div className="flex flex-col gap-2 pt-4 border-t border-[#F8F8FF]/[0.08]">
           <button
-            onClick={() => { setOpen(false); openModal(); }}
-            className="w-full py-3 text-sm font-bold bg-[#c8622a] text-[#e4e1ec] hover:bg-[#b5561f] transition-colors rounded-lg"
-            style={{ fontFamily: 'var(--font-epilogue)' }}
+            onClick={() => { setOpen(false); openCalendly(); }}
+            className="w-full py-3 text-sm font-extrabold bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
             Book a Call
           </button>
@@ -132,7 +127,7 @@ export function Header() {
 function MobileMenu({ open, children }: { open: boolean; children: React.ReactNode }) {
   if (!open || typeof window === 'undefined') return null;
   return createPortal(
-    <div className="fixed top-14 sm:top-16 inset-x-0 bottom-0 z-40 bg-[#13131a]/95 backdrop-blur-xl border-t border-[#e4e1ec]/[0.06] flex flex-col p-5 md:hidden">
+    <div className="fixed top-14 sm:top-16 inset-x-0 bottom-0 z-40 bg-[#0f1419]/95 backdrop-blur-xl border-t border-[#F8F8FF]/[0.06] flex flex-col p-5 md:hidden">
       {children}
     </div>,
     document.body

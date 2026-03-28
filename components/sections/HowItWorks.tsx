@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, Paintbrush, TrendingUp } from "lucide-react";
 
 const steps = [
@@ -9,109 +9,268 @@ const steps = [
     number: "01",
     title: "Find",
     icon: Search,
-    illustration: "/illustrations/find.svg",
-    desc: "We dig into your brand, audience, and competitors to build a strategy that actually makes sense.",
-    details: "Deep dive into your market positioning, competitor moves, audience personas, and content gaps. We spot the opportunities others miss.",
-    tags: ["Market Research", "Competitor Analysis", "Audience Mapping"],
+    desc: "We dig deep. Uncover what works. Spot what others miss.",
+    tags: ["Research", "Strategy", "Insights"],
   },
   {
     number: "02",
     title: "Create",
     icon: Paintbrush,
-    illustration: "/illustrations/create.svg",
-    desc: "Our team builds content, creatives, and campaigns that are made to perform, not just look pretty.",
-    details: "From idea to execution — scroll-stopping content across every format. Video, graphics, copy, and campaigns that get your audience to act.",
-    tags: ["Content Production", "Ad Creatives", "Copywriting"],
+    desc: "Scroll-stopping content. Built to perform, not just look pretty.",
+    tags: ["Content", "Creatives", "Campaigns"],
   },
   {
     number: "03",
     title: "Grow",
     icon: TrendingUp,
-    illustration: "/illustrations/grow.svg",
-    desc: "We publish, optimize, and scale what works — no guessing, just results.",
-    details: "Non-stop testing, data-driven decisions, and smart scaling. We double down on what converts and keep the growth engine running.",
-    tags: ["Performance Tracking", "A/B Testing", "Scaling"],
+    desc: "Test. Optimize. Scale. No guessing, just results.",
+    tags: ["Analytics", "Testing", "Scaling"],
   },
 ];
 
 export default function HowItWorks() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
   return (
-    <section className="relative py-20 sm:py-32 bg-[#1b1b22]">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 sm:mb-20"
-        >
-          <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#c8622a] mb-3">The Process</p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.03em" }}>
-            How It Works
-          </h2>
-          <p className="mt-3 text-sm text-[#ddc1b5]/60 max-w-xs">
-            Three steps. Zero fluff. Real growth.
-          </p>
-        </motion.div>
+    <section ref={containerRef} className="relative bg-[#151a21]" style={{ height: "250vh" }}>
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16 w-full">
+          {/* Header - fades out as we scroll */}
+          <motion.div
+            style={{
+              opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]),
+              y: useTransform(scrollYProgress, [0, 0.15], [0, -50])
+            }}
+            className="text-center mb-12"
+          >
+            <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">The Process</p>
+            <h2 className="text-3xl sm:text-5xl font-semibold text-[#F8F8FF] leading-none font-heading" style={{ letterSpacing: "-0.03em" }}>
+              How It Works
+            </h2>
+            <p className="mt-3 text-sm text-[#B8C5D6]/60 font-body">
+              Three steps. Zero fluff. Real growth.
+            </p>
+          </motion.div>
 
-        <div className="space-y-12 sm:space-y-0">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            const isEven = i % 2 === 1;
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative sm:grid sm:grid-cols-2 sm:gap-16 sm:items-center sm:mb-20"
-              >
-                {/* Connector line — desktop only */}
-                {i < steps.length - 1 && (
-                  <div className="hidden sm:block absolute left-1/2 top-full w-px h-20 bg-gradient-to-b from-[#c8622a]/40 to-transparent -translate-x-1/2" />
-                )}
+          {/* Progress indicator */}
+          <motion.div 
+            className="absolute top-8 right-8 flex flex-col gap-2"
+            style={{
+              opacity: useTransform(scrollYProgress, [0.1, 0.2], [0, 1])
+            }}
+          >
+            {steps.map((_, i) => {
+              const isActive = useTransform(
+                scrollYProgress,
+                [0.2 + (i * 0.25), 0.2 + ((i + 1) * 0.25)],
+                [0, 1]
+              );
+              
+              return (
+                <motion.div
+                  key={i}
+                  className="w-1 h-12 bg-[#1a1f26] rounded-full overflow-hidden"
+                >
+                  <motion.div
+                    className="w-full bg-[#E5E4E2] origin-top"
+                    style={{ scaleY: isActive }}
+                  />
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
-                {/* Card */}
-                <div className={isEven ? "sm:col-start-2 sm:row-start-1" : ""}>
-                  <div className="bg-[#13131a] p-6 sm:p-8 group">
-                    <div className="flex items-center gap-4 mb-5">
-                      <div className="w-9 h-9 flex items-center justify-center bg-[#2a2931] flex-shrink-0">
-                        <Icon className="w-4 h-4 text-[#ddc1b5]" />
-                      </div>
+          {/* Cards stack */}
+          <div className="relative h-[600px] flex items-center justify-center" style={{ perspective: "2000px" }}>
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              
+              // Calculate when this card should appear
+              const cardStart = 0.15 + (i * 0.15);
+              
+              // Card appears and STAYS visible (clamp at 1)
+              const opacity = useTransform(
+                scrollYProgress,
+                [cardStart - 0.08, cardStart, 1],
+                [0, 1, 1]
+              );
+              
+              // Scale animation - stays at final scale
+              const scale = useTransform(
+                scrollYProgress,
+                [cardStart - 0.08, cardStart, cardStart + 0.05, 0.85, 1],
+                [0.7, 1.1, 1, 0.95, 0.95]
+              );
+              
+              // Final positions: more spacing between cards
+              const finalX = i === 0 ? -500 : i === 1 ? 0 : 500;
+              
+              // Move to final position and STAY there
+              const x = useTransform(
+                scrollYProgress,
+                [
+                  cardStart,           // Card appears
+                  cardStart + 0.1,     // Start moving
+                  0.6,                 // Mid animation
+                  0.85,                // Final position
+                  1                    // Stay at final
+                ],
+                [
+                  0,                   // Start at center
+                  finalX * 0.4,        // Move 40% to position
+                  finalX * 0.8,        // Move 80% to position
+                  finalX,              // Final position
+                  finalX               // STAY at final position
+                ]
+              );
+              
+              // Y position - stays at final position
+              const y = useTransform(
+                scrollYProgress,
+                [cardStart - 0.08, cardStart, cardStart + 0.05, 0.85, 1],
+                [150, -20, 0, -40, -40]
+              );
+              
+              // 3D Rotation Y - stays at final rotation
+              const rotateY = useTransform(
+                scrollYProgress,
+                [cardStart, cardStart + 0.1, 0.6, 0.85, 1],
+                [
+                  i === 0 ? -25 : i === 1 ? 0 : 25,  // Initial tilt
+                  i === 0 ? -15 : i === 1 ? 0 : 15,  // Mid tilt
+                  i === 0 ? -8 : i === 1 ? 0 : 8,    // Settling
+                  i === 0 ? 12 : i === 1 ? 0 : -12,  // Final tilt
+                  i === 0 ? 12 : i === 1 ? 0 : -12   // STAY at final tilt
+                ]
+              );
+              
+              // 3D Rotation X - stays at final rotation
+              const rotateX = useTransform(
+                scrollYProgress,
+                [cardStart - 0.08, cardStart, cardStart + 0.1, 0.85, 1],
+                [15, -5, 0, 2, 2]
+              );
+              
+              // Z-axis depth - stays at final depth
+              const z = useTransform(
+                scrollYProgress,
+                [cardStart, cardStart + 0.1, 0.85, 1],
+                [0, 50, i === 1 ? 30 : 0, i === 1 ? 30 : 0]
+              );
+
+              return (
+                <motion.div
+                  key={step.number}
+                  style={{
+                    scale,
+                    opacity,
+                    x,
+                    y,
+                    rotateY,
+                    rotateX,
+                    z,
+                    transformStyle: "preserve-3d",
+                    transformOrigin: "center center",
+                    zIndex: i === 1 ? 20 : 10 - i, // Center card on top
+                  }}
+                  className="absolute"
+                >
+                  <div className="bg-gradient-to-br from-[#0f1419] to-[#1a1a24] p-8 sm:p-12 w-[90vw] sm:w-[520px] shadow-2xl shadow-black/60 border-2 border-[#1a1f26] relative overflow-hidden">
+                    {/* Animated gradient overlay */}
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-br from-[#E5E4E2]/5 to-transparent opacity-0"
+                      animate={{
+                        opacity: [0, 0.3, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.5
+                      }}
+                    />
+                    
+                    {/* Icon and number */}
+                    <div className="flex items-center gap-4 mb-6 relative z-10">
+                      <motion.div 
+                        className="w-16 h-16 flex items-center justify-center bg-[#1a1f26] relative"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
+                        <Icon className="w-7 h-7 text-[#E5E4E2]" />
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 bg-[#E5E4E2]/20 blur-xl" />
+                      </motion.div>
                       <div>
-                        <span className="text-xs text-[#c8622a] font-medium tracking-[0.15em] uppercase block">{step.number}</span>
-                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#e4e1ec] leading-none" style={{ letterSpacing: "-0.02em" }}>{step.title}</h3>
+                        <span className="text-xs text-[#E5E4E2] font-medium tracking-[0.15em] uppercase block mb-1 font-body">
+                          STEP {step.number}
+                        </span>
+                        <h3 className="text-3xl sm:text-4xl font-semibold text-[#F8F8FF] leading-none font-heading" style={{ letterSpacing: "-0.02em" }}>
+                          {step.title}
+                        </h3>
                       </div>
                     </div>
-                    <p className="text-sm text-[#e4e1ec]/80 leading-relaxed mb-2">{step.desc}</p>
-                    <p className="text-sm text-[#ddc1b5]/50 leading-relaxed mb-5">{step.details}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {step.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2.5 py-1 text-[#ddc1b5]/60 bg-[#2a2931] tracking-wide">
+
+                    {/* Description */}
+                    <p className="text-lg sm:text-xl text-[#F8F8FF] leading-relaxed mb-6 relative z-10 font-body">
+                      {step.desc}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 relative z-10">
+                      {step.tags.map((tag, idx) => (
+                        <motion.span
+                          key={tag}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: cardStart + 0.1 + (idx * 0.1) }}
+                          className="text-xs px-3 py-1.5 text-[#B8C5D6]/70 bg-[#1a1f26] tracking-wide border border-[#E5E4E2]/10 font-body"
+                        >
                           {tag}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
-                  </div>
-                </div>
 
-                {/* Illustration */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: i * 0.1 + 0.15 }}
-                  className={`hidden sm:flex items-center justify-center ${isEven ? "sm:col-start-1 sm:row-start-1" : ""}`}
-                >
-                  <div className="relative w-[200px] h-[160px] opacity-70">
-                    <Image src={step.illustration} alt={step.title} fill className="object-contain" />
+                    {/* Step counter watermark with parallax */}
+                    <motion.div 
+                      className="absolute -top-4 -right-4 text-[140px] font-semibold text-[#F8F8FF]/[0.02] leading-none pointer-events-none font-heading"
+                      style={{
+                        x: useTransform(scrollYProgress, [cardStart, 0.85, 1], [0, i === 0 ? 20 : i === 1 ? 0 : -20, i === 0 ? 20 : i === 1 ? 0 : -20]),
+                        y: useTransform(scrollYProgress, [cardStart, 0.85, 1], [0, -10, -10]),
+                      }}
+                    >
+                      {step.number}
+                    </motion.div>
+                    
+                    {/* Corner accent */}
+                    <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-[#E5E4E2]/20" />
+                    <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-[#E5E4E2]/20" />
                   </div>
                 </motion.div>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Scroll hint - shows at start */}
+          <motion.div
+            style={{
+              opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0])
+            }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <p className="text-xs text-[#B8C5D6]/50 tracking-wide">Scroll to explore</p>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-5 h-8 border border-[#B8C5D6]/30 rounded-full flex items-start justify-center p-1.5"
+            >
+              <div className="w-1 h-2 bg-[#E5E4E2] rounded-full" />
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

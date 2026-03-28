@@ -2,11 +2,11 @@
 
 import {
   motion,
-  VariantLabels,
-  Target,
-  TargetAndTransition,
-  Transition,
-} from 'motion/react';
+  type VariantLabels,
+  type Target,
+  type TargetAndTransition,
+  type Transition,
+} from 'framer-motion';
 
 export type TextRollProps = {
   children: string;

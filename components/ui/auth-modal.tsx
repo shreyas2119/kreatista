@@ -79,11 +79,11 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     <DialogPrimitive.Root open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) reset(); }}>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm" />
-        <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-[#e4e1ec]/[0.08] bg-[#13131a] p-8 shadow-2xl focus:outline-none">
+        <DialogPrimitive.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-[#F8F8FF]/[0.08] bg-[#0f1419] p-8 shadow-2xl focus:outline-none">
           <DialogPrimitive.Title className="sr-only">
             {mode === "signin" ? "Sign in to view portfolio" : "Create an account"}
           </DialogPrimitive.Title>
-          <DialogPrimitive.Close className="absolute right-4 top-4 text-[#ddc1b5]/50 hover:text-[#e4e1ec] transition-colors">
+          <DialogPrimitive.Close className="absolute right-4 top-4 text-[#B8C5D6]/50 hover:text-[#F8F8FF] transition-colors">
             <X className="w-5 h-5" />
           </DialogPrimitive.Close>
 
@@ -103,7 +103,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
           <button
             onClick={handleGoogle}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-3 rounded-xl border border-[#e4e1ec]/[0.08] bg-[#1f1f26] hover:bg-white/10 text-white text-sm font-medium py-3 transition-colors disabled:opacity-50 mb-4"
+            className="w-full flex items-center justify-center gap-3 rounded-xl border border-[#F8F8FF]/[0.08] bg-[#1f1f26] hover:bg-white/10 text-white text-sm font-medium py-3 transition-colors disabled:opacity-50 mb-4"
           >
             <GoogleIcon />
             Continue with Google
@@ -111,7 +111,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
 
           <div className="flex items-center gap-3 mb-4">
             <div className="flex-1 h-px bg-white/10" />
-            <span className="text-[#ddc1b5]/40 text-xs">or</span>
+            <span className="text-[#B8C5D6]/40 text-xs">or</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
@@ -123,7 +123,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full rounded-xl border border-[#e4e1ec]/[0.08] bg-[#1f1f26] px-4 py-3 text-sm text-white placeholder:text-[#ddc1b5]/40 focus:outline-none focus:border-[#c8622a] transition-colors"
+              className="w-full rounded-xl border border-[#F8F8FF]/[0.08] bg-[#1f1f26] px-4 py-3 text-sm text-white placeholder:text-[#B8C5D6]/40 focus:outline-none focus:border-[#E5E4E2] transition-colors"
             />
             <input
               type="password"
@@ -132,7 +132,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full rounded-xl border border-[#e4e1ec]/[0.08] bg-[#1f1f26] px-4 py-3 text-sm text-white placeholder:text-[#ddc1b5]/40 focus:outline-none focus:border-[#c8622a] transition-colors"
+              className="w-full rounded-xl border border-[#F8F8FF]/[0.08] bg-[#1f1f26] px-4 py-3 text-sm text-white placeholder:text-[#B8C5D6]/40 focus:outline-none focus:border-[#E5E4E2] transition-colors"
             />
 
             <AnimatePresence>
@@ -151,17 +151,17 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl bg-[#c8622a] hover:bg-[#b5561f] text-white text-sm font-semibold py-3 transition-colors disabled:opacity-50"
+              className="w-full rounded-xl bg-[#E5E4E2] hover:bg-[#D0CFD0] hover:text-[#0f1419] text-white text-sm font-semibold py-3 transition-colors disabled:opacity-50"
             >
               {loading ? "Loading..." : mode === "signin" ? "Sign In" : "Create Account"}
             </button>
           </form>
 
-          <p className="text-center text-[#ddc1b5]/40 text-xs mt-4">
+          <p className="text-center text-[#B8C5D6]/40 text-xs mt-4">
             {mode === "signin" ? "No account?" : "Already have one?"}{" "}
             <button
               onClick={() => { setMode(mode === "signin" ? "signup" : "signin"); setError(""); }}
-              className="text-[#c8622a] hover:text-[#de733a] transition-colors"
+              className="text-[#E5E4E2] hover:text-[#de733a] transition-colors"
             >
               {mode === "signin" ? "Sign up" : "Sign in"}
             </button>

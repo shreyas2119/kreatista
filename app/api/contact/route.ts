@@ -25,34 +25,34 @@ const transporter = nodemailer.createTransport({
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_APP_PASSWORD,
   },
-  pool: true,        // reuse connections
+  pool: true,
   maxConnections: 3,
 });
 
 function clientEmailHtml(firstName: string, message: string) {
-  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#13131a;font-family:Arial,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#13131a;padding:40px 20px;">
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1419;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0f1419;padding:40px 20px;">
 <tr><td align="center">
-<table width="560" cellpadding="0" cellspacing="0" style="background:#1b1b22;">
-<tr><td style="background:#c8622a;padding:28px 40px;">
-  <p style="margin:0;color:#e4e1ec;font-size:20px;font-weight:900;letter-spacing:-0.5px;">KREATISTA</p>
+<table width="560" cellpadding="0" cellspacing="0" style="background:#151a21;">
+<tr><td style="background:#E5E4E2;padding:28px 40px;">
+  <p style="margin:0;color:#0f1419;font-size:20px;font-weight:900;letter-spacing:-0.5px;">SOCIORYX</p>
 </td></tr>
 <tr><td style="padding:40px;">
-  <h1 style="margin:0 0 16px;color:#e4e1ec;font-size:22px;font-weight:800;">Hey ${firstName}, we got it. 👋</h1>
-  <p style="margin:0 0 24px;color:#ddc1b5;font-size:15px;line-height:1.7;">
-    Thanks for reaching out to <strong style="color:#e4e1ec;">Kreatista</strong>.
-    We'll get back to you within <strong style="color:#c8622a;">24 hours</strong>.
+  <h1 style="margin:0 0 16px;color:#F8F8FF;font-size:22px;font-weight:800;">Hey ${firstName}, we got it. 👋</h1>
+  <p style="margin:0 0 24px;color:#B8C5D6;font-size:15px;line-height:1.7;">
+    Thanks for reaching out to <strong style="color:#F8F8FF;">Socioryx</strong>.
+    We'll get back to you within <strong style="color:#E5E4E2;">24 hours</strong>.
   </p>
-  <div style="background:#13131a;border-left:3px solid #c8622a;padding:16px 20px;margin-bottom:28px;">
-    <p style="margin:0 0 6px;color:#ddc1b5;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Your message</p>
-    <p style="margin:0;color:#ddc1b5;font-size:14px;line-height:1.6;">${message}</p>
+  <div style="background:#0f1419;border-left:3px solid #E5E4E2;padding:16px 20px;margin-bottom:28px;">
+    <p style="margin:0 0 6px;color:#B8C5D6;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Your message</p>
+    <p style="margin:0;color:#B8C5D6;font-size:14px;line-height:1.6;">${message}</p>
   </div>
-  <p style="margin:0;color:#ddc1b5;font-size:13px;">
-    Check out our work at <a href="https://kreatista.netlify.app/" style="color:#c8622a;text-decoration:none;">kreatista.in</a>
+  <p style="margin:0;color:#B8C5D6;font-size:13px;">
+    Check out our work at <a href="https://kreatista.in/" style="color:#E5E4E2;text-decoration:none;">kreatista.in</a>
   </p>
 </td></tr>
-<tr><td style="padding:20px 40px;border-top:1px solid #2a2931;">
-  <p style="margin:0;color:#ddc1b5;font-size:11px;opacity:0.4;">© 2026 Kreatista. All rights reserved.</p>
+<tr><td style="padding:20px 40px;border-top:1px solid #1a1f26;">
+  <p style="margin:0;color:#B8C5D6;font-size:11px;opacity:0.4;">© 2025 Socioryx. All rights reserved.</p>
 </td></tr>
 </table>
 </td></tr>
@@ -61,31 +61,31 @@ function clientEmailHtml(firstName: string, message: string) {
 }
 
 function internalEmailHtml(firstName: string, lastName: string, email: string, subject: string, message: string) {
-  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#13131a;font-family:Arial,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#13131a;padding:40px 20px;">
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1419;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0f1419;padding:40px 20px;">
 <tr><td align="center">
-<table width="560" cellpadding="0" cellspacing="0" style="background:#1b1b22;">
-<tr><td style="background:#c8622a;padding:20px 40px;">
-  <p style="margin:0;color:#e4e1ec;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">New Lead — Kreatista</p>
+<table width="560" cellpadding="0" cellspacing="0" style="background:#151a21;">
+<tr><td style="background:#E5E4E2;padding:20px 40px;">
+  <p style="margin:0;color:#0f1419;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">New Lead — Socioryx</p>
 </td></tr>
 <tr><td style="padding:32px 40px;">
   <table width="100%" cellpadding="0" cellspacing="0">
     <tr>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#ddc1b5;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;width:90px;">Name</td>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#e4e1ec;font-size:14px;">${firstName} ${lastName}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#B8C5D6;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;width:90px;">Name</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#F8F8FF;font-size:14px;">${firstName} ${lastName}</td>
     </tr>
     <tr>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#ddc1b5;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Email</td>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#e4e1ec;font-size:14px;">${email}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#B8C5D6;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Email</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#F8F8FF;font-size:14px;">${email}</td>
     </tr>
     <tr>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#ddc1b5;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Service</td>
-      <td style="padding:10px 0;border-bottom:1px solid #2a2931;color:#e4e1ec;font-size:14px;">${subject}</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#B8C5D6;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Service</td>
+      <td style="padding:10px 0;border-bottom:1px solid #1a1f26;color:#F8F8FF;font-size:14px;">${subject}</td>
     </tr>
   </table>
-  <div style="background:#13131a;border-left:3px solid #c8622a;padding:16px 20px;margin-top:24px;">
-    <p style="margin:0 0 6px;color:#ddc1b5;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Message</p>
-    <p style="margin:0;color:#ddc1b5;font-size:14px;line-height:1.6;">${message}</p>
+  <div style="background:#0f1419;border-left:3px solid #E5E4E2;padding:16px 20px;margin-top:24px;">
+    <p style="margin:0 0 6px;color:#B8C5D6;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">Message</p>
+    <p style="margin:0;color:#B8C5D6;font-size:14px;line-height:1.6;">${message}</p>
   </div>
 </td></tr>
 </table>
@@ -121,18 +121,20 @@ export async function POST(request: Request) {
 
     if (dbError) console.error("Supabase insert error:", dbError);
 
-    // Fire emails in background — don't block the response
+    // Fire emails in background
     Promise.all([
       transporter.sendMail({
-        from: `"Kreatista" <${process.env.GMAIL_USER}>`,
+        from: `"Socioryx Team" <${process.env.GMAIL_USER}>`,
+        replyTo: process.env.GMAIL_USER,
         to: email,
-        subject: "We got your message — Kreatista",
+        subject: "We received your message — Socioryx",
         html: clientEmailHtml(firstName, message),
       }),
       transporter.sendMail({
-        from: `"Kreatista Leads" <${process.env.GMAIL_USER}>`,
+        from: `"Socioryx Contact Form" <${process.env.GMAIL_USER}>`,
+        replyTo: email,
         to: process.env.GMAIL_USER!,
-        subject: `New lead: ${firstName} ${lastName} — ${subject}`,
+        subject: `🔔 New Contact: ${firstName} ${lastName} — ${subject}`,
         html: internalEmailHtml(firstName, lastName, email, subject, message),
       }),
     ]).catch((err) => console.error("Email send error:", err));

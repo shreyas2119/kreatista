@@ -10,12 +10,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.tailwindcss.com https://apis.google.com",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.tailwindcss.com https://apis.google.com https://assets.calendly.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.supabase.co wss://*.firebaseio.com https://script.google.com",
-      "frame-src 'self' https://accounts.google.com",
+      "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.supabase.co wss://*.firebaseio.com https://script.google.com https://calendly.com https://*.calendly.com",
+      "frame-src 'self' https://accounts.google.com https://calendly.com https://*.calendly.com",
     ].join("; "),
   },
 ];
@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "cdn.simpleicons.org" },
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
   async headers() {
