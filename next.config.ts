@@ -6,6 +6,8 @@ const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  // Allow popups (e.g. Firebase Google sign-in) to communicate back to the opener
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   {
     key: "Content-Security-Policy",
     value: [
