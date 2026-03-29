@@ -6,6 +6,7 @@ import { Lock, BarChart2, Video, ArrowRight } from "lucide-react";
 import { useAuth } from "@/components/providers/auth-provider";
 import { AuthModal } from "@/components/ui/auth-modal";
 import type { User } from "firebase/auth";
+import { getIdToken } from "firebase/auth";
 
 const highlights = [
   {
@@ -38,10 +39,16 @@ export default function PortfolioPageContent() {
     setLoading(true);
     setError("");
     try {
+      // Get a fresh ID token — verified server-side, never trust uid/email from client
+      const idToken = await getIdToken(u, /* forceRefresh */ true);
+
       const res = await fetch("/api/portfolio", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ uid: u.uid, email: u.email }),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({}),
       });
       const data = await res.json();
       if (data.url) {
