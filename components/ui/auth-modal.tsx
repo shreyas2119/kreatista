@@ -34,6 +34,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   };
 
   const handleGoogle = async () => {
+    if (loading) return; // prevent double-click / second popup
     setLoading(true);
     setError("");
     try {
@@ -41,6 +42,10 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
       onSuccess(result.user);
       onOpenChange(false);
     } catch (e: any) {
+      if (e.code === "auth/cancelled-popup-request" || e.code === "auth/popup-closed-by-user") {
+        // User closed the popup or triggered a second one — not an error
+        return;
+      }
       setError(e.message ?? "Google sign-in failed");
     } finally {
       setLoading(false);
