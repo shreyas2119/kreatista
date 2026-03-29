@@ -110,7 +110,7 @@ export default function Services() {
                 } transition-colors duration-500`}
                 onClick={() => openCalendly(`Interested in: ${s.title}`)}
               >
-                <div className="p-7 sm:p-10 relative z-10 flex flex-col h-full min-h-[200px] sm:min-h-[240px]">
+                <div className="p-6 sm:p-8 relative z-10 flex flex-col h-full min-h-[180px] sm:min-h-[220px]">
                   <Icon className={`w-8 h-8 mb-5 ${s.accent ? "text-[#0f1419]" : "text-[#E5E4E2]"}`} />
                   <h3 className={`text-xl sm:text-2xl font-semibold mb-3 tracking-[-0.02em] leading-tight font-heading ${s.accent ? "text-[#0f1419]" : "text-[#F8F8FF]"}`}>
                     {s.title}
@@ -120,7 +120,7 @@ export default function Services() {
                       </span>
                     )}
                   </h3>
-                  <p className={`text-sm leading-relaxed mb-6 flex-1 font-body ${s.accent ? "text-[#0f1419]/80" : "text-[#B8C5D6]/60"}`}>
+                  <p className={`text-base leading-relaxed mb-6 flex-1 font-body ${s.accent ? "text-[#0f1419]/80" : "text-[#B8C5D6]/60"}`}>
                     {s.desc}
                   </p>
                   <span className={`inline-flex items-center gap-1.5 text-xs font-medium group-hover:gap-3 transition-all duration-300 font-body ${s.accent ? "text-[#0f1419]" : "text-[#E5E4E2]"}`}>
