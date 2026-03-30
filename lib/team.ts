@@ -14,13 +14,13 @@ export const team: TeamMember[] = [
   {
     name: "Vansh Shrivastava",
     role: "Cofounder & Managing Director",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    photo: "/images/team/vansh.webp",
     socials: { x: "https://x.com/vansh_shriv1602" , linkedin: "https://www.linkedin.com/in/vansh-shrivastava-173847260/", instagram: "https://www.instagram.com/vansh_pvtt_14/" },
   },
   {
     name: "Shreyas Choukade",
     role: "Cofounder & Executive Director",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+    photo: "/images/team/shreyas.jpeg",
     socials: { x: "https://x.com/ShreyasHChouka4", linkedin: "https://www.linkedin.com/in/shreyaschoukade/", instagram: "https://www.instagram.com/shreyash_choukade/" },
   },
   {
@@ -32,7 +32,7 @@ export const team: TeamMember[] = [
   {
     name: "Hitesh Yadav",
     role: "Client Acquisition Director",
-    photo: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
+    photo: "/images/team/hitesh.jpeg",
     socials: { linkedin: "https://www.linkedin.com/in/hiteshyadav95/", instagram: "https://www.instagram.com/iam_hitesh_05/" },
   },
   {
