@@ -12,7 +12,7 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.tailwindcss.com https://apis.google.com https://assets.calendly.com https://www.clarity.ms",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.tailwindcss.com https://apis.google.com https://assets.calendly.com https://www.clarity.ms https://*.clarity.ms",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
