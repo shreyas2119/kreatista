@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
-  { value: 200, suffix: "+", label: "Videos Produced" },
+  { value: 100, suffix: "+", label: "Videos Produced" },
   { value: 6,   suffix: "",  label: "Platforms Managed" },
 ];
 
