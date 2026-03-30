@@ -25,7 +25,7 @@ export default function CTA() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-semibold text-[#F8F8FF] leading-none tracking-[-0.04em] mb-8 font-heading">
-            Ready to build your{" "}
+            Ready to take things to the next{" "}
             <span
               className="bg-clip-text text-transparent inline-block"
               style={{
@@ -34,7 +34,7 @@ export default function CTA() {
                 animation: "shimmer 3s ease-in-out infinite"
               }}
             >
-              Powerhouse?
+              Level?
             </span>
           </h2>
 
@@ -55,7 +55,7 @@ export default function CTA() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => openCalendly()}
-              className="px-10 py-5 bg-[#E5E4E2] text-[#0f1419] text-base font-extrabold hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors shadow-2xl shadow-[#E5E4E2]/20 rounded-lg font-heading"
+              className="px-10 py-5 bg-[#E5E4E2] text-[#0f1419] text-lg font-extrabold hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors shadow-2xl shadow-[#E5E4E2]/20 rounded-lg font-heading"
             >
               Get Started
             </motion.button>
@@ -63,7 +63,7 @@ export default function CTA() {
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 text-[#F8F8FF] text-base font-extrabold flex items-center justify-center gap-2 hover:bg-white/[0.05] transition-colors border border-[#F8F8FF]/10 cursor-pointer rounded-lg font-heading"
+                className="px-10 py-5 text-[#F8F8FF] text-lg font-extrabold flex items-center justify-center gap-2 hover:bg-white/[0.05] transition-colors border border-[#F8F8FF]/10 cursor-pointer rounded-lg font-heading"
               >
                 View Portfolio ↗
               </motion.span>

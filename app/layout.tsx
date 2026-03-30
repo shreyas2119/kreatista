@@ -6,6 +6,7 @@ import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
+import { CalendlyPreloader } from "@/components/ui/calendly-modal";
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScrollProvider>
           <AuthProvider>
             <ContactModalProvider>
+              <CalendlyPreloader />
               <div className="pb-16 md:pb-0">
                 {children}
               </div>

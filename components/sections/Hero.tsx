@@ -12,7 +12,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay } as Transition,
 });
 
-const stats = ["200+ Videos", "3 Platforms → 1 Team"];
+const stats = ["100+ Videos", "3 Platforms → 1 Team"];
 
 export default function Hero() {
   const { openCalendly } = useContactModal();
@@ -74,7 +74,7 @@ export default function Hero() {
           {...fadeUp(0.28)}
           className="text-base sm:text-xl font-body font-light text-[#B8C5D6]/60 leading-relaxed max-w-xl mb-10"
         >
-          We bring your ideas, talent and execution together.
+          Powering digital expansion with strategy, scale, and precision.
         </motion.p>
 
         {/* CTAs */}
@@ -83,7 +83,7 @@ export default function Hero() {
             onClick={() => openCalendly()}
             className="px-8 py-4 bg-[#E5E4E2] text-[#0f1419] text-base font-heading font-extrabold hover:bg-[#D0CFD0] hover:text-[#0f1419] active:scale-95 transition-all duration-200 shadow-lg shadow-[#E5E4E2]/20 rounded-lg"
           >
-            Book a Call
+            Let&apos;s Talk
           </button>
           <Link
             href="/portfolio"

@@ -7,23 +7,23 @@ import { Search, Paintbrush, TrendingUp } from "lucide-react";
 const steps = [
   {
     number: "01",
-    title: "Find",
+    title: "Discover",
     icon: Search,
-    desc: "We dig deep. Uncover what works. Spot what others miss.",
+    desc: "We dive deep into data and insights to understand what works, identify opportunities, and uncover what others often overlook.",
     tags: ["Research", "Strategy", "Insights"],
   },
   {
     number: "02",
     title: "Create",
     icon: Paintbrush,
-    desc: "Scroll-stopping content. Built to perform, not just look pretty.",
+    desc: "We craft high impact, scroll worthy content designed with purpose to engage, perform, and deliver measurable value.",
     tags: ["Content", "Creatives", "Campaigns"],
   },
   {
     number: "03",
     title: "Grow",
     icon: TrendingUp,
-    desc: "Test. Optimize. Scale. No guessing, just results.",
+    desc: "We continuously test, optimize, and scale with precision turning insights into consistent, result-driven growth that compounds over time.",
     tags: ["Analytics", "Testing", "Scaling"],
   },
 ];
@@ -40,22 +40,16 @@ export default function HowItWorks() {
       {/* Sticky container */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16 w-full">
-          {/* Header - fades out as we scroll */}
-          <motion.div
-            style={{
-              opacity: useTransform(scrollYProgress, [0, 0.15], [1, 0]),
-              y: useTransform(scrollYProgress, [0, 0.15], [0, -50])
-            }}
-            className="text-center mb-12"
-          >
+          {/* Header */}
+          <div className="text-center mb-12">
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">The Process</p>
-            <h2 className="text-3xl sm:text-5xl font-semibold text-[#F8F8FF] leading-none font-heading" style={{ letterSpacing: "-0.03em" }}>
+            <h2 className="text-3xl sm:text-5xl font-semibold text-white leading-none font-heading" style={{ letterSpacing: "-0.03em" }}>
               How It Works
             </h2>
             <p className="mt-3 text-sm text-[#B8C5D6]/60 font-body">
               Three steps. Zero fluff. Real growth.
             </p>
-          </motion.div>
+          </div>
 
           {/* Progress indicator */}
           <motion.div 
@@ -91,20 +85,20 @@ export default function HowItWorks() {
               const Icon = step.icon;
               
               // Calculate when this card should appear
-              const cardStart = 0.15 + (i * 0.15);
+              const cardStart = 0.15 + (i * 0.1);
               
               // Card appears and STAYS visible (clamp at 1)
               const opacity = useTransform(
                 scrollYProgress,
-                [cardStart - 0.08, cardStart, 1],
+                [cardStart - 0.05, cardStart, 1],
                 [0, 1, 1]
               );
               
               // Scale animation - stays at final scale
               const scale = useTransform(
                 scrollYProgress,
-                [cardStart - 0.08, cardStart, cardStart + 0.05, 0.85, 1],
-                [0.7, 1.1, 1, 0.95, 0.95]
+                [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1],
+                [0.7, 1.1, 1, i === 1 ? 0.92 : 0.95, i === 1 ? 0.92 : 0.95]
               );
               
               // Final positions: more spacing between cards
@@ -114,52 +108,52 @@ export default function HowItWorks() {
               const x = useTransform(
                 scrollYProgress,
                 [
-                  cardStart,           // Card appears
-                  cardStart + 0.1,     // Start moving
-                  0.6,                 // Mid animation
-                  0.85,                // Final position
-                  1                    // Stay at final
+                  cardStart,
+                  cardStart + 0.06,
+                  0.45,
+                  0.65,
+                  1
                 ],
                 [
-                  0,                   // Start at center
-                  finalX * 0.4,        // Move 40% to position
-                  finalX * 0.8,        // Move 80% to position
-                  finalX,              // Final position
-                  finalX               // STAY at final position
+                  0,
+                  finalX * 0.4,
+                  finalX * 0.8,
+                  finalX,
+                  finalX
                 ]
               );
               
               // Y position - stays at final position
               const y = useTransform(
                 scrollYProgress,
-                [cardStart - 0.08, cardStart, cardStart + 0.05, 0.85, 1],
+                [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1],
                 [150, -20, 0, -40, -40]
               );
               
               // 3D Rotation Y - stays at final rotation
               const rotateY = useTransform(
                 scrollYProgress,
-                [cardStart, cardStart + 0.1, 0.6, 0.85, 1],
+                [cardStart, cardStart + 0.06, 0.45, 0.65, 1],
                 [
-                  i === 0 ? -25 : i === 1 ? 0 : 25,  // Initial tilt
-                  i === 0 ? -15 : i === 1 ? 0 : 15,  // Mid tilt
-                  i === 0 ? -8 : i === 1 ? 0 : 8,    // Settling
-                  i === 0 ? 12 : i === 1 ? 0 : -12,  // Final tilt
-                  i === 0 ? 12 : i === 1 ? 0 : -12   // STAY at final tilt
+                  i === 0 ? -25 : i === 1 ? 0 : 25,
+                  i === 0 ? -15 : i === 1 ? 0 : 15,
+                  i === 0 ? -8  : i === 1 ? 0 : 8,
+                  i === 0 ? 10  : i === 1 ? 0 : -10,
+                  i === 0 ? 10  : i === 1 ? 0 : -10,
                 ]
               );
               
               // 3D Rotation X - stays at final rotation
               const rotateX = useTransform(
                 scrollYProgress,
-                [cardStart - 0.08, cardStart, cardStart + 0.1, 0.85, 1],
+                [cardStart - 0.05, cardStart, cardStart + 0.06, 0.7, 1],
                 [15, -5, 0, 2, 2]
               );
               
               // Z-axis depth - stays at final depth
               const z = useTransform(
                 scrollYProgress,
-                [cardStart, cardStart + 0.1, 0.85, 1],
+                [cardStart, cardStart + 0.06, 0.7, 1],
                 [0, 50, i === 1 ? 30 : 0, i === 1 ? 30 : 0]
               );
 

@@ -57,10 +57,10 @@ export function SectionBackground({
 // Preset backgrounds for different sections
 export const backgroundPresets = {
   hero: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80", // Team collaboration
-  services: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80", // Analytics dashboard
-  portfolio: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80", // Data charts
-  team: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80", // Creative team
-  cta: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80", // Laptop workspace
+  services: "/images/bg/services.webp",
+  portfolio: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
+  team: "/images/bg/team.webp",
+  cta: "/images/bg/cta.webp",
   content: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=80", // Content creation
   social: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1920&q=80", // Social media
   growth: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80", // Growth charts

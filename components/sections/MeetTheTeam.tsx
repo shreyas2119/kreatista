@@ -52,7 +52,7 @@ export default function MeetTheTeam() {
     <section id="team" className="relative py-20 sm:py-32 px-5 sm:px-8 lg:px-16 bg-[#0a0a0f] overflow-hidden">
       {/* Wallpaper Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/images/bg/team.webp')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-[#0a0a0f]/85" />
       </div>
       
@@ -107,10 +107,11 @@ export default function MeetTheTeam() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-base sm:text-lg text-[#B8C5D6]/70 leading-relaxed max-w-2xl mx-auto font-body"
+            className="text-base sm:text-lg text-[#B8C5D6] leading-relaxed max-w-2xl mx-auto font-body"
           >
-            A crew of strategists, creators, and growth hackers who live and breathe digital. 
-            We don't just work on your brand — we obsess over it.
+            A team of strategists and creators focused on delivering meaningful digital outcomes.
+We go beyond execution bringing clarity, consistency, and care to everything build.
+
           </motion.p>
         </motion.div>
 

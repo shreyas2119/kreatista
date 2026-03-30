@@ -72,7 +72,7 @@ export function Header() {
             onClick={() => openCalendly()}
             className="text-sm font-extrabold px-5 py-2 bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
-            Book a Call
+            Let&apos;s Talk
           </button>
         </div>
 
@@ -114,7 +114,7 @@ export function Header() {
             onClick={() => { setOpen(false); openCalendly(); }}
             className="w-full py-3 text-sm font-extrabold bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
-            Book a Call
+            Let&apos;s Talk
           </button>
         </div>
       </MobileMenu>
