@@ -35,14 +35,14 @@ export function Header() {
         ? 'bg-[#0f1419]/80 backdrop-blur-xl border-b border-[#F8F8FF]/[0.06]'
         : 'bg-transparent'
     )}>
-      <nav className="mx-auto flex h-14 sm:h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-16">
+      <nav className="mx-auto flex h-16 sm:h-20 w-full max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-16">
 
-        {/* Logo — Space Grotesk font, all caps, semibold */}
+        {/* Logo */}
         <Link
           href="/"
-          className="text-xl sm:text-2xl font-semibold tracking-tighter text-[#F8F8FF] uppercase hover:opacity-80 transition-opacity flex-shrink-0 font-heading"
+          className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-[#F8F8FF] hover:opacity-80 transition-opacity flex-shrink-0 font-heading"
         >
-          SOCIORYX
+          Sociory<span className="text-red-500">X</span>
         </Link>
 
         {/* Desktop nav */}
@@ -54,7 +54,7 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  'px-4 py-2 text-sm font-medium tracking-tight transition-all duration-200 font-heading',
+                  'px-4 py-2 text-base font-medium tracking-tight transition-all duration-200 font-heading',
                   isActive
                     ? 'text-[#E5E4E2] border-b-2 border-[#E5E4E2] pb-1.5'
                     : 'text-[#B8C5D6]/60 hover:text-[#F8F8FF] hover:bg-white/[0.04]'
@@ -70,7 +70,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => openCalendly()}
-            className="text-sm font-extrabold px-5 py-2 bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
+            className="text-base font-extrabold px-6 py-2.5 bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
             Let&apos;s Talk
           </button>
@@ -83,7 +83,7 @@ export function Header() {
           aria-expanded={open}
           aria-label="Toggle menu"
         >
-          <MenuToggleIcon open={open} className="size-5" duration={300} />
+          <MenuToggleIcon open={open} className="size-6" duration={300} />
         </button>
       </nav>
 
@@ -112,7 +112,7 @@ export function Header() {
         <div className="flex flex-col gap-2 pt-4 border-t border-[#F8F8FF]/[0.08]">
           <button
             onClick={() => { setOpen(false); openCalendly(); }}
-            className="w-full py-3 text-sm font-extrabold bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
+            className="w-full py-3.5 text-base font-extrabold bg-[#E5E4E2] text-[#0f1419] hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors rounded-lg font-heading"
           >
             Let&apos;s Talk
           </button>

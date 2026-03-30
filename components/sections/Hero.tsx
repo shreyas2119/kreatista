@@ -12,7 +12,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay } as Transition,
 });
 
-const stats = ["100+ Videos", "3 Platforms → 1 Team"];
+const stats = ["100+ Videos", "6 Platforms → 1 Team"];
 
 export default function Hero() {
   const { openCalendly } = useContactModal();
@@ -89,7 +89,7 @@ export default function Hero() {
             href="/portfolio"
             className="px-8 py-4 border border-[#F8F8FF]/20 text-[#F8F8FF] text-base font-heading font-medium hover:bg-white/[0.04] hover:border-[#F8F8FF]/40 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 rounded-lg"
           >
-            See Our Work ↗
+            See Our Work
           </Link>
         </motion.div>
 
