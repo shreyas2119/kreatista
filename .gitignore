@@ -38,6 +38,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Kiro IDE settings
+.kiro/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
