@@ -84,7 +84,7 @@ export default function Hero() {
           className="text-[clamp(2.8rem,7vw,6.5rem)] font-heading font-semibold tracking-[-0.04em] leading-[0.92] text-[#F8F8FF] mb-6 cursor-none overflow-visible"
         >
           <motion.span {...fadeUp(0.1)} className="block overflow-visible">Welcome to the <span className="text-[#E5E4E2]">home</span> of</motion.span>
-          <motion.span {...fadeUp(0.18)} className="block">next gen growth.</motion.span>
+          <motion.span {...fadeUp(0.18)} className="block">next Gen Growth.</motion.span>
         </h1>
 
         {/* Subheading */}

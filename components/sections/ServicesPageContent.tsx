@@ -63,7 +63,7 @@ export default function ServicesPageContent() {
               A website that actually converts
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body max-w-2xl">
-              Most brand websites look fine and do nothing. We build sites that turn visitors into customers — fast-loading, mobile-first, and designed around how your audience actually behaves.
+              Most brand websites look fine and do nothing. We build sites that turn visitors into customers. Fast-loading, mobile-first, and designed around how your audience actually behaves.
             </p>
             <ul className="space-y-3 mb-8">
               {[
@@ -90,7 +90,7 @@ export default function ServicesPageContent() {
               alt="Website design and development"
               fill
               sizes="(max-width: 768px) 100vw, 42vw"
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              className="object-cover transition-all duration-700"
             />
           </motion.div>
         </div>
@@ -154,14 +154,14 @@ export default function ServicesPageContent() {
             {
               num: "03 / Content",
               title: "Content that stops the scroll",
-              desc: "We create content people actually want to watch, read, and share — not just stuff that fills a calendar. Every post has a job to do.",
+              desc: "We create content people actually want to watch, read, and share. Not just stuff that fills a calendar. Every post has a job to do.",
               service: "Content Creation",
               Icon: PenLine,
             },
             {
               num: "04 / Social Media",
               title: "Always on, always relevant",
-              desc: "Posting consistently is hard when you're running a business. We handle the whole thing — strategy, creation, scheduling, and community — so you don't have to think about it.",
+              desc: "Posting consistently is hard when you're running a business. We handle the whole thing: strategy, creation, scheduling, and community. So you don't have to think about it.",
               service: "Social Media Management",
               Icon: Radio,
               offset: true,
@@ -207,7 +207,7 @@ export default function ServicesPageContent() {
               Reach that actually converts
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body">
-              Follower counts are vanity. We connect you with creators whose audiences trust them — so when they talk about your brand, people actually listen and buy.
+              Follower counts are vanity. We connect you with creators whose audiences trust them. When they talk about your brand, people actually listen and buy.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {["Creator Vetting", "Campaign Mgmt", "Contracting"].map((tag) => (
@@ -243,7 +243,7 @@ export default function ServicesPageContent() {
               Video people don&apos;t skip
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body">
-              From a 15-second hook to a full brand film — we make video that earns attention. Not just pretty visuals, but content engineered to perform on the platforms your audience actually uses.
+              From a 15-second hook to a full brand film. We make video that earns attention. Not just pretty visuals, but content engineered to perform on the platforms your audience actually uses.
             </p>
             <div className="space-y-3 mb-8">
               {[
