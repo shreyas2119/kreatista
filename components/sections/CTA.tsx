@@ -25,15 +25,26 @@ export default function CTA() {
         >
           <h2 className="text-5xl sm:text-7xl lg:text-8xl font-semibold text-[#F8F8FF] leading-none tracking-[-0.04em] mb-8 font-heading">
             Ready to take things to the next{" "}
-            <span
-              className="bg-clip-text text-transparent inline-block"
-              style={{
+            <span className="relative inline-block" style={{ whiteSpace: "nowrap" }}>
+              {/* base gradient text */}
+              <span className="bg-clip-text text-transparent" style={{
                 backgroundImage: "linear-gradient(135deg, #ffffff 0%, #60a5fa 25%, #a78bfa 50%, #ec4899 75%, #ffffff 100%)",
-                backgroundSize: "200% 200%",
-                animation: "shimmer 3s ease-in-out infinite",
-              }}
-            >
-              Level?
+              }}>
+                Level?
+              </span>
+              {/* shimmer sweep — same text, clipped, animated */}
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 bg-clip-text text-transparent overflow-hidden"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, transparent 20%, rgba(255,255,255,0.85) 50%, transparent 80%)",
+                  backgroundSize: "200% 100%",
+                }}
+                animate={{ backgroundPosition: ["200% center", "-200% center"] }}
+                transition={{ duration: 2.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 1 }}
+              >
+                Level?
+              </motion.span>
             </span>
           </h2>
 

@@ -57,7 +57,7 @@ export function Header() {
                   'px-4 py-2 text-base font-medium tracking-tight transition-all duration-200 font-heading',
                   isActive
                     ? 'text-[#E5E4E2] border-b-2 border-[#E5E4E2] pb-1.5'
-                    : 'text-[#B8C5D6]/60 hover:text-[#F8F8FF] hover:bg-white/[0.04]'
+                    : 'text-[#B8C5D6] hover:text-[#F8F8FF] hover:bg-white/[0.04]'
                 )}
               >
                 {item.label}

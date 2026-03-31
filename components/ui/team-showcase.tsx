@@ -37,13 +37,13 @@ export default function TeamShowcase({ members }: TeamShowcaseProps) {
               <p className="text-base font-semibold text-[#F8F8FF] tracking-tight mb-0.5 font-heading">
                 {member.name}
               </p>
-              <p className="text-xs text-[#B8C5D6]/50 mb-3 font-body">{member.role}</p>
+              <p className="text-xs text-[#B8C5D6]/70 mb-3 font-body">{member.role}</p>
               {member.socials && (
                 <div className="flex gap-2">
-                  {member.socials.x && <a href={member.socials.x} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaTwitter size={13} /></a>}
-                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaLinkedinIn size={13} /></a>}
-                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaInstagram size={13} /></a>}
-                  {member.socials.email && <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`} target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><MdEmail size={15} /></a>}
+                  {member.socials.x && <a href={member.socials.x} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaTwitter size={13} /></a>}
+                  {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaLinkedinIn size={13} /></a>}
+                  {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><FaInstagram size={13} /></a>}
+                  {member.socials.email && <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`} target="_blank" rel="noopener noreferrer" aria-label="Email" className="text-[#B8C5D6]/40 hover:text-[#E5E4E2]"><MdEmail size={15} /></a>}
                 </div>
               )}
             </div>
@@ -162,26 +162,26 @@ function MemberRow({ member, hoveredId, onHover }: {
             isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"
           )}>
             {member.socials.x && (
-              <a href={member.socials.x} target="_blank" rel="noopener noreferrer"
+              <a href={member.socials.x} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
                 className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaTwitter size={14} />
               </a>
             )}
             {member.socials.linkedin && (
-              <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer"
+              <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                 className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaLinkedinIn size={14} />
               </a>
             )}
             {member.socials.instagram && (
-              <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer"
+              <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                 className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <FaInstagram size={14} />
               </a>
             )}
             {member.socials.email && (
               <a href={`https://mail.google.com/mail/?view=cm&to=${member.socials.email}`}
-                target="_blank" rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer" aria-label="Email"
                 className="p-2 rounded text-[#B8C5D6]/50 hover:text-[#E5E4E2] hover:bg-[#E5E4E2]/10 transition-all duration-150">
                 <MdEmail size={16} />
               </a>
@@ -190,7 +190,7 @@ function MemberRow({ member, hoveredId, onHover }: {
         )}
       </div>
 
-      <p className="mt-1.5 pl-[22px] text-xs font-medium uppercase tracking-[0.18em] text-[#B8C5D6]/40 font-body">
+      <p className="mt-1.5 pl-[22px] text-xs font-medium uppercase tracking-[0.18em] text-[#B8C5D6]/70 font-body">
         {member.role}
       </p>
     </div>

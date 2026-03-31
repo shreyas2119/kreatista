@@ -31,7 +31,7 @@ export default function TeamPageContent() {
           >
             The Minds Behind<br className="hidden sm:block" /> Socioryx
           </h1>
-          <p className="text-sm sm:text-base text-[#B8C5D6]/60 max-w-lg leading-relaxed font-body">
+          <p className="text-sm sm:text-base text-[#B8C5D6]/80 max-w-lg leading-relaxed font-body">
             A collective of strategists, creators, and builders obsessed with making brands impossible to ignore.
           </p>
         </motion.div>

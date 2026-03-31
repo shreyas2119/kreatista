@@ -118,7 +118,7 @@ export default function ServicesPageContent() {
                 { title: "Brand Messaging", desc: "Words that stick. Copy and positioning your audience actually remembers." },
               ].map((card) => (
                 <div key={card.title} className="p-5 bg-[#1a1f26]">
-                  <h4 className="text-[#F8F8FF] font-medium mb-1.5 text-sm font-heading">{card.title}</h4>
+                  <p className="text-[#F8F8FF] font-medium mb-1.5 text-sm font-heading">{card.title}</p>
                   <p className="text-[#B8C5D6]/50 text-xs leading-relaxed font-body">{card.desc}</p>
                 </div>
               ))}
@@ -392,8 +392,9 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium uppercase tracking-widest text-[#B8C5D6]/50 mb-2 font-body">What do you need?</label>
+        <label htmlFor="subject" className="block text-xs font-medium uppercase tracking-widest text-[#B8C5D6]/50 mb-2 font-body">What do you need?</label>
         <select
+          id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}

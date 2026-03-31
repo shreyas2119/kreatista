@@ -89,6 +89,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://scripts.clarity.ms" />
+      </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
         {/* Microsoft Clarity */}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
