@@ -51,3 +51,9 @@ start-tunnel.ps1
 
 # Quick fix guides (optional - remove if you want to commit them)
 QUICK_FIX_GUIDE.md
+
+# Course output
+/socioryx-course/
+
+# Codebase-to-course skill source
+/codebase-to-course-main/
