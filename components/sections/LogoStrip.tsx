@@ -1,8 +1,8 @@
 "use client";
 
 const clients = [
-  "TYPETHINK", "PICXSTUDIO", "CLAWSIFY",
-  "TYPETHINK", "PICXSTUDIO", "CLAWSIFY",
+  "TYPETHINK.AI", "PICXSTUDIO", "CLAWSIFY",
+  "TYPETHINK.AI", "PICXSTUDIO", "CLAWSIFY",
 ];
 
 export default function LogoStrip() {
@@ -50,20 +50,6 @@ export default function LogoStrip() {
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
-          will-change: transform;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 }

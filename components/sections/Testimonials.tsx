@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
 const testimonials = [
   {
@@ -74,7 +74,6 @@ export default function Testimonials() {
             style={{ x: useTransform(x, (v) => `${v}%`) }}
           >
             {allTestimonials.map((t, i) => {
-              const position = i % testimonials.length;
               const isFeatured = t.featured;
               
               return (

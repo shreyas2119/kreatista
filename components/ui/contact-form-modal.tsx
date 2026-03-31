@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Loader2 } from "lucide-react"
+import { Loader2, CheckCircle2, AlertCircle } from "lucide-react"
 
 interface ContactFormModalProps {
   open: boolean
@@ -23,6 +23,7 @@ interface ContactFormModalProps {
 export function ContactFormModal({ open, onOpenChange, initialSubject }: ContactFormModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,7 +32,6 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
     message: "",
   })
 
-  // Pre-fill subject whenever modal opens with a new service
   useEffect(() => {
     if (open && initialSubject) {
       setFormData((prev) => ({ ...prev, subject: initialSubject }))
@@ -41,50 +41,34 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
     try {
-      // Submit to Google Sheets via API route
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
 
       if (response.ok) {
         setIsSuccess(true)
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          subject: "",
-          message: "",
-        })
-        
-        // Close modal after 3 seconds
+        setFormData({ firstName: "", lastName: "", email: "", subject: "", message: "" })
         setTimeout(() => {
           setIsSuccess(false)
           onOpenChange(false)
         }, 3000)
       } else {
-        alert("Something went wrong. Please try again.")
+        setError("Something went wrong. Please try again.")
       }
-    } catch (error) {
-      console.error("Error submitting form:", error)
-      alert("Something went wrong. Please try again.")
+    } catch {
+      setError("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
@@ -92,10 +76,10 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         {isSuccess ? (
           <div className="py-8 text-center">
-            <div className="mb-4 text-6xl">✓</div>
+            <CheckCircle2 className="w-14 h-14 mx-auto mb-4 text-green-400" />
             <DialogTitle className="text-2xl mb-2">Thank You!</DialogTitle>
             <DialogDescription className="text-base">
-              Your message has been submitted successfully. We'll contact you shortly!
+              Your message has been submitted successfully. We&apos;ll contact you shortly!
             </DialogDescription>
           </div>
         ) : (
@@ -111,65 +95,35 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name *</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    placeholder="John"
-                    required
-                  />
+                  <Input id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="John" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName">Last Name *</Label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    placeholder="Doe"
-                    required
-                  />
+                  <Input id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Doe" required />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email *</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="john@example.com"
-                  required
-                />
+                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" required />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="subject">Subject *</Label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="How can we help?"
-                  required
-                />
+                <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="How can we help?" required />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="message">Message *</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us more about your project..."
-                  rows={5}
-                  required
-                />
+                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell us more about your project..." rows={5} required />
               </div>
+
+              {error && (
+                <div className="flex items-center gap-2 text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded px-3 py-2">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  {error}
+                </div>
+              )}
 
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (

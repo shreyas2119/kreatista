@@ -26,7 +26,7 @@ export const team: TeamMember[] = [
   {
     name: "Suryansh Kumar",
     role: "Head of Tech Operations",
-    photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
+    photo: "/images/team/suryansh.webp",
     socials: { linkedin: "https://www.linkedin.com/in/suryansh-kumar-569338280?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/suryanshh20?igsh=bDhmbm12cjF5Z3pm" , email: "suryanshkumar0903@gmail.com"},
   },
   {
@@ -44,7 +44,7 @@ export const team: TeamMember[] = [
   {
     name: "Srajan Soni",
     role: "Video Editor",
-    photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
+    photo: "/images/team/srajan.jpeg",
     socials: { instagram: "https://instagram.com/" },
   },
   {
@@ -56,7 +56,7 @@ export const team: TeamMember[] = [
   {
     name: "Sanskar Singh Bais",
     role: "Content & Script Writer",
-    photo: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&h=400&fit=crop",
+    photo: "/images/team/sanskar.jpeg",
     socials: { instagram: "https://instagram.com/" },
   },
 ];

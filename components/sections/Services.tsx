@@ -10,7 +10,7 @@ import { SectionBackground, backgroundPresets } from "@/components/ui/section-ba
 const services = [
   {
     title: "Conversion-Focused Websites",
-    desc: "We design and build websites that don’t just look good they turn visitors into customers. Fast, modern, and built to scale your brand.",
+    desc: "We design and build websites that don't just look good they turn visitors into customers. Fast, modern, and built to scale your brand.",
     image: "/images/web.webp",
     icon: Globe,
     span: "lg:col-span-8",

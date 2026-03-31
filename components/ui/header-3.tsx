@@ -21,7 +21,7 @@ export function Header() {
   const pathname = usePathname();
   const scrolled = useScroll(10);
   const { openCalendly } = useContactModal();
-  const { user } = useAuth();
+  useAuth();
 
   React.useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';

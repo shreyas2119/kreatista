@@ -25,7 +25,7 @@ export function BottomTabBar() {
               key={tab.href}
               href={tab.href}
               className={cn(
-                "flex-1 flex flex-col items-center justify-center gap-1 py-3 transition-colors duration-200",
+                "relative flex-1 flex flex-col items-center justify-center gap-1 py-3 transition-colors duration-200",
                 isActive ? "text-[#E5E4E2]" : "text-[#B8C5D6]/40 hover:text-[#B8C5D6]/70"
               )}
             >

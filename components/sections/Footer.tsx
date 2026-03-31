@@ -3,7 +3,7 @@
 import React from 'react';
 import type { ComponentProps, ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
+import { FaLinkedinIn, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
 import { useContactModal } from '@/components/providers/contact-modal';
 import { useRouter, usePathname } from 'next/navigation';
@@ -32,18 +32,17 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Legal',
     links: [
-      { title: 'Privacy Policy', href: '#' },
-      { title: 'Terms of Service', href: '#' },
+      { title: 'Privacy Policy',   href: '/privacy' },
+      { title: 'Terms of Service', href: '/terms' },
     ],
   },
   {
     label: 'Socials',
     links: [
-      { title: 'LinkedIn',  href: '#',                                          icon: FaLinkedinIn },
-      { title: 'Instagram', href: 'https://www.instagram.com/droppingsoon12/',  icon: FaInstagram },
-      { title: 'Facebook',  href: '#',                                          icon: FaFacebookF },
-      { title: 'X',         href: 'https://x.com/SocioryxN79343',              icon: FaXTwitter },
-      { title: 'Gmail',     href: 'mailto:Work@Socioryxnetwork.com',            icon: MdEmail },
+      { title: 'LinkedIn',  href: 'https://www.linkedin.com/company/socioryx',          icon: FaLinkedinIn },
+      { title: 'Instagram', href: 'https://www.instagram.com/droppingsoon12/',           icon: FaInstagram },
+      { title: 'X',         href: 'https://x.com/SocioryxN79343',                       icon: FaXTwitter },
+      { title: 'Gmail',     href: 'mailto:Work@Socioryxnetwork.com',                     icon: MdEmail },
     ],
   },
 ];

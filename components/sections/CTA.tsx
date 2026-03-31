@@ -10,9 +10,8 @@ export default function CTA() {
 
   return (
     <section className="relative py-20 sm:py-32 px-5 sm:px-8 lg:px-16 bg-[#0e0e15] overflow-hidden">
-      {/* Background Image */}
-      <SectionBackground 
-        imageUrl={backgroundPresets.cta} 
+      <SectionBackground
+        imageUrl={backgroundPresets.cta}
         overlay="dark"
         blur={true}
       />
@@ -31,23 +30,15 @@ export default function CTA() {
               style={{
                 backgroundImage: "linear-gradient(135deg, #ffffff 0%, #60a5fa 25%, #a78bfa 50%, #ec4899 75%, #ffffff 100%)",
                 backgroundSize: "200% 200%",
-                animation: "shimmer 3s ease-in-out infinite"
+                animation: "shimmer 3s ease-in-out infinite",
               }}
             >
               Level?
             </span>
           </h2>
 
-          <style>{`
-            @keyframes shimmer {
-              0% { background-position: 0% 50%; }
-              50% { background-position: 100% 50%; }
-              100% { background-position: 0% 50%; }
-            }
-          `}</style>
-
-          <p className="text-base sm:text-xl text-[#B8C5D6]/60 mb-10 max-w-xl mx-auto leading-relaxed font-body">
-            Limited availability for partnerships. Let's discuss your vision before someone else does.
+          <p className="text-base sm:text-xl text-[#B8C5D6]/80 mb-10 max-w-xl mx-auto leading-relaxed font-body">
+            Limited availability for partnerships. Let&apos;s discuss your vision before someone else does.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -55,7 +46,7 @@ export default function CTA() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => openCalendly()}
-              className="px-10 py-5 bg-[#E5E4E2] text-[#0f1419] text-lg font-extrabold hover:bg-[#D0CFD0] hover:text-[#0f1419] transition-colors shadow-2xl shadow-[#E5E4E2]/20 rounded-lg font-heading"
+              className="px-10 py-5 bg-[#E5E4E2] text-[#0f1419] text-lg font-extrabold hover:bg-[#D0CFD0] transition-colors shadow-2xl shadow-[#E5E4E2]/20 rounded-lg font-heading"
             >
               Get Started
             </motion.button>
@@ -74,5 +65,3 @@ export default function CTA() {
     </section>
   );
 }
-
-

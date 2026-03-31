@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, type Transition } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, type Transition } from "framer-motion";
 import Link from "next/link";
 import { useContactModal } from "@/components/providers/contact-modal";
 import { HeroShader } from "@/components/ui/hero-shader";
@@ -18,6 +18,16 @@ export default function Hero() {
   const { openCalendly } = useContactModal();
   const circleRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  // useScroll without a target tracks window scroll — works correctly with Lenis
+  const { scrollY } = useScroll();
+
+  // Hero is min-h-screen, so it exits at ~100vh. We animate over that range.
+  const heroHeight = typeof window !== "undefined" ? window.innerHeight : 800;
+  const contentY = useTransform(scrollY, [0, heroHeight], [0, shouldReduceMotion ? 0 : -100]);
+  const contentOpacity = useTransform(scrollY, [0, heroHeight * 0.55], [1, 0]);
+  const shaderScale = useTransform(scrollY, [0, heroHeight], [1, shouldReduceMotion ? 1 : 1.1]);
 
   useEffect(() => {
     const circle = circleRef.current;
@@ -47,8 +57,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 sm:px-8 lg:px-16 pt-24 pb-16 overflow-hidden bg-[#0f1419]">
-      <HeroShader />
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-5 sm:px-8 lg:px-16 pt-24 pb-16 overflow-hidden bg-[#0f1419]"
+    >
+      {/* Shader scales subtly as you scroll — creates depth */}
+      <motion.div className="absolute inset-0" style={{ scale: shaderScale }}>
+        <HeroShader />
+      </motion.div>
 
       {/* Invert cursor circle on heading */}
       <div
@@ -57,9 +73,11 @@ export default function Hero() {
         style={{ background: "white", mixBlendMode: "difference", opacity: 0, transition: "opacity 0.2s ease", willChange: "transform" }}
       />
 
-      <div className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center">
-
-
+      {/* Content drifts up and fades out as user scrolls away */}
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 max-w-4xl w-full mx-auto flex flex-col items-center"
+      >
         {/* Main title */}
         <h1
           ref={headingRef}
@@ -72,7 +90,7 @@ export default function Hero() {
         {/* Subheading */}
         <motion.p
           {...fadeUp(0.28)}
-          className="text-base sm:text-xl font-body font-light text-[#B8C5D6]/60 leading-relaxed max-w-xl mb-10"
+          className="text-base sm:text-xl font-body font-light text-[#B8C5D6]/80 leading-relaxed max-w-xl mb-10"
         >
           Powering digital expansion with strategy, scale, and precision.
         </motion.p>
@@ -105,10 +123,9 @@ export default function Hero() {
             index < stats.length - 1 && <span key={`sep-${index}`} className="text-[#E5E4E2]/30">|</span>
           ]).filter(Boolean)}
         </motion.div>
-      </div>
+      </motion.div>
 
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#0f1419] to-transparent" />
     </section>
   );
 }
-
