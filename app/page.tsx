@@ -12,6 +12,7 @@ const CTA = dynamic(() => import("@/components/sections/CTA"));
 const Footer = dynamic(() => import("@/components/sections/Footer"));
 
 export default function Home() {
+  
   return (
     <main>
       <Navbar />
@@ -27,3 +28,4 @@ export default function Home() {
     </main>
   );
 }
+
