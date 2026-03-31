@@ -46,7 +46,7 @@ export const team: TeamMember[] = [
   {
     name: "Srajan Soni",
     role: "Video Editor",
-    photo: "/images/team/srajan.jpeg",
+    photo: "/images/team/srajan_v2.jpeg",
     socials: { instagram: "https://instagram.com/" },
   },
   {
