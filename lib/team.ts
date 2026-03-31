@@ -2,6 +2,7 @@ export interface TeamMember {
   name: string;
   role: string;
   photo: string | null;
+  objectPosition?: string; // e.g. "center", "top", "50% 20%"
   socials?: {
     x?: string;
     linkedin?: string;
@@ -27,6 +28,7 @@ export const team: TeamMember[] = [
     name: "Suryansh Kumar",
     role: "Head of Tech Operations",
     photo: "/images/team/suryansh.webp",
+    objectPosition: "center 50%",
     socials: { instagram: "https://www.instagram.com/suryanshh20?igsh=bDhmbm12cjF5Z3pm" },
   },
   {
