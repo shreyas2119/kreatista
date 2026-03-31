@@ -128,10 +128,9 @@ function DesktopHowItWorks() {
               const y = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1], [150, -20, 0, -40, -40]);
               const rotateY = useTransform(scrollYProgress, [cardStart, cardStart + 0.06, 0.45, 0.65, 1], [i === 0 ? -25 : i === 1 ? 0 : 25, i === 0 ? -15 : i === 1 ? 0 : 15, i === 0 ? -8 : i === 1 ? 0 : 8, i === 0 ? 10 : i === 1 ? 0 : -10, i === 0 ? 10 : i === 1 ? 0 : -10]);
               const rotateX = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.06, 0.7, 1], [15, -5, 0, 2, 2]);
-              const z = useTransform(scrollYProgress, [cardStart, cardStart + 0.06, 0.7, 1], [0, 50, i === 1 ? 30 : 0, i === 1 ? 30 : 0]);
 
               return (
-                <motion.div key={step.number} style={{ scale, opacity, x, y, rotateY, rotateX, z, transformStyle: "preserve-3d", transformOrigin: "center center", zIndex: i === 1 ? 20 : 10 - i }} className="absolute w-[520px]">
+                <motion.div key={step.number} style={{ scale, opacity, x, y, rotateY, rotateX, transformOrigin: "center center", zIndex: i === 1 ? 20 : 10 - i }} className="absolute w-[520px]">
                   <StepCard step={step} i={i} />
                 </motion.div>
               );
