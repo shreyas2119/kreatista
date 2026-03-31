@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
+  const paths = Array.from({ length: 12 }, (_, i) => ({
     id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${380 - i * 5 * position} -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${152 - i * 5 * position} ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${684 - i * 5 * position} ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    width: 0.8 + i * 0.05,
+    d: `M-${380 - i * 15 * position} -${189 + i * 18}C-${380 - i * 15 * position} -${189 + i * 18} -${312 - i * 15 * position} ${216 - i * 18} ${152 - i * 15 * position} ${343 - i * 18}C${616 - i * 15 * position} ${470 - i * 18} ${684 - i * 15 * position} ${875 - i * 18} ${684 - i * 15 * position} ${875 - i * 18}`,
+    width: 0.8 + i * 0.15,
   }));
 
   return (
@@ -20,22 +20,14 @@ function FloatingPaths({ position }: { position: number }) {
       >
         <title>Background Paths</title>
         {paths.map((path) => (
-          <motion.path
+          <path
             key={path.id}
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.15 + path.id * 0.02}
-            initial={{ pathLength: 0.3, opacity: 0.8 }}
-            animate={{
-              pathLength: 1,
-              opacity: [0.4, 0.8, 0.4],
-              pathOffset: [0, 1, 0],
-            }}
-            transition={{
-              duration: 20 + (path.id % 5) * 2,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
+            strokeOpacity={0.1 + path.id * 0.015}
+            style={{
+              animation: `pathPulse ${20 + (path.id % 5) * 2}s ease-in-out ${path.id * 0.3}s infinite`,
             }}
           />
         ))}
@@ -58,8 +50,8 @@ export default function MeetTheTeam() {
       
       {/* Animated background paths */}
       <div className="absolute inset-0 opacity-60 z-[1]">
+        <style>{`@keyframes pathPulse { 0%,100%{opacity:0.4} 50%{opacity:0.8} }`}</style>
         <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
