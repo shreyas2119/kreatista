@@ -85,7 +85,7 @@ const termsSections: { heading: string; body: React.ReactNode }[] = [
   },
   {
     heading: "Intellectual Property",
-    body: <p>All content on socioryx.com — including text, images, graphics, videos, and branding — is the property of Socioryx or its content suppliers and is protected under applicable intellectual property laws. You may not use, copy, or distribute our content without prior written consent.</p>,
+    body: <p>All content on socioryx.com, including text, images, graphics, videos, and branding, is the property of Socioryx or its content suppliers and is protected under applicable intellectual property laws. You may not use, copy, or distribute our content without prior written consent.</p>,
   },
   {
     heading: "Service Engagements",
