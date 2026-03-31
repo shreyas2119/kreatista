@@ -38,7 +38,7 @@ export const team: TeamMember[] = [
   {
     name: "Tanay Paliwali",
     role: "Content Execution Manager",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+    photo: "/images/team/tanay.jpeg",
     socials: { instagram: "https://www.instagram.com/tanaypaliwal17/" },
   },
   {
@@ -64,6 +64,8 @@ export const team: TeamMember[] = [
     role: "Content Researcher",
     photo: "/images/team/nehil.jpeg",
     socials: { instagram: "https://www.instagram.com/nehil_khare_?igsh=MWNmb2Z3OGJienZwZg==" },
+  },
+];
 
 // First 3 shown on homepage preview (the two cofounders + head of tech)
 export const teamPreview = team.slice(0, 3);

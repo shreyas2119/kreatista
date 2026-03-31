@@ -89,6 +89,7 @@ export default function ServicesPageContent() {
               src="/images/web.webp"
               alt="Website design and development"
               fill
+              sizes="(max-width: 768px) 100vw, 42vw"
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </motion.div>
@@ -133,7 +134,7 @@ export default function ServicesPageContent() {
             <div className="aspect-square w-full max-w-sm bg-[#1a1f26] rounded-full flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#E5E4E2]/10 to-[#E5E4E2]/10" />
               <div className="relative z-10 p-10 text-center">
-                <Image src="/images/product.webp" alt="Brand marketing and positioning" fill className="object-cover opacity-20 rounded-full" />
+                <Image src="/images/product.webp" alt="Brand marketing and positioning" fill sizes="(max-width: 768px) 100vw, 384px" className="object-cover opacity-20 rounded-full" />
                 <div className="relative z-10">
                   <div className="h-1.5 w-24 bg-[#E5E4E2] mx-auto mb-6" />
                   <p className="text-xl font-semibold text-[#F8F8FF] uppercase tracking-tighter font-heading">
@@ -196,7 +197,7 @@ export default function ServicesPageContent() {
       <section className="px-5 sm:px-8 lg:px-16 py-20 bg-[#13131a]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-14 items-center">
           <motion.div {...fadeUp(0)} className="w-full md:w-1/2 overflow-hidden aspect-video relative">
-            <Image src="/images/influencer.webp" alt="Influencer collaboration" fill className="object-cover" />
+            <Image src="/images/influencer.webp" alt="Influencer collaboration" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
           </motion.div>
           <motion.div {...fadeUp(0.15)} className="w-full md:w-1/2">
             <span className="text-[#E5E4E2] font-medium mb-2 block text-xs tracking-widest uppercase font-body">
@@ -232,7 +233,7 @@ export default function ServicesPageContent() {
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
               <Play className="w-14 h-14 text-white fill-white" />
             </div>
-            <Image src="/images/video.webp" alt="Video production" fill className="object-cover grayscale" />
+            <Image src="/images/video.webp" alt="Video production" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover grayscale" />
           </motion.div>
           <motion.div {...fadeUp(0.15)} className="w-full md:w-1/2">
             <span className="text-[#E5E4E2] font-medium mb-2 block text-xs tracking-widest uppercase font-body">
@@ -279,17 +280,18 @@ export default function ServicesPageContent() {
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-10 leading-relaxed font-body">
               We take on a limited number of new clients each month. If you&apos;re serious about growing, drop us a message and we&apos;ll get back to you within 24 hours.
             </p>
-            <div className="flex gap-8 sm:gap-10">
+            <div className="hidden md:space-y-3 md:block mt-10">
               {[
-                { stat: "98%", label: "Client Retention" },
-                { stat: "14M+", label: "Total Reach" },
-                { stat: "24h", label: "Response Time" },
-              ].map((item, i) => (
-                <div key={item.label} className="flex items-stretch gap-8 sm:gap-10">
-                  {i > 0 && <div className="w-px bg-[#F8F8FF]/10" />}
+                { step: "01", label: "Fill the form", desc: "Tell us about your brand and what you need." },
+                { step: "02", label: "We review", desc: "Our team looks at your brief within 24 hours." },
+                { step: "03", label: "Strategy call", desc: "We get on a call and map out the plan together." },
+              ].map((s) => (
+                <div key={s.step} className="flex items-center gap-5 bg-[#1a1f26] border border-[#F8F8FF]/[0.06] px-5 py-4 rounded-lg hover:border-[#E5E4E2]/20 transition-colors duration-300">
+                  <span className="text-2xl font-extrabold text-[#E5E4E2]/20 font-heading w-10 flex-shrink-0">{s.step}</span>
+                  <div className="w-px h-8 bg-[#E5E4E2]/10 flex-shrink-0" />
                   <div>
-                    <span className="block text-[#F8F8FF] font-semibold text-2xl mb-1 font-heading">{item.stat}</span>
-                    <span className="text-[#B8C5D6]/40 text-xs uppercase tracking-widest font-body">{item.label}</span>
+                    <p className="text-base font-semibold text-[#F8F8FF] font-heading">{s.label}</p>
+                    <p className="text-sm text-[#B8C5D6]/60 font-body mt-0.5">{s.desc}</p>
                   </div>
                 </div>
               ))}
