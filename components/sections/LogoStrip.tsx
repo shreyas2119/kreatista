@@ -1,14 +1,14 @@
 "use client";
 
 const clients = [
-  "TYPETHINK.AI", "PICXSTUDIO", "CLAWSIFY",
-  "TYPETHINK.AI", "PICXSTUDIO", "CLAWSIFY",
+  "TYPETHINKAI", "PICXSTUDIO", "ClawsifyAI",
+  "TYPETHINKAI", "PICXSTUDIO", "ClawsifyAI",
 ];
 
 export default function LogoStrip() {
   return (
     <section className="py-10 overflow-hidden bg-[#0f1419]">
-      <p className="text-center text-[#B8C5D6]/30 text-[10px] font-medium tracking-[0.2em] uppercase mb-8">
+      <p className="text-center text-[#B8C5D6]/60 text-[10px] font-medium tracking-[0.2em] uppercase mb-8">
         Trusted by industry leaders in D2C, SaaS &amp; Creator Economy
       </p>
 

@@ -69,7 +69,7 @@ function MobileHowItWorks() {
         <div className="text-center mb-12">
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">The Process</p>
           <h2 className="text-3xl font-semibold text-white leading-none font-heading" style={{ letterSpacing: "-0.03em" }}>How It Works</h2>
-          <p className="mt-3 text-sm text-[#B8C5D6]/60 font-body">Three steps. Zero fluff. Real growth.</p>
+          <p className="mt-3 text-sm text-[#B8C5D6]/80 font-body">Three steps. Zero fluff. Real growth.</p>
         </div>
         <div className="flex flex-col gap-6">
           {steps.map((step, i) => (
@@ -101,7 +101,7 @@ function DesktopHowItWorks() {
           <div className="text-center mb-12">
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">The Process</p>
             <h2 className="text-5xl font-semibold text-white leading-none font-heading" style={{ letterSpacing: "-0.03em" }}>How It Works</h2>
-            <p className="mt-3 text-sm text-[#B8C5D6]/60 font-body">Three steps. Zero fluff. Real growth.</p>
+            <p className="mt-3 text-sm text-[#B8C5D6]/80 font-body">Three steps. Zero fluff. Real growth.</p>
           </div>
 
           {/* Progress indicator */}
@@ -140,7 +140,7 @@ function DesktopHowItWorks() {
 
           {/* Scroll hint */}
           <motion.div style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }} className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-            <p className="text-xs text-[#B8C5D6]/50 tracking-wide">Scroll to explore</p>
+            <p className="text-xs text-[#B8C5D6]/70 tracking-wide">Scroll to explore</p>
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="w-5 h-8 border border-[#B8C5D6]/30 rounded-full flex items-start justify-center p-1.5">
               <div className="w-1 h-2 bg-[#E5E4E2] rounded-full" />
             </motion.div>

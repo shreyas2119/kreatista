@@ -22,6 +22,15 @@ interface FooterSection {
 
 const footerLinks: FooterSection[] = [
   {
+    label: 'Socials',
+    links: [
+      { title: 'LinkedIn',  href: 'https://www.linkedin.com/company/socioryx',          icon: FaLinkedinIn },
+      { title: 'Instagram', href: 'https://www.instagram.com/droppingsoon12/',           icon: FaInstagram },
+      { title: 'X',         href: 'https://x.com/SocioryxN79343',                       icon: FaXTwitter },
+      { title: 'Gmail',     href: 'mailto:Work@Socioryxnetwork.com',                     icon: MdEmail },
+    ],
+  },
+  {
     label: 'Agency',
     links: [
       { title: 'Portfolio', href: '/portfolio' },
@@ -34,15 +43,6 @@ const footerLinks: FooterSection[] = [
     links: [
       { title: 'Privacy Policy',   href: '/privacy' },
       { title: 'Terms of Service', href: '/terms' },
-    ],
-  },
-  {
-    label: 'Socials',
-    links: [
-      { title: 'LinkedIn',  href: 'https://www.linkedin.com/company/socioryx',          icon: FaLinkedinIn },
-      { title: 'Instagram', href: 'https://www.instagram.com/droppingsoon12/',           icon: FaInstagram },
-      { title: 'X',         href: 'https://x.com/SocioryxN79343',                       icon: FaXTwitter },
-      { title: 'Gmail',     href: 'mailto:Work@Socioryxnetwork.com',                     icon: MdEmail },
     ],
   },
 ];

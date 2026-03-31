@@ -27,7 +27,7 @@ export function SectionBackground({
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0"
+        className="absolute inset-0 relative"
       >
         <Image
           src={imageUrl}
