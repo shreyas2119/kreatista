@@ -26,7 +26,7 @@ export default function TeamShowcase({ members }: TeamShowcaseProps) {
           <div key={member.name} className="bg-[#151a21] rounded-xl overflow-hidden">
             <div className="aspect-square w-full bg-[#1a1f26] flex items-center justify-center">
               {member.photo ? (
-                <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
+                <img src={member.photo} alt={member.name} className="w-full h-full object-cover object-top" />
               ) : (
                 <span className="text-3xl font-semibold text-[#F8F8FF]/15 font-heading">
                   {member.name.split(" ").map((n) => n[0]).join("").toUpperCase()}
@@ -108,7 +108,7 @@ function PhotoCard({ member, className, hoveredId, onHover }: {
           alt={member.name}
           width={200}
           height={220}
-          className="w-full h-full object-cover transition-all duration-500"
+          className="w-full h-full object-cover object-top transition-all duration-500"
           style={{ filter: isActive ? "grayscale(0) brightness(1)" : "grayscale(0) brightness(0.85)" }}
         />
       ) : (
