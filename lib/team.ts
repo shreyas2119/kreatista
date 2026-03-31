@@ -20,7 +20,7 @@ export const team: TeamMember[] = [
   {
     name: "Shreyas Choukade",
     role: "Cofounder & Executive Director",
-    photo: "/images/team/shreyas.jpeg",
+    photo: "/images/team/shreyas_v2.jpeg",
     socials: { instagram: "https://www.instagram.com/shreyash_choukade/" },
   },
   {
