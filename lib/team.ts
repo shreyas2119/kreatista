@@ -54,7 +54,7 @@ export const team: TeamMember[] = [
   {
     name: "Priyanshu Basediya",
     role: "Ad & Campaign Management",
-    photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop",
+    photo: "/images/team/priyanshu.jpeg",
     socials: { instagram: "https://www.instagram.com/priy_yanshu09/" },
   },
   {
