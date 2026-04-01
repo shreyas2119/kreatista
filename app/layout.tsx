@@ -33,36 +33,39 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kreatista.in"),
+  metadataBase: new URL("https://socioryx.com"),
   title: {
-    default: "Socioryx — Full-Stack Content Marketing",
+    default: "Socioryx — Content Marketing Agency India",
     template: "%s | Socioryx",
   },
-  description: "Full-stack content marketing for D2C brands, SaaS startups & creators. Websites, video, social media, influencer collabs — all under one roof.",
-  keywords: ["content marketing", "D2C marketing", "SaaS marketing", "social media agency", "video production", "influencer marketing", "India"],
+  description: "Socioryx is a full-stack content marketing agency in India helping D2C brands, SaaS startups & creators grow through video, social media, influencer marketing and web design.",
+  keywords: ["content marketing agency India", "D2C marketing agency", "SaaS marketing India", "social media agency India", "video production agency", "influencer marketing India", "digital marketing agency"],
   authors: [{ name: "Socioryx" }],
   creator: "Socioryx",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://kreatista.in",
+    url: "https://socioryx.com",
     siteName: "Socioryx",
-    title: "Socioryx — Full-Stack Content Marketing",
-    description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
+    title: "Socioryx — Content Marketing Agency India",
+    description: "Full-stack content marketing for D2C brands, SaaS startups & creators. Video, social media, influencer collabs — all under one roof.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Socioryx — Full-Stack Content Marketing",
+        alt: "Socioryx — Content Marketing Agency India",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Socioryx — Full-Stack Content Marketing",
+    title: "Socioryx — Content Marketing Agency India",
     description: "Full-stack content marketing for D2C brands, SaaS startups & creators.",
     images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://socioryx.com",
   },
   robots: {
     index: true,

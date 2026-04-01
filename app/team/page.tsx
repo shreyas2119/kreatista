@@ -4,8 +4,14 @@ import Footer from "@/components/sections/Footer";
 import TeamPageContent from "@/components/sections/TeamPageContent";
 
 export const metadata: Metadata = {
-  title: "Our Team",
-  description: "Meet the minds behind Socioryx — strategists, creators and builders obsessed with making brands impossible to ignore.",
+  title: "Meet the Team — Strategists, Creators & Builders",
+  description: "Meet the minds behind Socioryx — a team of strategists, creators and builders obsessed with making brands impossible to ignore.",
+  alternates: { canonical: "https://socioryx.com/team" },
+  openGraph: {
+    title: "Meet the Team | Socioryx",
+    description: "The strategists, creators and builders behind Socioryx's results.",
+    url: "https://socioryx.com/team",
+  },
 };
 
 export default function TeamPage() {

@@ -4,8 +4,14 @@ import Footer from "@/components/sections/Footer";
 import PortfolioPageContent from "@/components/sections/PortfolioPageContent";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Explore Socioryx's work — case studies, results and campaigns for D2C brands, SaaS startups and creators.",
+  title: "Portfolio — Case Studies & Client Results",
+  description: "Explore Socioryx's work — real results, case studies and campaigns delivered for D2C brands, SaaS startups and creators across India.",
+  alternates: { canonical: "https://socioryx.com/portfolio" },
+  openGraph: {
+    title: "Portfolio | Socioryx",
+    description: "Real results and case studies for D2C brands, SaaS startups and creators.",
+    url: "https://socioryx.com/portfolio",
+  },
 };
 
 export default function PortfolioPage() {

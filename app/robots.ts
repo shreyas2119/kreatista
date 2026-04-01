@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://kreatista.in/sitemap.xml",
+    sitemap: "https://socioryx.com/sitemap.xml",
   };
 }
