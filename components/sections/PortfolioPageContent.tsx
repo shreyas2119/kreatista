@@ -29,7 +29,7 @@ export default function PortfolioPageContent() {
       });
       const data = await res.json();
       if (data.url) {
-        window.open(data.url, "_blank", "noopener,noreferrer");
+        window.location.href = data.url;
       } else {
         setError("Could not load portfolio. Please try again.");
       }

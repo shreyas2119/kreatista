@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion, type Transition } fr
 import Link from "next/link";
 import { useContactModal } from "@/components/providers/contact-modal";
 import { HeroShader } from "@/components/ui/hero-shader";
+import { ArrowUpRight } from "lucide-react";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -108,6 +109,7 @@ export default function Hero() {
             className="px-8 py-4 border border-[#F8F8FF]/20 text-[#F8F8FF] text-base font-heading font-medium hover:bg-white/[0.04] hover:border-[#F8F8FF]/40 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 rounded-lg"
           >
             See Our Work
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </motion.div>
 
