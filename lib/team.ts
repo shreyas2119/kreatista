@@ -2,7 +2,8 @@ export interface TeamMember {
   name: string;
   role: string;
   photo: string | null;
-  objectPosition?: string; // e.g. "center", "top", "50% 20%"
+  objectPosition?: string;
+  photoScale?: number; // e.g. 1.2 for 20% zoom
   socials?: {
     x?: string;
     linkedin?: string;
@@ -22,6 +23,7 @@ export const team: TeamMember[] = [
     name: "Shreyas Choukade",
     role: "Cofounder & Executive Lead",
     photo: "/images/team/shreyas_v2.jpeg",
+    photoScale: 1.25,
     socials: { instagram: "https://www.instagram.com/shreyash_choukade/" },
   },
   {
@@ -51,7 +53,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Priyanshu Basediya",
-    role: "Ad & Campaign Manager",
+    role: "Ad & Campaign Management",
     photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop",
     socials: { instagram: "https://www.instagram.com/priy_yanshu09/" },
   },
