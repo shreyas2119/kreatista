@@ -24,7 +24,7 @@ export default function TeamShowcase({ members }: TeamShowcaseProps) {
       <div className="lg:hidden w-full max-w-2xl mx-auto px-5 sm:px-8 grid grid-cols-2 gap-5 py-8">
         {members.map((member, i) => (
           <div key={member.name} className="bg-[#151a21] rounded-xl overflow-hidden">
-            <div className="aspect-square w-full bg-[#1a1f26] flex items-center justify-center">
+            <div className="aspect-square w-full bg-[#1a1f26] flex items-center justify-center overflow-hidden">
               {member.photo ? (
                 <img src={member.photo} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: member.objectPosition ?? "top", transform: `scale(${member.photoScale ?? 1})`, transformOrigin: "center top" }} />
               ) : (

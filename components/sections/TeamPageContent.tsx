@@ -29,7 +29,7 @@ export default function TeamPageContent() {
           <h1
             className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-[-0.04em] leading-none text-[#F8F8FF] mb-5 font-heading"
           >
-            The Minds Behind<br className="hidden sm:block" /> Socioryx
+            The Minds Behind<br className="hidden sm:block" /> Sociory<span className="text-red-500">X</span>
           </h1>
           <p className="text-sm sm:text-base text-[#B8C5D6]/80 max-w-lg leading-relaxed font-body">
             A collective of strategists, creators, and builders obsessed with making brands impossible to ignore.

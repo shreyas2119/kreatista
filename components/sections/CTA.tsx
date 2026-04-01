@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { useContactModal } from "@/components/providers/contact-modal";
 import { SectionBackground, backgroundPresets } from "@/components/ui/section-background";
 
@@ -67,7 +68,7 @@ export default function CTA() {
                 whileTap={{ scale: 0.95 }}
                 className="px-10 py-5 text-[#F8F8FF] text-lg font-extrabold flex items-center justify-center gap-2 hover:bg-white/[0.05] transition-colors border border-[#F8F8FF]/10 cursor-pointer rounded-lg font-heading"
               >
-                View Portfolio ↗
+                View Portfolio <ArrowUpRight className="w-5 h-5" />
               </motion.span>
             </Link>
           </div>

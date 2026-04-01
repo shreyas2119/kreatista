@@ -37,7 +37,7 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 export default function MeetTheTeam() {
-  const title = "The Minds Behind Socioryx";
+  const title = "The Minds Behind SocioryX";
   const words = title.split(" ");
 
   return (
@@ -73,23 +73,28 @@ export default function MeetTheTeam() {
                 key={wordIndex}
                 className="inline-block mr-3 last:mr-0"
               >
-                {word.split("").map((letter, letterIndex) => (
-                  <motion.span
-                    key={`${wordIndex}-${letterIndex}`}
-                    initial={{ y: 50, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: wordIndex * 0.1 + letterIndex * 0.02,
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 25,
-                    }}
-                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F8F8FF] to-[#B8C5D6]"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
+                {word.split("").map((letter, letterIndex) => {
+                  const isLastWord = wordIndex === words.length - 1;
+                  const isLastLetter = letterIndex === word.length - 1;
+                  const isRedX = isLastWord && isLastLetter;
+                  return (
+                    <motion.span
+                      key={`${wordIndex}-${letterIndex}`}
+                      initial={{ y: 50, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: wordIndex * 0.1 + letterIndex * 0.02,
+                        type: "spring",
+                        stiffness: 150,
+                        damping: 25,
+                      }}
+                      className={isRedX ? "inline-block text-red-500" : "inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F8F8FF] to-[#B8C5D6]"}
+                    >
+                      {isRedX ? "X" : letter}
+                    </motion.span>
+                  );
+                })}
               </span>
             ))}
           </h2>
