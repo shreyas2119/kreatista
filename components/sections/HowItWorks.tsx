@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Search, Paintbrush, TrendingUp } from "lucide-react";
 
 const steps = [
@@ -28,7 +28,6 @@ const steps = [
   },
 ];
 
-// Shared card content
 function StepCard({ step, i }: { step: typeof steps[0]; i: number }) {
   const Icon = step.icon;
   return (
@@ -61,7 +60,33 @@ function StepCard({ step, i }: { step: typeof steps[0]; i: number }) {
   );
 }
 
-// Mobile: simple stacked cards
+// Each animated card is its own component so useTransform is called at top level
+function AnimatedCard({ step, i, scrollYProgress }: { step: typeof steps[0]; i: number; scrollYProgress: MotionValue<number> }) {
+  const cardStart = 0.15 + (i * 0.1);
+  const finalX = i === 0 ? -500 : i === 1 ? 0 : 500;
+
+  const opacity = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, 1], [0, 1, 1]);
+  const scale = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1], [0.7, 1.1, 1, i === 1 ? 0.92 : 0.95, i === 1 ? 0.92 : 0.95]);
+  const x = useTransform(scrollYProgress, [cardStart, cardStart + 0.06, 0.45, 0.65, 1], [0, finalX * 0.4, finalX * 0.8, finalX, finalX]);
+  const y = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1], [150, -20, 0, -40, -40]);
+
+  return (
+    <motion.div style={{ scale, opacity, x, y, transformOrigin: "center center", zIndex: i === 1 ? 20 : 10 - i }} className="absolute w-[520px]">
+      <StepCard step={step} i={i} />
+    </motion.div>
+  );
+}
+
+// Each progress bar item is its own component
+function ProgressBar({ i, scrollYProgress }: { i: number; scrollYProgress: MotionValue<number> }) {
+  const scaleY = useTransform(scrollYProgress, [0.2 + (i * 0.25), 0.2 + ((i + 1) * 0.25)], [0, 1]);
+  return (
+    <motion.div className="w-1 h-12 bg-[#1a1f26] rounded-full overflow-hidden">
+      <motion.div className="w-full bg-[#E5E4E2] origin-top" style={{ scaleY }} />
+    </motion.div>
+  );
+}
+
 function MobileHowItWorks() {
   return (
     <section className="bg-[#151a21] py-20 px-5 sm:px-8">
@@ -89,10 +114,11 @@ function MobileHowItWorks() {
   );
 }
 
-// Desktop: scroll-animated sticky section
 function DesktopHowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const indicatorOpacity = useTransform(scrollYProgress, [0.1, 0.2], [0, 1]);
 
   return (
     <section ref={containerRef} className="relative bg-[#151a21]" style={{ height: "250vh" }}>
@@ -105,40 +131,21 @@ function DesktopHowItWorks() {
           </div>
 
           {/* Progress indicator */}
-          <motion.div className="absolute top-8 right-8 flex flex-col gap-2" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.2], [0, 1]) }}>
-            {steps.map((_, i) => {
-              const isActive = useTransform(scrollYProgress, [0.2 + (i * 0.25), 0.2 + ((i + 1) * 0.25)], [0, 1]);
-              return (
-                <motion.div key={i} className="w-1 h-12 bg-[#1a1f26] rounded-full overflow-hidden">
-                  <motion.div className="w-full bg-[#E5E4E2] origin-top" style={{ scaleY: isActive }} />
-                </motion.div>
-              );
-            })}
+          <motion.div className="absolute top-8 right-8 flex flex-col gap-2" style={{ opacity: indicatorOpacity }}>
+            {steps.map((_, i) => (
+              <ProgressBar key={i} i={i} scrollYProgress={scrollYProgress} />
+            ))}
           </motion.div>
 
           {/* Cards */}
-          <div className="relative h-[600px] flex items-center justify-center" style={{ perspective: "2000px" }}>
-            {steps.map((step, i) => {
-              const cardStart = 0.15 + (i * 0.1);
-              const finalX = i === 0 ? -500 : i === 1 ? 0 : 500;
-
-              const opacity = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, 1], [0, 1, 1]);
-              const scale = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1], [0.7, 1.1, 1, i === 1 ? 0.92 : 0.95, i === 1 ? 0.92 : 0.95]);
-              const x = useTransform(scrollYProgress, [cardStart, cardStart + 0.06, 0.45, 0.65, 1], [0, finalX * 0.4, finalX * 0.8, finalX, finalX]);
-              const y = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.03, 0.7, 1], [150, -20, 0, -40, -40]);
-              const rotateY = useTransform(scrollYProgress, [cardStart, cardStart + 0.06, 0.45, 0.65, 1], [i === 0 ? -25 : i === 1 ? 0 : 25, i === 0 ? -15 : i === 1 ? 0 : 15, i === 0 ? -8 : i === 1 ? 0 : 8, i === 0 ? 10 : i === 1 ? 0 : -10, i === 0 ? 10 : i === 1 ? 0 : -10]);
-              const rotateX = useTransform(scrollYProgress, [cardStart - 0.05, cardStart, cardStart + 0.06, 0.7, 1], [15, -5, 0, 2, 2]);
-
-              return (
-                <motion.div key={step.number} style={{ scale, opacity, x, y, rotateY, rotateX, transformOrigin: "center center", zIndex: i === 1 ? 20 : 10 - i }} className="absolute w-[520px]">
-                  <StepCard step={step} i={i} />
-                </motion.div>
-              );
-            })}
+          <div className="relative h-[600px] flex items-center justify-center">
+            {steps.map((step, i) => (
+              <AnimatedCard key={step.number} step={step} i={i} scrollYProgress={scrollYProgress} />
+            ))}
           </div>
 
           {/* Scroll hint */}
-          <motion.div style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }} className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <motion.div style={{ opacity: hintOpacity }} className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
             <p className="text-xs text-[#B8C5D6]/70 tracking-wide">Scroll to explore</p>
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="w-5 h-8 border border-[#B8C5D6]/30 rounded-full flex items-start justify-center p-1.5">
               <div className="w-1 h-2 bg-[#E5E4E2] rounded-full" />
