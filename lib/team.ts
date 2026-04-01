@@ -14,13 +14,13 @@ export interface TeamMember {
 export const team: TeamMember[] = [
   {
     name: "Vansh Shrivastava",
-    role: "Cofounder & Managing Director",
+    role: "Cofounder & Managing Lead",
     photo: "/images/team/vansh.webp",
     socials: { instagram: "https://www.instagram.com/vansh_pvtt_14/" },
   },
   {
     name: "Shreyas Choukade",
-    role: "Cofounder & Executive Director",
+    role: "Cofounder & Executive Lead",
     photo: "/images/team/shreyas_v2.jpeg",
     socials: { instagram: "https://www.instagram.com/shreyash_choukade/" },
   },
@@ -33,13 +33,13 @@ export const team: TeamMember[] = [
   },
   {
     name: "Hitesh Yadav",
-    role: "Client Acquisition Director",
+    role: "Client Acquisition Lead",
     photo: "/images/team/hitesh.jpeg",
     socials: { instagram: "https://www.instagram.com/iam_hitesh_05/" },
   },
   {
     name: "Tanay Paliwal",
-    role: "Content Execution Manager",
+    role: "Content Executive Lead",
     photo: "/images/team/tanay.jpeg",
     socials: { instagram: "https://www.instagram.com/tanaypaliwal17/" },
   },
@@ -63,7 +63,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Nehil Khare",
-    role: "Content Researcher",
+    role: "Content Research Analyst",
     photo: "/images/team/nehil.jpeg",
     socials: { instagram: "https://www.instagram.com/nehil_khare_?igsh=MWNmb2Z3OGJienZwZg==" },
   },

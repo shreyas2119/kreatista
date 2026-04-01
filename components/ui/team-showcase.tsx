@@ -149,7 +149,7 @@ function MemberRow({ member, hoveredId, onHover }: {
         )} />
 
         <span className={cn(
-          "text-xl lg:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300 font-heading",
+          "text-xl lg:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300 font-heading whitespace-nowrap",
           isActive ? "text-[#F8F8FF]" : "text-[#F8F8FF]/60"
         )}>
           {member.name}
