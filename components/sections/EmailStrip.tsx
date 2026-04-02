@@ -5,7 +5,7 @@ import { Mail } from "lucide-react";
 export default function EmailStrip() {
   return (
     <section className="bg-[#0f1419] border-t border-[#F8F8FF]/[0.06] py-16 px-5 sm:px-8 lg:px-16 text-center">
-      <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#B8C5D6]/50 mb-4 font-body">
+      <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#B8C5D6]/80 mb-4 font-body">
         Get in touch
       </p>
       <a

@@ -56,7 +56,7 @@ export default function LoadingScreen() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
-            className="mt-5 text-xs sm:text-sm tracking-[0.22em] uppercase text-red-500 font-body italic"
+            className="mt-5 text-xs sm:text-sm tracking-[0.22em] uppercase text-[#F8F8FF] font-body italic"
           >
             Raise Yourself as an Extraordinary
           </motion.p>
