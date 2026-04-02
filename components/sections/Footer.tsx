@@ -27,7 +27,7 @@ const footerLinks: FooterSection[] = [
       { title: 'LinkedIn',  href: 'https://www.linkedin.com/company/socioryx',          icon: FaLinkedinIn },
       { title: 'Instagram', href: 'https://www.instagram.com/droppingsoon12/',           icon: FaInstagram },
       { title: 'X',         href: 'https://x.com/SocioryxN79343',                       icon: FaXTwitter },
-      { title: 'Gmail',     href: 'mailto:Work@Socioryxnetwork.com',                     icon: MdEmail },
+      { title: 'Gmail',     href: 'mailto:work@socioryx.com',   icon: MdEmail },
     ],
   },
   {

@@ -8,6 +8,7 @@ import { AuthProvider } from "@/components/providers/auth-provider";
 import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
 import { CalendlyPreloader } from "@/components/ui/calendly-modal";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import LoadingScreen from "@/components/ui/loading-screen";
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScrollProvider>
           <AuthProvider>
             <ContactModalProvider>
+              <LoadingScreen />
               <ScrollProgress />
               <CalendlyPreloader />
               <div className="pb-16 md:pb-0">

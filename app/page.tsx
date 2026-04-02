@@ -10,6 +10,7 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"))
 const MeetTheTeam = dynamic(() => import("@/components/sections/MeetTheTeam"));
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof"));
 const CTA = dynamic(() => import("@/components/sections/CTA"));
+const EmailStrip = dynamic(() => import("@/components/sections/EmailStrip"));
 const Footer = dynamic(() => import("@/components/sections/Footer"));
 
 const jsonLd = {
@@ -31,7 +32,7 @@ const jsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "Work@Socioryxnetwork.com",
+    email: "work@socioryx.com",
   },
 };
 
@@ -52,6 +53,7 @@ export default function Home() {
       <MeetTheTeam />
       <SocialProof />
       <CTA />
+      <EmailStrip />
       <Footer />
     </main>
   );

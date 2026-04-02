@@ -31,7 +31,7 @@ export const team: TeamMember[] = [
     role: "Head of Tech Operations",
     photo: "/images/team/suryansh.webp",
     objectPosition: "center 50%",
-    socials: { instagram: "https://www.instagram.com/suryanshh20?igsh=bDhmbm12cjF5Z3pm" },
+    socials: { instagram: "https://www.instagram.com/suryanshh20/" },
   },
   {
     name: "Hitesh Yadav",
@@ -67,7 +67,7 @@ export const team: TeamMember[] = [
     name: "Nehil Khare",
     role: "Content Research Analyst",
     photo: "/images/team/nehil.jpeg",
-    socials: { instagram: "https://www.instagram.com/nehil_khare_?igsh=MWNmb2Z3OGJienZwZg==" },
+    socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
 ];
 

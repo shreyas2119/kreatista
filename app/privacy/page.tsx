@@ -31,7 +31,7 @@ function LegalPage({ title, effectiveDate, sections }: {
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-4 font-body">Legal</p>
         <h1 className="text-4xl sm:text-6xl font-semibold text-[#F8F8FF] tracking-[-0.03em] mb-3 font-heading">{title}</h1>
-        <p className="text-base text-[#B8C5D6]/50 font-body mb-16">Effective Date: {effectiveDate} · socioryx.com · <a href="mailto:Work@Socioryxnetwork.com" className="hover:text-[#E5E4E2] transition-colors">Work@Socioryxnetwork.com</a></p>
+        <p className="text-base text-[#B8C5D6]/50 font-body mb-16">Effective Date: {effectiveDate} · socioryx.com · <a href="mailto:work@socioryx.com" className="hover:text-[#E5E4E2] transition-colors">work@socioryx.com</a></p>
 
         <div className="space-y-12">
           {sections.map((s, i) => (
@@ -104,7 +104,7 @@ const privacySections: { heading: string; body: React.ReactNode }[] = [
     heading: "Your Rights",
     body: (
       <>
-        <p>You have the right to request access to, correction of, or deletion of your personal data. To exercise any of these rights, contact us at <a href="mailto:Work@Socioryxnetwork.com" className="text-[#E5E4E2] hover:underline">Work@Socioryxnetwork.com</a>.</p>
+        <p>You have the right to request access to, correction of, or deletion of your personal data. To exercise any of these rights, contact us at <a href="mailto:work@socioryx.com" className="text-[#E5E4E2] hover:underline">work@socioryx.com</a>.</p>
       </>
     ),
   },
@@ -118,6 +118,6 @@ const privacySections: { heading: string; body: React.ReactNode }[] = [
   },
   {
     heading: "Contact Us",
-    body: <p>For any questions about this Privacy Policy, email us at <a href="mailto:Work@Socioryxnetwork.com" className="text-[#E5E4E2] hover:underline">Work@Socioryxnetwork.com</a>.</p>,
+    body: <p>For any questions about this Privacy Policy, email us at <a href="mailto:work@socioryx.com" className="text-[#E5E4E2] hover:underline">work@socioryx.com</a>.</p>,
   },
 ];
