@@ -18,13 +18,13 @@ export default function LoadingScreen() {
         if (p >= 100) { clearInterval(interval); return 100; }
         return p + 2;
       });
-    }, 40);
+    }, 30);
 
-    // Dismiss after ~4s
+    // Dismiss after 3s
     const timer = setTimeout(() => {
       setVisible(false);
       sessionStorage.setItem("socioryx_intro_seen", "1");
-    }, 4000);
+    }, 3000);
 
     return () => { clearInterval(interval); clearTimeout(timer); };
   }, []);
