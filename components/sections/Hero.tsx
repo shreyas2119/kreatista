@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion, type Transition } from "framer-motion";
 import Link from "next/link";
 import { useContactModal } from "@/components/providers/contact-modal";
@@ -17,7 +17,6 @@ const stats = ["100+ Videos", "6 Platforms → 1 Team"];
 
 export default function Hero() {
   const { openCalendly } = useContactModal();
-  const circleRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -30,32 +29,7 @@ export default function Hero() {
   const contentOpacity = useTransform(scrollY, [0, heroHeight * 0.55], [1, 0]);
   const shaderScale = useTransform(scrollY, [0, heroHeight], [1, shouldReduceMotion ? 1 : 1.1]);
 
-  useEffect(() => {
-    const circle = circleRef.current;
-    const heading = headingRef.current;
-    if (!circle || !heading) return;
-    const section = heading.closest("section");
-    if (!section) return;
-    let raf: number;
 
-    const onMove = (e: MouseEvent) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        circle.style.transform = `translate(${e.clientX - rect.left}px, ${e.clientY - rect.top}px) translate(-50%, -50%)`;
-        circle.style.opacity = "1";
-      });
-    };
-    const onLeave = () => { circle.style.opacity = "0"; };
-
-    heading.addEventListener("mousemove", onMove);
-    heading.addEventListener("mouseleave", onLeave);
-    return () => {
-      heading.removeEventListener("mousemove", onMove);
-      heading.removeEventListener("mouseleave", onLeave);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <section
@@ -67,12 +41,7 @@ export default function Hero() {
         <HeroShader />
       </motion.div>
 
-      {/* Invert cursor circle on heading */}
-      <div
-        ref={circleRef}
-        className="absolute top-0 left-0 w-48 h-48 rounded-full pointer-events-none z-20"
-        style={{ background: "white", mixBlendMode: "difference", opacity: 0, transition: "opacity 0.2s ease", willChange: "transform" }}
-      />
+      {/* Invert cursor circle on heading — removed */}
 
       {/* Content drifts up and fades out as user scrolls away */}
       <motion.div
@@ -82,7 +51,7 @@ export default function Hero() {
         {/* Main title */}
         <h1
           ref={headingRef}
-          className="text-[clamp(2.8rem,7vw,6.5rem)] font-heading font-semibold tracking-[-0.04em] leading-[0.92] text-[#F8F8FF] mb-6 cursor-none overflow-visible"
+          className="text-[clamp(2.8rem,7vw,6.5rem)] font-heading font-semibold tracking-[-0.04em] leading-[0.92] text-[#F8F8FF] mb-6 overflow-visible"
         >
           <motion.span {...fadeUp(0.1)} className="block overflow-visible">Welcome to the <span className="text-[#E5E4E2]">home</span> of</motion.span>
           <motion.span {...fadeUp(0.18)} className="block">Next Gen Growth.</motion.span>
