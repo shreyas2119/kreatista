@@ -40,9 +40,9 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[95vw] w-[1400px] h-[95vh] overflow-hidden p-0 flex flex-col">
-        <DialogHeader className="px-6 pt-6 pb-4 flex-shrink-0">
-          <DialogTitle className="text-2xl">Let&apos;s Talk</DialogTitle>
+      <DialogContent className="max-w-[95vw] w-[1400px] h-[90dvh] sm:h-[95vh] overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 flex-shrink-0">
+          <DialogTitle className="text-xl sm:text-2xl">Let&apos;s Talk</DialogTitle>
           <DialogDescription>
             {initialSubject
               ? `Let's discuss: ${initialSubject}`
@@ -50,7 +50,7 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
           </DialogDescription>
         </DialogHeader>
 
-        <div ref={containerRef} className="flex-1 w-full px-2 pb-2 min-h-[700px]">
+        <div ref={containerRef} className="flex-1 w-full px-1 sm:px-2 pb-1 sm:pb-2 overflow-hidden">
           {mounted && (
             <iframe
               src={finalUrl}
@@ -58,7 +58,7 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
               height="100%"
               frameBorder="0"
               title="Schedule a call"
-              style={{ minHeight: "700px", border: "none" }}
+              style={{ border: "none", display: "block", height: "100%", minHeight: 0 }}
             />
           )}
         </div>
