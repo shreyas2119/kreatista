@@ -4,8 +4,11 @@ import Script from "next/script";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 
-// Launch: 23:12 IST = 17:42 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T17:42:00Z").getTime();
+// Force fresh evaluation on every request — needed for time-based redirect
+export const revalidate = 0;
+
+// Launch: 23:20 IST = 17:50 UTC on April 4, 2026
+const LAUNCH_TIME = new Date("2026-04-04T17:50:00Z").getTime();
 
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const Services = dynamic(() => import("@/components/sections/Services"));
