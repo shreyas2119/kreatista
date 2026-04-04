@@ -12,21 +12,21 @@ export default function LoadingScreen() {
     const seen = sessionStorage.getItem("socioryx_intro_seen");
     if (seen) { setVisible(false); return; }
 
-    // Animate progress bar
+    // Animate progress bar — dismiss immediately when it hits 100
     const interval = setInterval(() => {
       setProgress((p) => {
-        if (p >= 100) { clearInterval(interval); return 100; }
-        return p + 2;
+        const next = p + 2;
+        if (next >= 100) {
+          clearInterval(interval);
+          setVisible(false);
+          sessionStorage.setItem("socioryx_intro_seen", "1");
+          return 100;
+        }
+        return next;
       });
-    }, 30);
+    }, 60);
 
-    // Dismiss after 3s
-    const timer = setTimeout(() => {
-      setVisible(false);
-      sessionStorage.setItem("socioryx_intro_seen", "1");
-    }, 3000);
-
-    return () => { clearInterval(interval); clearTimeout(timer); };
+    return () => { clearInterval(interval); };
   }, []);
 
   return (

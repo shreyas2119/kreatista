@@ -5,24 +5,24 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Arjun Mehta",
-    role: "CEO at NovaSaaS",
-    text: "Socioryx completely revamped our SaaS branding. Our conversion rate increased by 40% within the first month of the new site launch.",
+    name: "Yash Patidar",
+    role: "Co-Founder at TypethinkAI",
+    text: "As a growing brand, we needed more than marketing we needed direction, and Socioryx delivered exactly that they helped us build a strong digital presence with content and strategies that truly connect with our audience their clarity, consistency, and focus on meaningful growth made a clear impact. The results speak for themselves  stronger presence, better engagement, and a more aligned brand.",
     stars: 5,
   },
   {
-    name: "Priya Sharma",
-    role: "Founder of Lumière",
-    text: "The social content they produced for our D2C launch went viral overnight. They understand exactly how to stop the scroll.",
+    name: "Arunima Agrawal",
+    role: "Developer at ClawsifyAI",
+    text: "When I first came across Socioryx, the meaning behind the name  combining “Socio” with the idea of rising to something extraordinary  instantly stood out. After working with them, I can confidently say they don't just represent it, they deliver on it through their work and results.",
     stars: 5,
     featured: true,
   },
-  {
-    name: "Rohan Kapoor",
-    role: "CEO, BuildFast",
-    text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Socioryx scaled our trial signups 40% in 6 weeks.",
-    stars: 5,
-  },
+  // {
+  //   name: "Rohan Kapoor",
+  //   role: "CEO, BuildFast",
+  //   text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Socioryx scaled our trial signups 40% in 6 weeks.",
+  //   stars: 5,
+  // },
 ];
 
 export default function Testimonials() {
@@ -37,7 +37,7 @@ export default function Testimonials() {
     if (isPaused) return;
 
     const controls = animate(x, -33.33, {
-      duration: 30,
+      duration: 20,
       repeat: Infinity,
       ease: "linear",
       repeatType: "loop",
