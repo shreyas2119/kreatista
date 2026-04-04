@@ -9,6 +9,7 @@ import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
 import { CalendlyPreloader } from "@/components/ui/calendly-modal";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import LoadingScreen from "@/components/ui/loading-screen";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -122,6 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </ContactModalProvider>
           </AuthProvider>
         </SmoothScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
