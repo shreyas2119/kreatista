@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// 11:16 PM IST = 17:46 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T17:46:00Z").getTime();
+// Launch: 23:12 IST = 17:42 UTC on April 4, 2026
+const LAUNCH_TIME = new Date("2026-04-04T17:42:00Z").getTime();
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -81,15 +81,15 @@ export default function CountdownPage() {
         ))}
       </div>
 
-      {/* Progress bar */}
-      <div className="mt-16 w-48 h-px bg-[#E5E4E2]/10 overflow-hidden relative z-10">
-        <div
-          className="h-full bg-[#E5E4E2]/50 transition-none"
-          style={{
-            width: `${Math.max(0, Math.min(100, 100 - ((LAUNCH_TIME - Date.now()) / (3600000 * 12)) * 100))}%`,
-          }}
-        />
-      </div>
+      {/* Progress bar — derived from client state, no hydration mismatch */}
+        <div className="mt-16 w-48 h-px bg-[#E5E4E2]/10 overflow-hidden relative z-10">
+          <div
+            className="h-full bg-[#E5E4E2]/50 transition-none"
+            style={{
+              width: timeLeft.done ? "100%" : `${Math.max(0, Math.min(100, 100 - ((timeLeft.h * 3600 + timeLeft.m * 60 + timeLeft.s) / (12 * 3600)) * 100))}%`,
+            }}
+          />
+        </div>
 
       <p className="mt-8 text-xs text-[#B8C5D6]/30 font-body relative z-10">
         April 4, 2026 · 11:16 PM IST

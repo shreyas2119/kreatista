@@ -1,7 +1,11 @@
+import { redirect } from "next/navigation";
 import dynamic from "next/dynamic";
 import Script from "next/script";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
+
+// Launch: 23:12 IST = 17:42 UTC on April 4, 2026
+const LAUNCH_TIME = new Date("2026-04-04T17:42:00Z").getTime();
 
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const Services = dynamic(() => import("@/components/sections/Services"));
@@ -37,7 +41,11 @@ const jsonLd = {
 };
 
 export default function Home() {
-  return (
+  // Before launch — redirect everyone to countdown
+  if (Date.now() < LAUNCH_TIME) {
+    redirect("/countdown");
+  }
+return (
     <main>
       <Script
         id="org-schema"
