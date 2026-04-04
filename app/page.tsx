@@ -7,8 +7,8 @@ import Hero from "@/components/sections/Hero";
 // Force fresh evaluation on every request — needed for time-based redirect
 export const revalidate = 0;
 
-// Launch: 23:20 IST = 17:50 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T17:50:00Z").getTime();
+// Launch: 23:30 IST = 18:00 UTC on April 4, 2026
+const LAUNCH_TIME = new Date("2026-04-04T18:00:00Z").getTime();
 
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const Services = dynamic(() => import("@/components/sections/Services"));

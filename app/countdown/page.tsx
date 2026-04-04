@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Launch: 23:20 IST = 17:50 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T17:50:00Z").getTime();
+// Launch: 23:30 IST = 18:00 UTC on April 4, 2026
+const LAUNCH_TIME = new Date("2026-04-04T18:00:00Z").getTime();
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
