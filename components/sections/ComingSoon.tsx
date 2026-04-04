@@ -49,7 +49,7 @@ export default function ComingSoon({
           <motion.div
             className="h-full bg-[#E5E4E2]/40"
             initial={{ width: "0%" }}
-            animate={{ width: "65%" }}
+            animate={{ width: "100%" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
           />
         </div>
