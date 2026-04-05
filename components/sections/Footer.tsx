@@ -33,6 +33,7 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Agency',
     links: [
+      { title: 'Blog',      href: '/blog' },
       { title: 'Portfolio', href: '/portfolio' },
       { title: 'Services',  href: '/#services', sectionId: 'services' },
       { title: 'Team',      href: '/#team',     sectionId: 'team' },
