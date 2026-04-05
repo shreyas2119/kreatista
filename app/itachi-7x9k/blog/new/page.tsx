@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { slugify } from "@/lib/blog";
+import { slugify } from "@/lib/slugify";
 
 export default function NewPostPage() {
   const router = useRouter();
