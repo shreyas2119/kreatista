@@ -1,0 +1,11 @@
+﻿"Project name","socioryx"
+"Date range","04/02/2026 12:00 AM - 04/04/2026 11:59 PM"
+
+
+"Visited URL matches regex","^https://kreatista\.vercel\.app/(\?.*)?$"
+
+"Metric","Performance overview"
+"","Score","67.9423076923077"
+"","LCP (Largest Contentful Paint)","34.284s"
+"","INP (Interaction to Next Paint)","542ms"
+"","CLS (Cumulative Layout Shift)","0.00025s"

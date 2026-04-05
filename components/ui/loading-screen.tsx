@@ -12,6 +12,15 @@ export default function LoadingScreen() {
     const seen = sessionStorage.getItem("socioryx_intro_seen");
     if (seen) { setVisible(false); return; }
 
+    // Skip on slow connections or data-saver mode
+    const nav = navigator as Navigator & { connection?: { effectiveType?: string; saveData?: boolean } };
+    const conn = nav.connection;
+    if (conn && (conn.saveData || conn.effectiveType === "slow-2g" || conn.effectiveType === "2g")) {
+      setVisible(false);
+      sessionStorage.setItem("socioryx_intro_seen", "1");
+      return;
+    }
+
     // Animate progress bar — dismiss immediately when it hits 100
     const interval = setInterval(() => {
       setProgress((p) => {
