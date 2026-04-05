@@ -147,9 +147,15 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-12 w-full border-t border-[#F8F8FF]/[0.06] pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-        <span className="text-sm text-[#B8C5D6]/20 font-body">Based in India</span>
-        <span className="text-sm text-[#B8C5D6]/20 font-body">Global Production</span>
+      <div className="mt-12 w-full border-t border-[#F8F8FF]/[0.06] pt-8 flex flex-col gap-3">
+        <p className="text-xs text-[#B8C5D6]/25 font-body leading-relaxed">
+          Results from digital marketing campaigns vary. Socioryx makes no guarantee of specific outcomes.{" "}
+          <a href="/terms" className="underline underline-offset-2 hover:text-[#B8C5D6]/50 transition-colors">Terms of Service</a>.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+          <span className="text-sm text-[#B8C5D6]/20 font-body">Based in India</span>
+          <span className="text-sm text-[#B8C5D6]/20 font-body">Global Production</span>
+        </div>
       </div>
     </footer>
   );
