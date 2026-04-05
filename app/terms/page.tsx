@@ -13,7 +13,7 @@ export default function TermsPage() {
       <Navbar />
       <LegalPage
         title="Terms of Service"
-        effectiveDate="April 1, 2026"
+        effectiveDate="April 5, 2026"
         sections={termsSections}
       />
       <Footer />
@@ -49,11 +49,11 @@ function LegalPage({ title, effectiveDate, sections }: {
 const termsSections: { heading: string; body: React.ReactNode }[] = [
   {
     heading: "Acceptance of Terms",
-    body: <p>By accessing or using socioryx.com, you agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>,
+    body: <p>By accessing or using socioryx.com, you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or engage our services.</p>,
   },
   {
     heading: "About Socioryx",
-    body: <p>Socioryx is a content marketing agency that provides services including website design and development, social media management, video production, influencer collaborations, and brand growth strategy. These Terms govern your use of our website and any services you engage us for.</p>,
+    body: <p>Socioryx is a content marketing agency based in India that provides services including website design and development, social media management, video production, influencer collaborations, ad and campaign management, and brand growth strategy. These Terms govern your use of our website and any services you engage us for.</p>,
   },
   {
     heading: "Use of the Website",
@@ -73,23 +73,26 @@ const termsSections: { heading: string; body: React.ReactNode }[] = [
     heading: "Portfolio Access",
     body: (
       <>
-        <p>Certain areas of our website require account registration to access. By creating an account, you agree to:</p>
-        <ul className="list-disc list-inside space-y-1 text-[#B8C5D6]/70 mt-2">
-          <li>Provide accurate and complete information</li>
-          <li>Keep your login credentials confidential</li>
-          <li>Notify us immediately of any unauthorized use of your account</li>
-        </ul>
-        <p className="mt-3">We reserve the right to suspend or terminate accounts that violate these Terms.</p>
+        <p>Certain areas of our website require account registration to access. By creating an account, you agree to provide accurate information, keep your credentials confidential, and notify us immediately of any unauthorized use. We reserve the right to suspend or terminate accounts that violate these Terms.</p>
       </>
     ),
   },
   {
     heading: "Intellectual Property",
-    body: <p>All content on socioryx.com, including text, images, graphics, videos, and branding, is the property of Socioryx or its content suppliers and is protected under applicable intellectual property laws. You may not use, copy, or distribute our content without prior written consent.</p>,
+    body: <p>All content on socioryx.com — including text, images, graphics, videos, and branding — is the property of Socioryx or its content suppliers and is protected under applicable intellectual property laws. You may not use, copy, or distribute our content without prior written consent.</p>,
   },
   {
-    heading: "Service Engagements",
-    body: <p>These Terms govern your use of the website only. Separate agreements, proposals, or contracts govern any paid services you engage Socioryx for. Nothing on this website constitutes a binding offer or guarantee of service availability, pricing, or timelines.</p>,
+    heading: "Service Engagements and Results Disclaimer",
+    body: (
+      <>
+        <p>These Terms govern your use of the website. Separate agreements, proposals, or contracts govern any paid services you engage Socioryx for. Nothing on this website constitutes a binding offer or guarantee of service availability, pricing, or timelines.</p>
+        <p><strong className="text-[#F8F8FF]">Results Disclaimer.</strong> Results from digital marketing campaigns vary based on numerous factors including market conditions, audience behaviour, platform algorithms, and budget. Socioryx makes no guarantee of specific outcomes, including but not limited to follower growth, engagement rates, conversion rates, revenue, or return on ad spend.</p>
+      </>
+    ),
+  },
+  {
+    heading: "Platform Dependency Disclaimer",
+    body: <p>Our services may involve work on third-party platforms including Meta (Facebook, Instagram), Google, YouTube, LinkedIn, and others. Socioryx is not responsible for any changes to these platforms' policies, algorithms, advertising rules, or terms of service that may affect campaign performance, account standing, or deliverables. We will make reasonable efforts to adapt to such changes but cannot guarantee continuity of results following platform-side modifications.</p>,
   },
   {
     heading: "Disclaimer of Warranties",
@@ -97,15 +100,26 @@ const termsSections: { heading: string; body: React.ReactNode }[] = [
   },
   {
     heading: "Limitation of Liability",
-    body: <p>To the fullest extent permitted by law, Socioryx shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website or our services, including but not limited to loss of data, revenue, or business opportunities.</p>,
+    body: (
+      <>
+        <p>To the fullest extent permitted by applicable law, Socioryx's total aggregate liability to you for any claims arising out of or related to these Terms or our services — whether in contract, tort, or otherwise — shall not exceed the total fees paid by you to Socioryx in the three (3) months immediately preceding the event giving rise to the claim.</p>
+        <p>Socioryx shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, revenue, data, goodwill, or business opportunities, even if advised of the possibility of such damages.</p>
+      </>
+    ),
   },
   {
     heading: "Third-Party Links",
     body: <p>Our website may contain links to third-party websites. We are not responsible for the content, privacy practices, or terms of those websites. Accessing third-party links is at your own risk.</p>,
   },
   {
-    heading: "Governing Law",
-    body: <p>These Terms are governed by the laws of India. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts located in India.</p>,
+    heading: "Governing Law and Dispute Resolution",
+    body: (
+      <>
+        <p>These Terms are governed by and construed in accordance with the laws of India, without regard to conflict of law principles.</p>
+        <p><strong className="text-[#F8F8FF]">Arbitration.</strong> Any dispute, controversy, or claim arising out of or relating to these Terms or the breach, termination, or validity thereof shall first be attempted to be resolved through good-faith negotiation. If unresolved within 30 days, the dispute shall be referred to and finally resolved by arbitration under the Arbitration and Conciliation Act, 1996 (India). The seat of arbitration shall be India. The language of arbitration shall be English. The arbitral award shall be final and binding on both parties.</p>
+        <p>Nothing in this clause prevents either party from seeking urgent injunctive or equitable relief from a court of competent jurisdiction.</p>
+      </>
+    ),
   },
   {
     heading: "Changes to These Terms",

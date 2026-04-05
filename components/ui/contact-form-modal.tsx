@@ -31,6 +31,7 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
     subject: initialSubject ?? "",
     message: "",
   })
+  const [consent, setConsent] = useState(false)
 
   useEffect(() => {
     if (open && initialSubject) {
@@ -53,6 +54,7 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
       if (response.ok) {
         setIsSuccess(true)
         setFormData({ firstName: "", lastName: "", email: "", subject: "", message: "" })
+        setConsent(false)
         setTimeout(() => {
           setIsSuccess(false)
           onOpenChange(false)
@@ -125,7 +127,25 @@ export function ContactFormModal({ open, onOpenChange, initialSubject }: Contact
                 </div>
               )}
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {/* DPDP consent — required, not pre-ticked */}
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 flex-shrink-0 accent-[#E5E4E2] cursor-pointer"
+                />
+                <span className="text-xs text-[#B8C5D6]/60 leading-relaxed font-body">
+                  I agree to Socioryx&apos;s{" "}
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#B8C5D6] hover:text-[#E5E4E2] underline underline-offset-2 transition-colors">
+                    Privacy Policy
+                  </a>{" "}
+                  and consent to being contacted regarding my inquiry. *
+                </span>
+              </label>
+
+              <Button type="submit" className="w-full" disabled={isSubmitting || !consent}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />

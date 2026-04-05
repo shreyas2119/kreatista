@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, Instrument_Serif } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
@@ -9,6 +8,7 @@ import { BottomTabBar } from "@/components/ui/bottom-tab-bar";
 import { CalendlyPreloader } from "@/components/ui/calendly-modal";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import LoadingScreen from "@/components/ui/loading-screen";
+import CookieConsent from "@/components/ui/cookie-consent";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Premium font system
@@ -95,21 +95,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable}`}>
       <head>
-        <link rel="preconnect" href="https://www.clarity.ms" />
-        <link rel="preconnect" href="https://scripts.clarity.ms" />
       </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
-        {/* Microsoft Clarity */}
-        {process.env.NEXT_PUBLIC_CLARITY_ID && (
-          <Script
-            id="clarity-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_ID}");`,
-            }}
-          />
-        )}
-        
         <SmoothScrollProvider>
           <AuthProvider>
             <ContactModalProvider>
@@ -120,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {children}
               </div>
               <BottomTabBar />
+              <CookieConsent />
             </ContactModalProvider>
           </AuthProvider>
         </SmoothScrollProvider>
