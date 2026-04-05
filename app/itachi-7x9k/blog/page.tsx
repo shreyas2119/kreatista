@@ -55,7 +55,7 @@ export default function AdminBlogPage() {
             <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading">Blog Posts</h1>
           </div>
           <Link
-            href="/admin/blog/new"
+            href="/itachi-7x9k/blog/new"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E5E4E2] text-[#0f1419] text-sm font-extrabold font-heading rounded-lg hover:bg-[#D0CFD0] transition-colors"
           >
             <Plus className="w-4 h-4" />
@@ -90,7 +90,7 @@ export default function AdminBlogPage() {
                     className="p-2 text-[#B8C5D6]/40 hover:text-[#E5E4E2] transition-colors">
                     {post.published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
-                  <Link href={`/admin/blog/${post.id}/edit`}
+                  <Link href={`/itachi-7x9k/blog/${post.id}/edit`}
                     className="p-2 text-[#B8C5D6]/40 hover:text-[#E5E4E2] transition-colors">
                     <Pencil className="w-4 h-4" />
                   </Link>

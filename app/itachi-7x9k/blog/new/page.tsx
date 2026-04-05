@@ -39,7 +39,7 @@ export default function NewPostPage() {
       body: JSON.stringify(payload),
     });
     if (res.ok) {
-      router.push("/admin/blog");
+      router.push("/itachi-7x9k/blog");
     } else {
       alert("Failed to save post.");
       setSaving(false);
@@ -49,7 +49,7 @@ export default function NewPostPage() {
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
       <div className="max-w-3xl mx-auto">
-        <Link href="/admin/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
+        <Link href="/itachi-7x9k/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Posts
         </Link>
@@ -103,7 +103,7 @@ export default function NewPostPage() {
               className="px-8 py-3 bg-[#E5E4E2] text-[#0f1419] text-sm font-extrabold font-heading rounded-lg hover:bg-[#D0CFD0] transition-colors disabled:opacity-50">
               {saving ? "Saving..." : "Save Post"}
             </button>
-            <Link href="/admin/blog"
+            <Link href="/itachi-7x9k/blog"
               className="px-8 py-3 border border-[#F8F8FF]/10 text-[#B8C5D6] text-sm font-body rounded-lg hover:bg-white/[0.04] transition-colors">
               Cancel
             </Link>
