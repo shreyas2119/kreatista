@@ -59,7 +59,7 @@ export default function CookieConsent() {
               <p className="text-xs font-medium text-[#E5E4E2] mb-1 font-heading tracking-wide">
                 We use cookies
               </p>
-              <p className="text-xs text-[#B8C5D6]/60 leading-relaxed mb-4 font-body">
+              <p className="text-xs text-[#B8C5D6]/80 leading-relaxed mb-4 font-body">
                 We use analytics cookies (Microsoft Clarity) to understand how visitors use our site. No personal data is sold.{" "}
                 <a href="/privacy" className="text-[#B8C5D6] hover:text-[#E5E4E2] underline underline-offset-2 transition-colors">
                   Privacy Policy
