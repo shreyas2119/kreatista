@@ -15,7 +15,7 @@ interface CalendlyModalProps {
   initialSubject?: string;
 }
 
-// Single persistent iframe — never unmounts after first load
+// Only mount iframe when modal is first opened — never preload
 let iframeLoaded = false;
 
 export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyModalProps) {
@@ -23,7 +23,6 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
-  // Mount the iframe once on first open
   useEffect(() => {
     if (open && !iframeLoaded) {
       iframeLoaded = true;
@@ -33,7 +32,6 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
     }
   }, [open]);
 
-  // Build Calendly URL with prefill via query params
   const url = new URL(calendlyUrl);
   if (initialSubject) url.searchParams.set("a1", initialSubject);
   const finalUrl = `${url.toString()}?embed_type=Inline&hide_event_type_details=0&hide_gdpr_banner=1`;
@@ -67,31 +65,8 @@ export function CalendlyModal({ open, onOpenChange, initialSubject }: CalendlyMo
   );
 }
 
-// Preload: render a hidden iframe after page idle so it's cached on first open
+// No-op export kept for backwards compatibility — preloading removed for performance
 export function CalendlyPreloader() {
-  const [preload, setPreload] = useState(false);
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/your-username/30min";
-
-  useEffect(() => {
-    const trigger = () => setPreload(true);
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(trigger, { timeout: 4000 });
-      return () => window.cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(trigger, 4000);
-      return () => clearTimeout(id);
-    }
-  }, []);
-
-  if (!preload) return null;
-
-  return (
-    <iframe
-      src={`${calendlyUrl}?embed_type=Inline`}
-      aria-hidden="true"
-      tabIndex={-1}
-      style={{ position: "fixed", top: 0, left: 0, width: 1, height: 1, opacity: 0, pointerEvents: "none", zIndex: -1, border: "none" }}
-    />
-  );
+  return null;
 }
 
