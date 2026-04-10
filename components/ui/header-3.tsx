@@ -12,6 +12,7 @@ import { AuthModal } from '@/components/ui/auth-modal';
 const navLinks = [
   { label: "Home",      href: "/" },
   { label: "Services",  href: "/services" },
+  { label: "Blog",      href: "/blog" },
   { label: "Portfolio", href: "/portfolio" },
 ];
 
