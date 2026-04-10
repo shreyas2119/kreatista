@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, Instrument_Serif } from "next/font/google";
+import { Space_Grotesk, Inter, Instrument_Serif, Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { ContactModalProvider } from "@/components/providers/contact-modal";
@@ -32,6 +32,22 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-accent", 
   display: "swap",
   style: ["normal", "italic"]
+});
+
+// Blog-specific fonts — Medium-style reading experience
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-blog-body",
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-blog-ui",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -93,7 +109,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
       <head>
       </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">

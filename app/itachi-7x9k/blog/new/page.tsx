@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { slugify } from "@/lib/slugify";
+import ImageUploader from "@/components/ui/image-uploader";
+import MarkdownRenderer from "@/components/ui/markdown-renderer";
+import BlogEditor from "@/components/ui/blog-editor";
+import CoverImageUploader from "@/components/ui/cover-image-uploader";
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -48,7 +51,7 @@ export default function NewPostPage() {
 
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <Link href="/itachi-7x9k/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Posts
@@ -57,6 +60,7 @@ export default function NewPostPage() {
         <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading mb-8">New Post</h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="max-w-3xl space-y-5">
           <Field label="Title *">
             <input required value={form.title} onChange={handleTitleChange}
               className={inputCls} placeholder="My awesome post" />
@@ -72,9 +76,11 @@ export default function NewPostPage() {
               className={inputCls} placeholder="Short description shown in the blog listing" />
           </Field>
 
-          <Field label="Cover Image URL">
-            <input value={form.cover_image} onChange={(e) => setForm((f) => ({ ...f, cover_image: e.target.value }))}
-              className={inputCls} placeholder="https://..." />
+          <Field label="Cover Image">
+            <CoverImageUploader
+              value={form.cover_image}
+              onChange={(url) => setForm((f) => ({ ...f, cover_image: url }))}
+            />
           </Field>
 
           <Field label="Author">
@@ -86,11 +92,16 @@ export default function NewPostPage() {
             <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))}
               className={inputCls} placeholder="Marketing, D2C, Social Media" />
           </Field>
+          </div>
 
-          <Field label="Content *">
-            <textarea required value={form.content} onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}
-              className={`${inputCls} min-h-[400px] resize-y`} placeholder="Write your post content here..." />
-          </Field>
+          {/* Content editor */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium tracking-wide uppercase text-[#B8C5D6]/50 font-body">Content *</label>
+            <BlogEditor
+              value={form.content}
+              onChange={(v) => setForm((f) => ({ ...f, content: v }))}
+            />
+          </div>
 
           <label className="flex items-center gap-3 cursor-pointer">
             <input type="checkbox" checked={form.published} onChange={(e) => setForm((f) => ({ ...f, published: e.target.checked }))}

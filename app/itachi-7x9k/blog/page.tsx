@@ -19,7 +19,7 @@ export default function AdminBlogPage() {
 
   useEffect(() => {
     if (!user) return;
-    fetch("/api/blog/posts")
+    fetch("/api/blog/posts?admin=1")
       .then((r) => r.json())
       .then((data) => { setPosts(data); setFetching(false); })
       .catch(() => setFetching(false));

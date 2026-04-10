@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import { getPublishedPosts } from "@/lib/blog";
+import ScrollToTop from "@/components/ui/scroll-to-top";
 
 export const metadata: Metadata = {
   title: "Blog — Insights on Content Marketing",
@@ -33,12 +34,12 @@ export default async function BlogPage() {
               <p className="text-[#B8C5D6]/40 font-body">No posts yet. Check back soon.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {posts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                  <article className="bg-[#151a21] border border-[#F8F8FF]/[0.06] rounded-xl overflow-hidden hover:border-[#F8F8FF]/[0.12] transition-colors duration-300">
+                <Link key={post.id} href={`/blog/${post.slug}`} className="group h-full">
+                  <article className="h-full flex flex-col bg-[#151a21] border border-[#F8F8FF]/[0.06] rounded-xl overflow-hidden hover:border-[#F8F8FF]/[0.12] transition-colors duration-300">
                     {post.cover_image && (
-                      <div className="aspect-video w-full overflow-hidden bg-[#1a1f26]">
+                      <div className="aspect-video w-full overflow-hidden bg-[#1a1f26] flex-shrink-0">
                         <img
                           src={post.cover_image}
                           alt={post.title}
@@ -46,7 +47,7 @@ export default async function BlogPage() {
                         />
                       </div>
                     )}
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       {post.tags && post.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-3">
                           {post.tags.slice(0, 2).map((tag) => (
@@ -56,15 +57,15 @@ export default async function BlogPage() {
                           ))}
                         </div>
                       )}
-                      <h2 className="text-lg font-semibold text-[#F8F8FF] leading-snug mb-2 font-heading group-hover:text-[#E5E4E2] transition-colors">
+                      <h2 className="text-lg font-semibold text-[#F8F8FF] leading-snug mb-2 font-heading group-hover:text-[#E5E4E2] transition-colors line-clamp-2">
                         {post.title}
                       </h2>
                       {post.excerpt && (
-                        <p className="text-sm text-[#B8C5D6]/50 leading-relaxed line-clamp-2 font-body">
+                        <p className="text-sm text-[#B8C5D6]/50 leading-relaxed line-clamp-2 font-body mb-4">
                           {post.excerpt}
                         </p>
                       )}
-                      <div className="mt-4 flex items-center justify-between">
+                      <div className="mt-auto flex items-center justify-between pt-4 border-t border-[#F8F8FF]/[0.04]">
                         <span className="text-xs text-[#B8C5D6]/30 font-body">
                           {post.author}
                         </span>
@@ -83,6 +84,7 @@ export default async function BlogPage() {
         </div>
       </section>
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

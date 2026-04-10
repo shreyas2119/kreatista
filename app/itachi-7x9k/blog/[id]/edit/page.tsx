@@ -5,6 +5,10 @@ import { useRouter, useParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import type { Post } from "@/lib/blog";
+import ImageUploader from "@/components/ui/image-uploader";
+import MarkdownRenderer from "@/components/ui/markdown-renderer";
+import BlogEditor from "@/components/ui/blog-editor";
+import CoverImageUploader from "@/components/ui/cover-image-uploader";
 
 const inputCls = "w-full bg-[#151a21] border border-[#F8F8FF]/[0.08] rounded-lg px-4 py-2.5 text-[#F8F8FF] text-sm font-body placeholder:text-[#B8C5D6]/20 focus:outline-none focus:border-[#E5E4E2]/30 transition-colors";
 
@@ -21,6 +25,7 @@ export default function EditPostPage() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const [saving, setSaving] = useState(false);
+  const [tab, setTab] = useState<"write" | "preview">("write");
   const [form, setForm] = useState({
     title: "", slug: "", excerpt: "", content: "",
     cover_image: "", author: "Socioryx", tags: "", published: false,
@@ -66,7 +71,7 @@ export default function EditPostPage() {
 
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <Link href="/itachi-7x9k/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Posts
@@ -75,6 +80,7 @@ export default function EditPostPage() {
         <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading mb-8">Edit Post</h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="max-w-3xl space-y-5">
           <Field label="Title *">
             <input required value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} className={inputCls} />
           </Field>
@@ -84,8 +90,11 @@ export default function EditPostPage() {
           <Field label="Excerpt">
             <input value={form.excerpt} onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))} className={inputCls} />
           </Field>
-          <Field label="Cover Image URL">
-            <input value={form.cover_image} onChange={(e) => setForm((f) => ({ ...f, cover_image: e.target.value }))} className={inputCls} />
+          <Field label="Cover Image">
+            <CoverImageUploader
+              value={form.cover_image}
+              onChange={(url) => setForm((f) => ({ ...f, cover_image: url }))}
+            />
           </Field>
           <Field label="Author">
             <input value={form.author} onChange={(e) => setForm((f) => ({ ...f, author: e.target.value }))} className={inputCls} />
@@ -93,9 +102,12 @@ export default function EditPostPage() {
           <Field label="Tags (comma separated)">
             <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))} className={inputCls} />
           </Field>
+          </div>
           <Field label="Content *">
-            <textarea required value={form.content} onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}
-              className={`${inputCls} min-h-[400px] resize-y`} />
+            <BlogEditor
+              value={form.content}
+              onChange={(v) => setForm((f) => ({ ...f, content: v }))}
+            />
           </Field>
 
           <label className="flex items-center gap-3 cursor-pointer">

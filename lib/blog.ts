@@ -1,4 +1,7 @@
-import { supabase, supabaseAdmin } from "./supabase";
+import { supabaseAdmin } from "./supabase";
+
+// All blog functions are server-side only — use supabaseAdmin throughout
+const supabase = supabaseAdmin;
 
 export interface Post {
   id: string;

@@ -10,5 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/portfolio`,lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/team`,     lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    {
+      url: `${base}/blog/how-do-d2c-brands-grow-online-in-india`,
+      lastModified: new Date("2026-04-09T00:00:00.000Z"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 }
