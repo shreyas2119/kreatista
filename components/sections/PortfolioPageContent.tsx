@@ -23,13 +23,13 @@ export default function PortfolioPageContent() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${idToken}`,
+          Authorization: `Bearer ${idToken}`,
         },
         body: JSON.stringify({}),
       });
       const data = await res.json();
       if (data.url) {
-        window.location.href = data.url;
+        window.open(data.url, "_blank", "noopener,noreferrer");
       } else {
         setError("Could not load portfolio. Please try again.");
       }
@@ -51,9 +51,13 @@ export default function PortfolioPageContent() {
   return (
     <>
       <section className="min-h-screen flex items-center justify-center px-5 sm:px-8 relative overflow-hidden">
-        {/* subtle background glow */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(229,228,226,0.04) 0, transparent 70%)" }}
+        {/* Subtle background glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(229,228,226,0.04) 0, transparent 70%)",
+          }}
         />
 
         <motion.div
@@ -76,7 +80,7 @@ export default function PortfolioPageContent() {
           </h1>
 
           <p className="text-[#B8C5D6]/60 text-base leading-relaxed mb-10 font-body">
-            To view our portfolio, you need to sign in first.
+            Sign in to access our portfolio deck — case studies, results and campaigns.
           </p>
 
           {error && <p className="text-red-400 text-xs mb-4 font-body">{error}</p>}
