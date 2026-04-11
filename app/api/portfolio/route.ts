@@ -36,14 +36,16 @@ export async function POST(req: NextRequest) {
 
     if (error || !data?.signedUrl) {
       console.error("Supabase signed URL error:", error);
-      return NextResponse.json({ error: "Could not generate link" }, { status: 500 });
+      return NextResponse.json({ error: "Could not generate link", detail: error?.message }, { status: 500 });
     }
 
-    // 4. Log access
-    await supabaseAdmin.from("portfolio_access").insert({
+    // 4. Log access (non-blocking — don't fail if table doesn't exist)
+    supabaseAdmin.from("portfolio_access").insert({
       firebase_uid: uid,
       email,
       accessed_at: new Date().toISOString(),
+    }).then(({ error: logError }) => {
+      if (logError) console.warn("Portfolio access log failed (non-critical):", logError.message);
     });
 
     return NextResponse.json({ url: data.signedUrl });
