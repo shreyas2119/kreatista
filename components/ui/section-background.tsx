@@ -27,16 +27,17 @@ export function SectionBackground({
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 relative"
+        className="absolute inset-0"
       >
         <Image
           src={imageUrl}
-          alt="Background"
+          alt=""
           fill
           sizes="100vw"
           className={`object-cover ${blur ? "blur-sm" : ""}`}
           priority
           quality={90}
+          aria-hidden="true"
         />
       </motion.div>
 

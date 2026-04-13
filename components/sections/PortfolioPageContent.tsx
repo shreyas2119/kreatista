@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Unlock, ArrowRight, LogOut, FileText, Clock } from "lucide-react";
 import { useAuth } from "@/components/providers/auth-provider";
@@ -19,8 +19,31 @@ export default function PortfolioPageContent() {
   const [authOpen, setAuthOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [prefetchedUrl, setPrefetchedUrl] = useState<string | null>(null);
+
+  // Pre-fetch the signed URL as soon as user is authenticated
+  // so clicking "Open Portfolio" is instant
+  useEffect(() => {
+    if (!user) { setPrefetchedUrl(null); return; }
+    getIdToken(user, true).then((idToken) =>
+      fetch("/api/portfolio", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${idToken}` },
+        body: JSON.stringify({}),
+      })
+    ).then((r) => r.json())
+     .then((data) => { if (data.url) setPrefetchedUrl(data.url); })
+     .catch(() => {}); // silent — will retry on click
+  }, [user]);
 
   const openPortfolio = async (u: User) => {
+    // Use prefetched URL if available — instant open
+    if (prefetchedUrl) {
+      window.location.href = prefetchedUrl;
+      setPrefetchedUrl(null); // clear so next open fetches fresh URL
+      return;
+    }
+
     setLoading(true);
     setError("");
     try {

@@ -88,6 +88,9 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
           <DialogPrimitive.Title className="sr-only">
             {mode === "signin" ? "Sign in to view portfolio" : "Create an account"}
           </DialogPrimitive.Title>
+          <DialogPrimitive.Description className="sr-only">
+            {mode === "signin" ? "Sign in with Google or email to access the Socioryx portfolio deck." : "Create an account to access the Socioryx portfolio deck."}
+          </DialogPrimitive.Description>
           <DialogPrimitive.Close className="absolute right-4 top-4 w-9 h-9 rounded-full flex items-center justify-center bg-[#1a1f26] border border-[#F8F8FF]/[0.08] text-[#B8C5D6]/60 hover:bg-red-500 hover:border-red-500 hover:text-white transition-all duration-200 focus:outline-none">
             <X className="w-4 h-4" />
           </DialogPrimitive.Close>

@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 const BUCKET = "portfolio";
 const FILE_PATH = "deck.pdf";
-const SIGNED_URL_EXPIRY = 60; // seconds
+const SIGNED_URL_EXPIRY = 300; // 5 minutes
 
 export async function POST(req: NextRequest) {
   try {
