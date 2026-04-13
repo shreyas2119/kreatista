@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   let query = supabaseAdmin
     .from("contact_submissions")
     .select("*", { count: "exact" })
-    .order("created_at", { ascending: false })
+    .order("id", { ascending: false })
     .range(offset, offset + limit - 1);
 
   if (service && service !== "all") query = query.eq("subject", service);
