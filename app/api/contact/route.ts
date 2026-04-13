@@ -121,8 +121,8 @@ export async function POST(request: Request) {
 
     if (dbError) console.error("Supabase insert error:", dbError);
 
-    // Fire emails in background
-    Promise.all([
+    // Fire emails — await so errors are logged and visible
+    const emailResults = await Promise.allSettled([
       transporter.sendMail({
         from: `"Socioryx Team" <${process.env.GMAIL_USER}>`,
         replyTo: process.env.GMAIL_USER,
@@ -134,10 +134,16 @@ export async function POST(request: Request) {
         from: `"Socioryx Contact Form" <${process.env.GMAIL_USER}>`,
         replyTo: email,
         to: process.env.GMAIL_USER!,
-        subject: `🔔 New Contact: ${firstName} ${lastName} — ${subject}`,
+        subject: `New Contact: ${firstName} ${lastName} — ${subject}`,
         html: internalEmailHtml(firstName, lastName, email, subject, message),
       }),
-    ]).catch((err) => console.error("Email send error:", err));
+    ]);
+
+    emailResults.forEach((result, i) => {
+      if (result.status === "rejected") {
+        console.error(`Email ${i === 0 ? "client" : "internal"} send failed:`, result.reason);
+      }
+    });
 
     return NextResponse.json({ success: true, message: "Form submitted successfully" });
   } catch (error) {
