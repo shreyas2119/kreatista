@@ -32,14 +32,7 @@ export default function PortfolioPageContent() {
       });
       const data = await res.json();
       if (data.url) {
-        // Create a hidden anchor and click it — bypasses popup blockers entirely
-        const a = document.createElement("a");
-        a.href = data.url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        window.location.href = data.url;
       } else {
         setError("Could not load portfolio. Please try again.");
       }
