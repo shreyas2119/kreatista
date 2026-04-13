@@ -15,6 +15,8 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
+      wrapper: document.documentElement,
+      content: document.documentElement,
     });
 
     function raf(time: number) {
