@@ -51,6 +51,7 @@ start-tunnel.ps1
 
 # Quick fix guides (optional - remove if you want to commit them)
 QUICK_FIX_GUIDE.md
+/docs
 
 # Course output
 /socioryx-course/
