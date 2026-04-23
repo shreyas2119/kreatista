@@ -50,8 +50,9 @@ export async function POST(req: Request) {
 
     const post = await createPost(body);
     return NextResponse.json(post, { status: 201 });
-  } catch (err) {
-    console.error("Create post error:", err);
-    return NextResponse.json({ error: "Failed to create post", detail: String(err) }, { status: 500 });
+  } catch (err: any) {
+    const detail = err?.message ?? err?.code ?? JSON.stringify(err);
+    console.error("Create post error:", detail);
+    return NextResponse.json({ error: "Failed to create post", detail }, { status: 500 });
   }
 }
