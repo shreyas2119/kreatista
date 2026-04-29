@@ -215,9 +215,7 @@ See `FONT_SYSTEM.md` for detailed usage guidelines.
 
 MIT
 
-## Author
 
-[shreyas2119](https://github.com/shreyas2119)
 
 ## Support
 

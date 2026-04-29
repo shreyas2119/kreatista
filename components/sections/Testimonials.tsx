@@ -111,7 +111,7 @@ export default function Testimonials() {
                     ))}
                   </div>
 
-                  <p className={`leading-relaxed mb-6 font-body ${isFeatured ? "text-base text-[#F8F8FF]/90" : "text-sm text-[#F8F8FF]/70"}`}>
+                  <p className={`leading-relaxed mb-6 font-body ${isFeatured ? "text-base text-[#F8F8FF]/90" : "text-sm text-[#F8F8FF]/80"}`}>
                     &ldquo;{t.text}&rdquo;
                   </p>
 
@@ -121,7 +121,7 @@ export default function Testimonials() {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-[#F8F8FF] font-heading">{t.name}</p>
-                      <p className="text-xs text-[#B8C5D6]/50 font-body">{t.role}</p>
+                      <p className="text-xs text-[#B8C5D6]/80 font-body">{t.role}</p>
                     </div>
                   </div>
                 </motion.div>

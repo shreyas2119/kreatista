@@ -2,30 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import type { Post } from "@/lib/blog";
-import ImageUploader from "@/components/ui/image-uploader";
-import MarkdownRenderer from "@/components/ui/markdown-renderer";
 import BlogEditor from "@/components/ui/blog-editor";
 import CoverImageUploader from "@/components/ui/cover-image-uploader";
-
-const inputCls = "w-full bg-[#151a21] border border-[#F8F8FF]/[0.08] rounded-lg px-4 py-2.5 text-[#F8F8FF] text-sm font-body placeholder:text-[#B8C5D6]/20 focus:outline-none focus:border-[#E5E4E2]/30 transition-colors";
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-1.5">
-      <label className="text-xs font-medium tracking-wide uppercase text-[#B8C5D6]/50 font-body">{label}</label>
-      {children}
-    </div>
-  );
-}
+import { AdminField, AdminBackLink, adminInputCls } from "@/components/ui/admin-form-field";
 
 export default function EditPostPage() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const [saving, setSaving] = useState(false);
-  const [tab, setTab] = useState<"write" | "preview">("write");
   const [form, setForm] = useState({
     title: "", slug: "", excerpt: "", content: "",
     cover_image: "", author: "Socioryx", tags: "", published: false,
@@ -72,43 +58,40 @@ export default function EditPostPage() {
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
       <div className="max-w-6xl mx-auto">
-        <Link href="/itachi-7x9k/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Posts
-        </Link>
+        <AdminBackLink href="/itachi-7x9k/blog" label="Back to Posts" />
 
         <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading mb-8">Edit Post</h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="max-w-3xl space-y-5">
-          <Field label="Title *">
-            <input required value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} className={inputCls} />
-          </Field>
-          <Field label="Slug *">
-            <input required value={form.slug} onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))} className={inputCls} />
-          </Field>
-          <Field label="Excerpt">
-            <input value={form.excerpt} onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))} className={inputCls} />
-          </Field>
-          <Field label="Cover Image">
+          <AdminField label="Title *">
+            <input required value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} className={adminInputCls} />
+          </AdminField>
+          <AdminField label="Slug *">
+            <input required value={form.slug} onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))} className={adminInputCls} />
+          </AdminField>
+          <AdminField label="Excerpt">
+            <input value={form.excerpt} onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))} className={adminInputCls} />
+          </AdminField>
+          <AdminField label="Cover Image">
             <CoverImageUploader
               value={form.cover_image}
               onChange={(url) => setForm((f) => ({ ...f, cover_image: url }))}
             />
-          </Field>
-          <Field label="Author">
-            <input value={form.author} onChange={(e) => setForm((f) => ({ ...f, author: e.target.value }))} className={inputCls} />
-          </Field>
-          <Field label="Tags (comma separated)">
-            <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))} className={inputCls} />
-          </Field>
+          </AdminField>
+          <AdminField label="Author">
+            <input value={form.author} onChange={(e) => setForm((f) => ({ ...f, author: e.target.value }))} className={adminInputCls} />
+          </AdminField>
+          <AdminField label="Tags (comma separated)">
+            <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))} className={adminInputCls} />
+          </AdminField>
           </div>
-          <Field label="Content *">
+          <AdminField label="Content *">
             <BlogEditor
               value={form.content}
               onChange={(v) => setForm((f) => ({ ...f, content: v }))}
             />
-          </Field>
+          </AdminField>
 
           <label className="flex items-center gap-3 cursor-pointer">
             <input type="checkbox" checked={form.published} onChange={(e) => setForm((f) => ({ ...f, published: e.target.checked }))}

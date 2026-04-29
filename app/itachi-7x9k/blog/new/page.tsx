@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";import { useRouter } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { slugify } from "@/lib/slugify";
 import ImageUploader from "@/components/ui/image-uploader";
 import MarkdownRenderer from "@/components/ui/markdown-renderer";
 import BlogEditor from "@/components/ui/blog-editor";
 import CoverImageUploader from "@/components/ui/cover-image-uploader";
+import { AdminField, AdminBackLink, adminInputCls } from "@/components/ui/admin-form-field";
+import Link from "next/link";
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -52,46 +53,43 @@ export default function NewPostPage() {
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
       <div className="max-w-6xl mx-auto">
-        <Link href="/itachi-7x9k/blog" className="inline-flex items-center gap-2 text-sm text-[#B8C5D6] hover:text-[#E5E4E2] transition-colors mb-8 group font-body">
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Posts
-        </Link>
+        <AdminBackLink href="/itachi-7x9k/blog" label="Back to Posts" />
 
         <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading mb-8">New Post</h1>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="max-w-3xl space-y-5">
-          <Field label="Title *">
+          <AdminField label="Title *">
             <input required value={form.title} onChange={handleTitleChange}
-              className={inputCls} placeholder="My awesome post" />
-          </Field>
+              className={adminInputCls} placeholder="My awesome post" />
+          </AdminField>
 
-          <Field label="Slug *">
+          <AdminField label="Slug *">
             <input required value={form.slug} onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))}
-              className={inputCls} placeholder="my-awesome-post" />
-          </Field>
+              className={adminInputCls} placeholder="my-awesome-post" />
+          </AdminField>
 
-          <Field label="Excerpt">
+          <AdminField label="Excerpt">
             <input value={form.excerpt} onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))}
-              className={inputCls} placeholder="Short description shown in the blog listing" />
-          </Field>
+              className={adminInputCls} placeholder="Short description shown in the blog listing" />
+          </AdminField>
 
-          <Field label="Cover Image">
+          <AdminField label="Cover Image">
             <CoverImageUploader
               value={form.cover_image}
               onChange={(url) => setForm((f) => ({ ...f, cover_image: url }))}
             />
-          </Field>
+          </AdminField>
 
-          <Field label="Author">
+          <AdminField label="Author">
             <input value={form.author} onChange={(e) => setForm((f) => ({ ...f, author: e.target.value }))}
-              className={inputCls} />
-          </Field>
+              className={adminInputCls} />
+          </AdminField>
 
-          <Field label="Tags (comma separated)">
+          <AdminField label="Tags (comma separated)">
             <input value={form.tags} onChange={(e) => setForm((f) => ({ ...f, tags: e.target.value }))}
-              className={inputCls} placeholder="Marketing, D2C, Social Media" />
-          </Field>
+              className={adminInputCls} placeholder="Marketing, D2C, Social Media" />
+          </AdminField>
           </div>
 
           {/* Content editor */}
@@ -125,13 +123,3 @@ export default function NewPostPage() {
   );
 }
 
-const inputCls = "w-full bg-[#151a21] border border-[#F8F8FF]/[0.08] rounded-lg px-4 py-2.5 text-[#F8F8FF] text-sm font-body placeholder:text-[#B8C5D6]/20 focus:outline-none focus:border-[#E5E4E2]/30 transition-colors";
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-1.5">
-      <label className="text-xs font-medium tracking-wide uppercase text-[#B8C5D6]/50 font-body">{label}</label>
-      {children}
-    </div>
-  );
-}

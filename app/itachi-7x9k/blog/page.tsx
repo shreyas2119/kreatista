@@ -4,26 +4,22 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Plus, Pencil, Trash2, Eye, EyeOff } from "lucide-react";
-import { useAuth } from "@/components/providers/auth-provider";
 import type { Post } from "@/lib/blog";
 
 export default function AdminBlogPage() {
-  const { user, loading } = useAuth();
   const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
-    if (!loading && !user) router.replace("/");
-  }, [user, loading, router]);
-
-  useEffect(() => {
-    if (!user) return;
     fetch("/api/blog/posts?admin=1")
-      .then((r) => r.json())
-      .then((data) => { setPosts(data); setFetching(false); })
+      .then((r) => {
+        if (r.status === 401) { router.replace("/itachi-7x9k/login"); return null; }
+        return r.json();
+      })
+      .then((data) => { if (data) { setPosts(data); setFetching(false); } })
       .catch(() => setFetching(false));
-  }, [user]);
+  }, [router]);
 
   const deletePost = async (id: string) => {
     if (!confirm("Delete this post?")) return;
@@ -44,7 +40,11 @@ export default function AdminBlogPage() {
     setPosts((p) => p.map((x) => (x.id === post.id ? updated : x)));
   };
 
-  if (loading || !user) return null;
+  if (fetching) return (
+    <main className="min-h-screen bg-[#0f1419] flex items-center justify-center">
+      <p className="text-[#B8C5D6]/40 font-body text-sm">Loading...</p>
+    </main>
+  );
 
   return (
     <main className="min-h-screen bg-[#0f1419] px-5 sm:px-8 lg:px-16 py-16">
@@ -54,18 +54,24 @@ export default function AdminBlogPage() {
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-1 font-body">Admin</p>
             <h1 className="text-3xl font-semibold text-[#F8F8FF] font-heading">Blog Posts</h1>
           </div>
-          <Link
-            href="/itachi-7x9k/blog/new"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E5E4E2] text-[#0f1419] text-sm font-extrabold font-heading rounded-lg hover:bg-[#D0CFD0] transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            New Post
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/itachi-7x9k/leads"
+              className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#F8F8FF]/[0.08] text-[#B8C5D6]/60 text-sm font-body rounded-lg hover:bg-white/[0.04] hover:text-[#E5E4E2] transition-colors"
+            >
+              Leads
+            </Link>
+            <Link
+              href="/itachi-7x9k/blog/new"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E5E4E2] text-[#0f1419] text-sm font-extrabold font-heading rounded-lg hover:bg-[#D0CFD0] transition-colors"
+            >
+              <Plus className="w-4 h-4" />
+              New Post
+            </Link>
+          </div>
         </div>
 
-        {fetching ? (
-          <p className="text-[#B8C5D6]/40 font-body">Loading...</p>
-        ) : posts.length === 0 ? (
+        {posts.length === 0 ? (
           <p className="text-[#B8C5D6]/40 font-body">No posts yet. Create your first one.</p>
         ) : (
           <div className="space-y-3">

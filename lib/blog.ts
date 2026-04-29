@@ -89,12 +89,3 @@ export async function deletePost(id: string): Promise<void> {
   const { error } = await supabaseAdmin.from("posts").delete().eq("id", id);
   if (error) throw error;
 }
-
-// Utility — generate slug from title
-export function slugify(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-}
