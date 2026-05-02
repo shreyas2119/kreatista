@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Globe, Megaphone, Film, Users, Share2, BarChart2 } from "lucide-react";
+import Link from "next/link";
 import { useContactModal } from "@/components/providers/contact-modal";
 import { SectionBackground, backgroundPresets } from "@/components/ui/section-background";
 
@@ -146,6 +147,23 @@ export default function Services() {
             );
           })}
         </div>
+
+        {/* Internal link to services page */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 flex justify-center"
+        >
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#B8C5D6]/50 hover:text-[#E5E4E2] transition-colors group font-body border border-[#F8F8FF]/[0.08] hover:border-[#E5E4E2]/20 px-6 py-3 rounded-lg"
+          >
+            Explore all services
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
