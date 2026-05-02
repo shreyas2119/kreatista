@@ -83,10 +83,10 @@ export default function Services() {
         >
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">Services</p>
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-semibold text-[#F8F8FF] leading-none tracking-[-0.04em] mb-4 font-heading">
-            Our Ecosystem
+            Digital Marketing Services
           </h2>
           <p className="text-sm sm:text-base text-[#B8C5D6]/60 max-w-md leading-relaxed font-body">
-            Comprehensive solutions tailored for high-growth digital brands.
+            End-to-end content marketing for D2C brands, SaaS startups, and creators in India.
           </p>
         </motion.div>
 

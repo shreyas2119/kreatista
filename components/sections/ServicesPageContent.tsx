@@ -8,6 +8,7 @@ import {
   Radio, Users, Play, AlertCircle,
 } from "lucide-react";
 import { useContactModal } from "@/components/providers/contact-modal";
+import FAQ from "@/components/sections/FAQ";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -35,15 +36,15 @@ export default function ServicesPageContent() {
               {...fadeUp(0.1)}
               className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-[-0.04em] leading-[0.9] text-[#F8F8FF] font-heading"
             >
-              Everything your{" "}
-              <span className="text-[#E5E4E2]">brand</span>{" "}
-              needs to{" "}
-              <span className="italic font-light text-[#B8C5D6] font-accent">blow up.</span>
+              Content Marketing{" "}
+              <span className="text-[#E5E4E2]">Services</span>{" "}
+              for D2C Brands{" "}
+              <span className="italic font-light text-[#B8C5D6] font-accent">and SaaS Startups.</span>
             </motion.h1>
           </div>
           <motion.div {...fadeUp(0.2)} className="pb-2 max-w-md">
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg border-l-2 border-[#F8F8FF]/20 pl-5 leading-relaxed font-body">
-              One team. Six services. No more juggling five different agencies and hoping they talk to each other.
+              One team handles your website, content, social media, influencer campaigns, and video production. No agency juggling. No briefing five teams.
             </p>
           </motion.div>
         </div>
@@ -60,7 +61,7 @@ export default function ServicesPageContent() {
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-[#F8F8FF] mb-5 tracking-[-0.03em] font-heading">
-              A website that actually converts
+              Website Design and Development for D2C Brands
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body max-w-2xl">
               Most brand websites look fine and do nothing. We build sites that turn visitors into customers. Fast-loading, mobile-first, and designed around how your audience actually behaves.
@@ -107,7 +108,7 @@ export default function ServicesPageContent() {
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl font-semibold text-[#F8F8FF] mb-5 leading-tight tracking-[-0.03em] font-heading">
-              Make your brand the obvious choice
+              Brand Marketing and Positioning Strategy
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body">
               Your competitors are louder. We make you clearer. We figure out exactly what makes you different, then build messaging that makes your audience feel like you were made for them.
@@ -153,14 +154,14 @@ export default function ServicesPageContent() {
           {[
             {
               num: "03 / Content",
-              title: "Content that stops the scroll",
+              title: "Content Creation for Social Media",
               desc: "We create content people actually want to watch, read, and share. Not just stuff that fills a calendar. Every post has a job to do.",
               service: "Content Creation",
               Icon: PenLine,
             },
             {
               num: "04 / Social Media",
-              title: "Always on, always relevant",
+              title: "Social Media Management Services",
               desc: "Posting consistently is hard when you're running a business. We handle the whole thing: strategy, creation, scheduling, and community. So you don't have to think about it.",
               service: "Social Media Management",
               Icon: Radio,
@@ -204,7 +205,7 @@ export default function ServicesPageContent() {
               05 / Influencer Collabs
             </span>
             <h2 className="text-4xl sm:text-5xl font-semibold text-[#F8F8FF] mb-5 tracking-[-0.03em] font-heading">
-              Reach that actually converts
+              Influencer Marketing for D2C Brands in India
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body">
               Follower counts are vanity. We connect you with creators whose audiences trust them. When they talk about your brand, people actually listen and buy.
@@ -240,7 +241,7 @@ export default function ServicesPageContent() {
               06 / Video
             </span>
             <h2 className="text-4xl sm:text-5xl font-semibold text-[#F8F8FF] mb-5 tracking-[-0.03em] font-heading">
-              Video people don&apos;t skip
+              Video Production Services
             </h2>
             <p className="text-[#B8C5D6]/70 text-base sm:text-lg mb-7 leading-relaxed font-body">
               From a 15-second hook to a full brand film. We make video that earns attention. Not just pretty visuals, but content engineered to perform on the platforms your audience actually uses.
@@ -266,6 +267,9 @@ export default function ServicesPageContent() {
           </motion.div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <FAQ />
 
       {/* ── CTA / Contact ── */}
       <section className="px-5 sm:px-8 lg:px-16 py-24 sm:py-32 bg-[#0e0e15] overflow-hidden">

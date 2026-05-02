@@ -33,7 +33,7 @@ export default function LoadingScreen() {
         }
         return next;
       });
-    }, 60);
+    }, 40);
 
     return () => { clearInterval(interval); };
   }, []);

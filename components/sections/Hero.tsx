@@ -53,8 +53,9 @@ export default function Hero() {
           ref={headingRef}
           className="text-[clamp(2.8rem,7vw,6.5rem)] font-heading font-semibold tracking-[-0.04em] leading-[0.92] text-[#F8F8FF] mb-6 overflow-visible"
         >
-          <motion.span {...fadeUp(0.1)} className="block overflow-visible">Welcome to the <span className="text-[#E5E4E2]">home</span> of</motion.span>
-          <motion.span {...fadeUp(0.18)} className="block">Next Gen Growth.</motion.span>
+          <motion.span {...fadeUp(0.1)} className="block overflow-visible">Content Marketing</motion.span>
+          <motion.span {...fadeUp(0.18)} className="block"><span className="text-[#E5E4E2]">Agency</span> for D2C</motion.span>
+          <motion.span {...fadeUp(0.24)} className="block">Brands in India.</motion.span>
         </h1>
 
         {/* Subheading */}
@@ -62,7 +63,7 @@ export default function Hero() {
           {...fadeUp(0.28)}
           className="text-base sm:text-xl font-body font-light text-[#B8C5D6]/80 leading-relaxed max-w-xl mb-10"
         >
-          Powering digital expansion with strategy, scale, and precision.
+          One team for websites, social media, video, and influencer marketing. We help D2C brands and SaaS startups grow online.
         </motion.p>
 
         {/* CTAs */}

@@ -39,12 +39,12 @@ export const team: TeamMember[] = [
     photo: "/images/team/hitesh.jpeg",
     socials: { instagram: "https://www.instagram.com/iam_hitesh_05/" },
   },
-  {
-    name: "Tanay Paliwal",
-    role: "Content Executive Lead",
-    photo: "/images/team/tanay.jpeg",
-    socials: { instagram: "https://www.instagram.com/tanaypaliwal17/" },
-  },
+  // {
+  //   name: "Tanay Paliwal",
+  //   role: "Content Executive Lead",
+  //   photo: "/images/team/tanay.jpeg",
+  //   socials: { instagram: "https://www.instagram.com/tanaypaliwal17/" },
+  // },
   {
     name: "Srajan Soni",
     role: "Video Editor",
