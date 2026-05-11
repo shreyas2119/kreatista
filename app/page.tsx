@@ -7,8 +7,8 @@ import Hero from "@/components/sections/Hero";
 // Force fresh evaluation on every request — needed for time-based redirect
 export const revalidate = 0;
 
-// Launch: 23:30 IST = 18:00 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T18:00:00Z").getTime();
+// Launch: 23:52 IST = 18:22 UTC on May 10, 2026
+const LAUNCH_TIME = new Date("2026-05-10T18:22:00Z").getTime();
 
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const Services = dynamic(() => import("@/components/sections/Services"));
@@ -32,8 +32,8 @@ const jsonLd = {
     addressCountry: "IN",
   },
   sameAs: [
-    "https://www.instagram.com/droppingsoon12/",
-    "https://www.linkedin.com/company/socioryx",
+    "https://www.instagram.com/socioryx_network/",
+    "https://www.linkedin.com/company/socioryx/",
     "https://x.com/SocioryxN79343",
   ],
   contactPoint: {

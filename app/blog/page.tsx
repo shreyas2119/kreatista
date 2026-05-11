@@ -7,7 +7,7 @@ import ScrollToTop from "@/components/ui/scroll-to-top";
 
 export const metadata: Metadata = {
   title: "Blog — Insights on Content Marketing",
-  description: "Strategies, insights and playbooks from the Socioryx team on content marketing, D2C growth, and social media.",
+  description: "Content marketing insights, D2C growth strategies, and social media playbooks from the Socioryx team. Practical guides for Indian brands and SaaS startups.",
   alternates: { canonical: "https://socioryx.com/blog" },
 };
 

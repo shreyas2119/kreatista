@@ -5,7 +5,7 @@ import TeamPageContent from "@/components/sections/TeamPageContent";
 
 export const metadata: Metadata = {
   title: "Meet the Team — Strategists, Creators & Builders",
-  description: "Meet the minds behind Socioryx — a team of strategists, creators and builders obsessed with making brands impossible to ignore.",
+  description: "Meet the Socioryx team — 9 specialists in content strategy, social media, video production, influencer marketing, and web development based in India.",
   alternates: { canonical: "https://socioryx.com/team" },
   openGraph: {
     title: "Meet the Team | Socioryx",

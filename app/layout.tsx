@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     default: "Socioryx — Content Marketing Agency India",
     template: "%s | Socioryx",
   },
-  description: "Socioryx is a full-stack content marketing agency in India helping D2C brands, SaaS startups & creators grow through video, social media, influencer marketing and web design.",
+  description: "Socioryx is a content marketing agency in India for D2C brands and SaaS startups. One team for websites, social media, video, and influencer marketing. Book a free strategy call.",
   keywords: ["content marketing agency India", "D2C marketing agency", "SaaS marketing India", "social media agency India", "video production agency", "influencer marketing India", "digital marketing agency"],
   authors: [{ name: "Socioryx" }],
   creator: "Socioryx",

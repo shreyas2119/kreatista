@@ -5,7 +5,7 @@ import ServicesPageContent from "@/components/sections/ServicesPageContent";
 
 export const metadata: Metadata = {
   title: "Content Marketing Services — Video, Social Media & Web Design",
-  description: "Socioryx offers end-to-end content marketing services for D2C brands and SaaS startups in India — video production, social media management, influencer collabs, website design and growth strategy.",
+  description: "Website design, social media management, video production, influencer marketing, and brand positioning for D2C brands and SaaS startups in India. Get a custom quote.",
   alternates: { canonical: "https://socioryx.com/services" },
   openGraph: {
     title: "Content Marketing Services | Socioryx",

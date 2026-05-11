@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Launch: 23:30 IST = 18:00 UTC on April 4, 2026
-const LAUNCH_TIME = new Date("2026-04-04T18:00:00Z").getTime();
+// Launch: 23:52 IST = 18:22 UTC on May 10, 2026
+const LAUNCH_TIME = new Date("2026-05-10T18:22:00Z").getTime();
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -92,7 +92,7 @@ export default function CountdownPage() {
         </div>
 
       <p className="mt-8 text-xs text-[#B8C5D6]/30 font-body relative z-10">
-        April 4, 2026 · 11:16 PM IST
+        May 10, 2026 · 11:52 PM IST
       </p>
     </main>
   );
