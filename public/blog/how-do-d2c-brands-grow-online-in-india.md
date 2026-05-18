@@ -143,4 +143,4 @@ Scaling paid ads before building organic presence and retention systems. Brands 
 
 Growing a D2C brand online in India requires a disciplined approach across content, community, conversion, and paid channels. The brands that win are not the ones with the biggest budgets — they are the ones with the clearest strategy and the most consistent execution.
 
-If you are building a D2C brand and want a team that handles content, social media, influencer marketing, and growth strategy under one roof, [Socioryx](https://socioryx.com) works with D2C founders to build exactly that. Reach out to start a conversation.
+If you are building a D2C brand and want a team that handles content, social media, influencer marketing, and growth strategy under one roof, [Socioryx](https://socioryx.com) works with D2C founders to build exactly that. Explore our [content marketing services for D2C brands](https://socioryx.com/services) or reach out to start a conversation.
