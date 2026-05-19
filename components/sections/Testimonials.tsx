@@ -7,34 +7,28 @@ const testimonials = [
   {
     name: "Yash Patidar",
     role: "Co-Founder at TypethinkAI",
-    text: "As a growing brand, we needed more than marketing we needed direction, and Socioryx delivered exactly that they helped us build a strong digital presence with content and strategies that truly connect with our audience their clarity, consistency, and focus on meaningful growth made a clear impact. The results speak for themselves  stronger presence, better engagement, and a more aligned brand.",
+    text: "As a growing brand, we needed more than marketing we needed direction, and Socioryx delivered exactly that they helped us build a strong digital presence with content and strategies that truly connect with our audience their clarity, consistency, and focus on meaningful growth made a clear impact. The results speak for themselves stronger presence, better engagement, and a more aligned brand.",
     stars: 5,
   },
   {
     name: "Arunima Agrawal",
     role: "Developer at ClawsifyAI",
-    text: "When I first came across Socioryx, the meaning behind the name  combining “Socio” with the idea of rising to something extraordinary  instantly stood out. After working with them, I can confidently say they don't just represent it, they deliver on it through their work and results.",
+    text: "When I first came across Socioryx, the meaning behind the name combining Socio with the idea of rising to something extraordinary instantly stood out. After working with them, I can confidently say they don't just represent it, they deliver on it through their work and results.",
     stars: 5,
     featured: true,
   },
-  // {
-  //   name: "Rohan Kapoor",
-  //   role: "CEO, BuildFast",
-  //   text: "As a SaaS founder, it's hard to find an agency that gets product marketing. Socioryx scaled our trial signups 40% in 6 weeks.",
-  //   stars: 5,
-  // },
 ];
 
 export default function Testimonials() {
   const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const x = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Duplicate testimonials for infinite scroll
   const allTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || isDragging) return;
 
     const controls = animate(x, -33.33, {
       duration: 20,
@@ -44,7 +38,7 @@ export default function Testimonials() {
     });
 
     return controls.stop;
-  }, [isPaused, x]);
+  }, [isPaused, isDragging, x]);
 
   return (
     <section className="py-20 sm:py-32 px-5 sm:px-8 lg:px-16 bg-[#0f1419] overflow-hidden">
@@ -62,45 +56,51 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* Infinite scroll carousel */}
-        <div 
+        {/* Carousel — auto-scrolls, pauses on hover/touch, draggable */}
+        <div
           ref={containerRef}
-          className="relative overflow-hidden"
+          className="relative overflow-hidden cursor-grab active:cursor-grabbing"
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={() => { setIsPaused(false); setIsDragging(false); }}
         >
-          <motion.div 
+          <motion.div
             className="flex gap-4"
             style={{ x: useTransform(x, (v) => `${v}%`) }}
+            drag="x"
+            dragConstraints={containerRef}
+            dragElastic={0.08}
+            dragMomentum={true}
+            onDragStart={() => { setIsDragging(true); setIsPaused(true); }}
+            onDragEnd={() => {
+              setIsDragging(false);
+              setTimeout(() => setIsPaused(false), 800);
+            }}
           >
             {allTestimonials.map((t, i) => {
               const isFeatured = t.featured;
-              
+
               return (
                 <motion.div
                   key={`${t.name}-${i}`}
-                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] p-7 sm:p-8 relative ${
+                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] p-7 sm:p-8 relative select-none ${
                     isFeatured
                       ? "bg-[#1a1f26] shadow-2xl shadow-black/40 outline outline-1 outline-[#E5E4E2]/20"
                       : "bg-[#151a21]"
                   }`}
-                  whileHover={{ 
-                    scale: 1.05, 
+                  whileHover={!isDragging ? {
+                    scale: 1.05,
                     rotateY: 5,
                     z: 50,
                     transition: { duration: 0.3 }
-                  }}
-                  style={{
-                    transformStyle: "preserve-3d",
-                    perspective: 1000,
-                  }}
+                  } : {}}
+                  style={{ transformStyle: "preserve-3d", perspective: 1000 }}
                 >
                   {/* Stars */}
                   <div className="flex gap-1 mb-5">
                     {Array.from({ length: t.stars }).map((_, j) => (
-                      <motion.svg 
-                        key={j} 
-                        className="w-3.5 h-3.5 fill-[#E5E4E2]" 
+                      <motion.svg
+                        key={j}
+                        className="w-3.5 h-3.5 fill-[#E5E4E2]"
                         viewBox="0 0 20 20"
                         initial={{ scale: 0, rotate: -180 }}
                         whileInView={{ scale: 1, rotate: 0 }}
@@ -128,7 +128,7 @@ export default function Testimonials() {
               );
             })}
           </motion.div>
-          
+
           {/* Gradient overlays */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0f1419] to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0f1419] to-transparent z-10" />
