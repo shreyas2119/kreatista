@@ -67,13 +67,13 @@ export default function ServicesPageContent() {
               Most brand websites look fine and do nothing. We build sites that turn visitors into customers. Fast-loading, mobile-first, and designed around how your audience actually behaves.
             </p>
             <p className="text-[#B8C5D6]/55 text-sm sm:text-base mb-7 leading-relaxed font-body max-w-2xl">
-              We start with your conversion goal — whether that is getting a demo booked, a product purchased, or a lead captured — and build the entire site architecture around that outcome. Every page has a job. Every section moves the visitor closer to taking action. We handle design, development, copywriting, and SEO setup so you launch with a site that is ready to perform from day one.
+              We start with your conversion goal, whether that is getting a demo booked, a product purchased, or a lead captured, and build the entire site architecture around that outcome. Every page has a job. Every section moves the visitor closer to taking action. We handle design, development, copywriting, and SEO setup so you launch with a site that is ready to perform from day one.
             </p>
             <ul className="space-y-3 mb-8">
               {[
                 "SEO built in from day one, not bolted on later",
                 "Smooth animations that feel premium, not gimmicky",
-                "Built to scale — whether you're at 100 or 100k visitors",
+                "Built to scale, whether you're at 100 or 100k visitors",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-[#F8F8FF]/80 text-sm font-body">
                   <CheckCircle2 className="w-4 h-4 text-[#E5E4E2] flex-shrink-0" />
@@ -117,7 +117,7 @@ export default function ServicesPageContent() {
               Your competitors are louder. We make you clearer. We figure out exactly what makes you different, then build messaging that makes your audience feel like you were made for them.
             </p>
             <p className="text-[#B8C5D6]/55 text-sm sm:text-base mb-7 leading-relaxed font-body">
-              Most D2C brands and SaaS startups struggle not because their product is weak but because their positioning is unclear. We run a brand audit, identify your strongest differentiator, and build a messaging framework your entire team can use — across ads, social media, pitch decks, and your website. When your positioning is right, every piece of content you create starts working harder.
+              Most D2C brands and SaaS startups struggle not because their product is weak but because their positioning is unclear. We run a brand audit, identify your strongest differentiator, and build a messaging framework your entire team can use across ads, social media, pitch decks, and your website. When your positioning is right, every piece of content you create starts working harder.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {[
@@ -161,14 +161,14 @@ export default function ServicesPageContent() {
             {
               num: "03 / Content",
               title: "Content Creation for Social Media",
-              desc: "We create content people actually want to watch, read, and share. Not just stuff that fills a calendar. Every post has a job — to build awareness, drive engagement, or push a purchase decision. We research what your audience responds to, build a content plan around those insights, and produce everything in-house. Reels, carousels, blog posts, email copy — all consistent with your brand voice.",
+              desc: "We create content people actually want to watch, read, and share. Not just stuff that fills a calendar. Every post has a job: to build awareness, drive engagement, or push a purchase decision. We research what your audience responds to, build a content plan around those insights, and produce everything in-house. Reels, carousels, blog posts, email copy, all consistent with your brand voice.",
               service: "Content Creation",
               Icon: PenLine,
             },
             {
               num: "04 / Social Media",
               title: "Social Media Management Services",
-              desc: "Posting consistently is hard when you are running a business. We handle the whole thing — strategy, creation, scheduling, community management, and monthly reporting. You stay focused on your product while your brand stays active and growing across Instagram, LinkedIn, YouTube, and wherever your audience spends time. No more missed posting days or last-minute content scrambles.",
+              desc: "Posting consistently is hard when you are running a business. We handle the whole thing: strategy, creation, scheduling, community management, and monthly reporting. You stay focused on your product while your brand stays active and growing across Instagram, LinkedIn, YouTube, and wherever your audience spends time. No more missed posting days or last-minute content scrambles.",
               service: "Social Media Management",
               Icon: Radio,
               offset: true,
@@ -217,7 +217,7 @@ export default function ServicesPageContent() {
               Follower counts are vanity. We connect you with creators whose audiences trust them. When they talk about your brand, people actually listen and buy.
             </p>
             <p className="text-[#B8C5D6]/55 text-sm sm:text-base mb-7 leading-relaxed font-body">
-              We vet creators based on audience quality, engagement rate, and niche relevance — not just reach. For D2C brands in India, micro and mid-tier influencers consistently outperform celebrity endorsements because their audiences are specific and trust their recommendations. We handle the full process: identifying the right creators, negotiating terms, briefing them on your brand, managing the campaign, and tracking what actually converts.
+              We vet creators based on audience quality, engagement rate, and niche relevance, not just reach. For D2C brands in India, micro and mid-tier influencers consistently outperform celebrity endorsements because their audiences are specific and trust their recommendations. We handle the full process: identifying the right creators, negotiating terms, briefing them on your brand, managing the campaign, and tracking what actually converts.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {["Creator Vetting", "Campaign Mgmt", "Contracting"].map((tag) => (
@@ -256,7 +256,7 @@ export default function ServicesPageContent() {
               From a 15-second hook to a full brand film. We make video that earns attention. Not just pretty visuals, but content engineered to perform on the platforms your audience actually uses.
             </p>
             <p className="text-[#B8C5D6]/55 text-sm sm:text-base mb-7 leading-relaxed font-body">
-              Video is the highest-ROI content format for D2C brands right now — but only when it is built around a clear objective. We start with the platform, the audience, and the action you want them to take. Then we script, shoot, and edit everything in-house. Whether you need product demos, founder stories, testimonial videos, or short-form Reels content, we produce video that is built to perform — not just to look good.
+              Video is the highest-ROI content format for D2C brands right now, but only when it is built around a clear objective. We start with the platform, the audience, and the action you want them to take. Then we script, shoot, and edit everything in-house. Whether you need product demos, founder stories, testimonial videos, or short-form Reels content, we produce video that is built to perform, not just to look good.
             </p>
             <div className="space-y-3 mb-8">
               {[
