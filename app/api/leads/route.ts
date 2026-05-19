@@ -39,6 +39,11 @@ export async function PATCH(req: NextRequest) {
   const { id, status } = await req.json();
   if (!id || !status) return NextResponse.json({ error: "Missing id or status" }, { status: 400 });
 
+  const ALLOWED_STATUSES = ["new", "contacted", "qualified", "closed"];
+  if (!ALLOWED_STATUSES.includes(status)) {
+    return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+  }
+
   const { error } = await supabaseAdmin
     .from("contact_submissions")
     .update({ status })

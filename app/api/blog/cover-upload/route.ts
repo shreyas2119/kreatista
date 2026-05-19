@@ -12,15 +12,23 @@ export async function POST(req: NextRequest) {
   const file = formData.get("file") as File | null;
 
   if (!file) return NextResponse.json({ error: "No file provided" }, { status: 400 });
-  if (!file.type.startsWith("image/")) return NextResponse.json({ error: "Only images allowed" }, { status: 400 });
   if (file.size > MAX_SIZE) return NextResponse.json({ error: "Max 10MB" }, { status: 400 });
 
   const apiKey = process.env.FREEIMAGE_API_KEY;
   if (!apiKey) return NextResponse.json({ error: "Image hosting not configured" }, { status: 500 });
 
-  // Convert to base64
+  // Read buffer and verify magic bytes
   const buffer = await file.arrayBuffer();
-  const base64 = Buffer.from(buffer).toString("base64");
+  const bytes = Buffer.from(buffer);
+  const isImage = (
+    (bytes[0] === 0xFF && bytes[1] === 0xD8 && bytes[2] === 0xFF) || // JPEG
+    (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4E && bytes[3] === 0x47) || // PNG
+    (bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46) || // GIF
+    (bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46)    // WEBP
+  );
+  if (!isImage) return NextResponse.json({ error: "Only image files allowed" }, { status: 400 });
+
+  const base64 = bytes.toString("base64");
 
   const body = new URLSearchParams();
   body.append("key", apiKey);

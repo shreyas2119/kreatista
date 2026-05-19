@@ -29,7 +29,18 @@ const transporter = nodemailer.createTransport({
   maxConnections: 3,
 });
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function clientEmailHtml(firstName: string, message: string) {
+  const safeName = escapeHtml(firstName);
+  const safeMessage = escapeHtml(message);
   return `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>We got your message</title></head>
@@ -45,7 +56,7 @@ function clientEmailHtml(firstName: string, message: string) {
 
       <!-- Body -->
       <tr><td style="background-color:#151a21;padding:36px;">
-        <h1 style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:#F8F8FF;">Hey ${firstName}, we got it.</h1>
+        <h1 style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;color:#F8F8FF;">Hey ${safeName}, we got it.</h1>
         <p style="margin:0 0 24px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#B8C5D6;">
           Thanks for reaching out to <strong style="color:#F8F8FF;">Socioryx</strong>. We'll get back to you within <strong style="color:#E5E4E2;">24 hours</strong>.
         </p>
@@ -55,7 +66,7 @@ function clientEmailHtml(firstName: string, message: string) {
           <tr>
             <td style="border-left:3px solid #E5E4E2;background-color:#0f1419;padding:14px 18px;">
               <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B8C5D6;">Your message</p>
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#B8C5D6;">${message}</p>
+              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#B8C5D6;">${safeMessage}</p>
             </td>
           </tr>
         </table>
@@ -82,6 +93,11 @@ function clientEmailHtml(firstName: string, message: string) {
 }
 
 function internalEmailHtml(firstName: string, lastName: string, email: string, subject: string, message: string) {
+  const safeFN = escapeHtml(firstName);
+  const safeLN = escapeHtml(lastName);
+  const safeEmail = escapeHtml(email);
+  const safeSubject = escapeHtml(subject);
+  const safeMessage = escapeHtml(message);
   return `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>New Contact</title></head>
@@ -102,15 +118,15 @@ function internalEmailHtml(firstName: string, lastName: string, email: string, s
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:0;">
           <tr>
             <td width="90" style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B8C5D6;vertical-align:top;">Name</td>
-            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;">${firstName} ${lastName}</td>
+            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;">${safeFN} ${safeLN}</td>
           </tr>
           <tr>
             <td width="90" style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B8C5D6;vertical-align:top;">Email</td>
-            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;"><a href="mailto:${email}" style="color:#E5E4E2;text-decoration:none;">${email}</a></td>
+            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;"><a href="mailto:${safeEmail}" style="color:#E5E4E2;text-decoration:none;">${safeEmail}</a></td>
           </tr>
           <tr>
             <td width="90" style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B8C5D6;vertical-align:top;">Service</td>
-            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;">${subject}</td>
+            <td style="padding:12px 0;border-bottom:1px solid #1a1f26;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#F8F8FF;">${safeSubject}</td>
           </tr>
         </table>
 
@@ -119,7 +135,7 @@ function internalEmailHtml(firstName: string, lastName: string, email: string, s
           <tr>
             <td style="border-left:3px solid #E5E4E2;background-color:#0f1419;padding:14px 18px;">
               <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B8C5D6;">Message</p>
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#B8C5D6;">${message}</p>
+              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#B8C5D6;">${safeMessage}</p>
             </td>
           </tr>
         </table>
