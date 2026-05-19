@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -21,24 +21,60 @@ const testimonials = [
 
 export default function Testimonials() {
   const [isPaused, setIsPaused] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const x = useMotionValue(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // Drag state
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
 
   const allTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
+  // Pointer down — start drag
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (!trackRef.current) return;
+    isDragging.current = true;
+    startX.current = e.clientX;
+    scrollLeft.current = trackRef.current.scrollLeft;
+    trackRef.current.setPointerCapture(e.pointerId);
+    setIsPaused(true);
+  };
+
+  // Pointer move — scroll
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging.current || !trackRef.current) return;
+    const dx = e.clientX - startX.current;
+    trackRef.current.scrollLeft = scrollLeft.current - dx;
+  };
+
+  // Pointer up — end drag
+  const onPointerUp = () => {
+    isDragging.current = false;
+    setTimeout(() => setIsPaused(false), 800);
+  };
+
+  // Auto-scroll via requestAnimationFrame when not paused
   useEffect(() => {
-    if (isPaused || isDragging) return;
+    const track = trackRef.current;
+    if (!track) return;
 
-    const controls = animate(x, -33.33, {
-      duration: 20,
-      repeat: Infinity,
-      ease: "linear",
-      repeatType: "loop",
-    });
+    let rafId: number;
+    const speed = 0.6; // px per frame
 
-    return controls.stop;
-  }, [isPaused, isDragging, x]);
+    const tick = () => {
+      if (!isPaused && track) {
+        track.scrollLeft += speed;
+        // Seamless loop: when we've scrolled one third, reset to start
+        if (track.scrollLeft >= track.scrollWidth / 3) {
+          track.scrollLeft = 0;
+        }
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [isPaused]);
 
   return (
     <section className="py-20 sm:py-32 px-5 sm:px-8 lg:px-16 bg-[#0f1419] overflow-hidden">
@@ -56,58 +92,40 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* Carousel — auto-scrolls, pauses on hover/touch, draggable */}
-        <div
-          ref={containerRef}
-          className="relative overflow-hidden cursor-grab active:cursor-grabbing"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => { setIsPaused(false); setIsDragging(false); }}
-        >
-          <motion.div
-            className="flex gap-4"
-            style={{ x: useTransform(x, (v) => `${v}%`) }}
-            drag="x"
-            dragConstraints={containerRef}
-            dragElastic={0.08}
-            dragMomentum={true}
-            onDragStart={() => { setIsDragging(true); setIsPaused(true); }}
-            onDragEnd={() => {
-              setIsDragging(false);
-              setTimeout(() => setIsPaused(false), 800);
-            }}
+        {/* Track — native overflow scroll, no Framer Motion on the scroll axis */}
+        <div className="relative">
+          <div
+            ref={trackRef}
+            className="flex gap-4 overflow-x-scroll scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => { setIsPaused(false); isDragging.current = false; }}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
           >
             {allTestimonials.map((t, i) => {
               const isFeatured = t.featured;
-
               return (
                 <motion.div
                   key={`${t.name}-${i}`}
-                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] p-7 sm:p-8 relative select-none ${
+                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] p-7 sm:p-8 relative ${
                     isFeatured
                       ? "bg-[#1a1f26] shadow-2xl shadow-black/40 outline outline-1 outline-[#E5E4E2]/20"
                       : "bg-[#151a21]"
                   }`}
-                  whileHover={!isDragging ? {
-                    scale: 1.05,
-                    rotateY: 5,
-                    z: 50,
+                  whileHover={{
+                    scale: 1.03,
                     transition: { duration: 0.3 }
-                  } : {}}
-                  style={{ transformStyle: "preserve-3d", perspective: 1000 }}
+                  }}
                 >
                   {/* Stars */}
                   <div className="flex gap-1 mb-5">
                     {Array.from({ length: t.stars }).map((_, j) => (
-                      <motion.svg
-                        key={j}
-                        className="w-3.5 h-3.5 fill-[#E5E4E2]"
-                        viewBox="0 0 20 20"
-                        initial={{ scale: 0, rotate: -180 }}
-                        whileInView={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: j * 0.1, type: "spring" }}
-                      >
+                      <svg key={j} className="w-3.5 h-3.5 fill-[#E5E4E2]" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </motion.svg>
+                      </svg>
                     ))}
                   </div>
 
@@ -127,7 +145,7 @@ export default function Testimonials() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </div>
 
           {/* Gradient overlays */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0f1419] to-transparent z-10" />
