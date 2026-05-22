@@ -20,17 +20,14 @@ const CTA = dynamic(() => import("@/components/sections/CTA"));
 const EmailStrip = dynamic(() => import("@/components/sections/EmailStrip"));
 const Footer = dynamic(() => import("@/components/sections/Footer"));
 
-const jsonLd = {
+const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Socioryx",
   url: "https://socioryx.com",
   logo: "https://socioryx.com/og-image.png",
   description: "Full-stack content marketing agency in India helping D2C brands, SaaS startups and creators grow through video, social media, influencer marketing and web design.",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "IN",
-  },
+  address: { "@type": "PostalAddress", addressCountry: "IN" },
   sameAs: [
     "https://www.instagram.com/socioryx_network/",
     "https://www.linkedin.com/company/socioryx/",
@@ -41,20 +38,40 @@ const jsonLd = {
     contactType: "customer service",
     email: "work@socioryx.com",
   },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Content Marketing Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design and Development", url: "https://socioryx.com/services/website-design-development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Marketing and Positioning", url: "https://socioryx.com/services/brand-marketing-positioning" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Content Creation for Social Media", url: "https://socioryx.com/services/content-creation-social-media" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management", url: "https://socioryx.com/services/social-media-management" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Influencer Marketing for D2C Brands", url: "https://socioryx.com/services/influencer-marketing-d2c-brands" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Video Production", url: "https://socioryx.com/services/video-production" } },
+    ],
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Socioryx",
+  url: "https://socioryx.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://socioryx.com/blog?q={search_term_string}" },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function Home() {
-  // Before launch — redirect everyone to countdown
   if (Date.now() < LAUNCH_TIME) {
     redirect("/countdown");
   }
-return (
+  return (
     <main>
-      <Script
-        id="org-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script id="org-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+      <Script id="website-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <Navbar />
       <Hero />
       <LogoStrip />
@@ -69,4 +86,3 @@ return (
     </main>
   );
 }
-
