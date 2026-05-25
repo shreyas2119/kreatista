@@ -34,10 +34,10 @@ export const team: TeamMember[] = [
     socials: { instagram: "https://www.instagram.com/suryanshh20/" },
   },
   {
-    name: "Hitesh Yadav",
-    role: "Client Acquisition Lead",
-    photo: "/images/team/hitesh.jpeg",
-    socials: { instagram: "https://www.instagram.com/iam_hitesh_05/" },
+    name: "Nehil Khare",
+    role: "Content Research Analyst",
+    photo: "/images/team/nehil.jpeg",
+    socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
   // {
   //   name: "Tanay Paliwal",
@@ -58,16 +58,16 @@ export const team: TeamMember[] = [
     socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
   },
   {
+    name: "Sai Vyas",
+    role: "Client Acquisition Lead",
+    photo: "/images/team/sai.jpeg",
+    socials: { instagram: "https://www.instagram.com/saivyas5013/" },
+  },
+  {
     name: "Sanskar Singh Bais",
     role: "Content & Script Writer",
     photo: "/images/team/sanskar.jpeg",
     socials: { instagram: "https://www.instagram.com/sanskar_s_bais/"},
-  },
-  {
-    name: "Nehil Khare",
-    role: "Content Research Analyst",
-    photo: "/images/team/nehil.jpeg",
-    socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
 ];
 

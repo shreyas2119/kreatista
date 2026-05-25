@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { Eye, EyeOff } from "lucide-react";
 
 const MAX_CLIENT_ATTEMPTS = 5;
 const LOCKOUT_MS = 15 * 60 * 1000; // 15 min — mirrors server
@@ -9,6 +10,7 @@ const LOCKOUT_MS = 15 * 60 * 1000; // 15 min — mirrors server
 export default function AdminLoginPage() {
   const router = useRouter();
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [attempts, setAttempts] = useState(0);
@@ -77,17 +79,28 @@ export default function AdminLoginPage() {
             autoComplete="off"
           />
 
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            disabled={isLocked || loading}
-            maxLength={200}
-            autoComplete="current-password"
-            className="w-full bg-[#151a21] border border-[#F8F8FF]/[0.08] rounded-lg px-4 py-3 text-[#F8F8FF] text-sm font-body placeholder:text-[#B8C5D6]/20 focus:outline-none focus:border-[#E5E4E2]/30 transition-colors disabled:opacity-40"
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              disabled={isLocked || loading}
+              maxLength={200}
+              autoComplete="current-password"
+              className="w-full bg-[#151a21] border border-[#F8F8FF]/[0.08] rounded-lg px-4 py-3 pr-11 text-[#F8F8FF] text-sm font-body placeholder:text-[#B8C5D6]/20 focus:outline-none focus:border-[#E5E4E2]/30 transition-colors disabled:opacity-40"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#B8C5D6]/40 hover:text-[#B8C5D6]/70 transition-colors"
+              tabIndex={-1}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          </div>
 
           {error && (
             <p className="text-red-400 text-xs font-body">{error}</p>
