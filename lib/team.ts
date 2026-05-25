@@ -35,7 +35,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Nehil Khare",
-    role: "Content Research Analyst",
+    role: "Content Execution Lead",
     photo: "/images/team/nehil.jpeg",
     socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
@@ -53,7 +53,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "MO Arfaj",
-    role: "Content Execution Lead",
+    role: "Content Execution Lead (LinkedIN and X)",
     photo: "/images/team/arfaj.webp",
     socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
   },
