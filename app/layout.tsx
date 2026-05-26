@@ -12,6 +12,7 @@ import CookieConsent from "@/components/ui/cookie-consent";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -143,6 +144,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </SmoothScrollProvider>
         <SpeedInsights />
         <Analytics />
+        <GoogleAnalytics gaId="G-T9V5N8CLN9" />
       </body>
     </html>
   );
