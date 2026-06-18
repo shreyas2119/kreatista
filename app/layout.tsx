@@ -10,6 +10,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import LoadingScreen from "@/components/ui/loading-screen";
 import CookieConsent from "@/components/ui/cookie-consent";
 import WhatsAppButton from "@/components/ui/whatsapp-button";
+import { AuditSideRibbon } from "@/components/ui/audit-side-ribbon";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -139,6 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <BottomTabBar />
               <CookieConsent />
               <WhatsAppButton />
+              <AuditSideRibbon />
             </ContactModalProvider>
           </AuthProvider>
         </SmoothScrollProvider>

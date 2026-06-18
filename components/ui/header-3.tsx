@@ -10,10 +10,10 @@ import { useAuth } from '@/components/providers/auth-provider';
 import { AuthModal } from '@/components/ui/auth-modal';
 
 const navLinks = [
-  { label: "Home",      href: "/" },
-  { label: "Services",  href: "/services" },
-  { label: "Blog",      href: "/blog" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Home",       href: "/" },
+  { label: "Services",   href: "/services" },
+  { label: "Blog",       href: "/blog" },
+  { label: "Portfolio",  href: "/portfolio" },
 ];
 
 export function Header() {

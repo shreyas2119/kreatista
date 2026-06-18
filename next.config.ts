@@ -1,3 +1,4 @@
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const securityHeaders = [
@@ -16,7 +17,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
-      "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.supabase.co wss://*.firebaseio.com https://script.google.com https://calendly.com https://*.calendly.com https://*.clarity.ms https://securetoken.googleapis.com https://identitytoolkit.googleapis.com",
+      "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.supabase.co wss://*.firebaseio.com https://script.google.com https://calendly.com https://*.calendly.com https://*.clarity.ms https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://openrouter.ai https://o*.sentry.io",
       "frame-src 'self' https://accounts.google.com https://calendly.com https://*.calendly.com https://*.firebaseapp.com",
     ].join("; "),
   },
@@ -50,4 +51,9 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: !process.env.CI,
+  tunnelRoute: "/monitoring",
+});
