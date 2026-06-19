@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { CheckCircle2, ArrowUpRight, Lightbulb, Target, BarChart3, TrendingUp, Palette, MessageSquare, Video, Zap, type LucideIcon } from "lucide-react";
 import { useContactModal } from "@/components/providers/contact-modal";
 import Navbar from "@/components/sections/Navbar";
@@ -94,7 +93,7 @@ const servicesList = [
 ];
 
 export function ReportClient({ report }: { report: ReportData }) {
-  const { openCalendly } = useContactModal();
+  const { openCalendly, openContactForm } = useContactModal();
   const data: AuditReport = report.report_json;
 
   return (
@@ -311,15 +310,14 @@ export function ReportClient({ report }: { report: ReportData }) {
                 >
                   Book a Free Strategy Call
                 </motion.button>
-                <Link href="/contact">
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-10 py-5 text-[#F8F8FF] text-lg font-heading font-extrabold hover:bg-white/[0.05] transition-colors border border-[#F8F8FF]/10 cursor-pointer rounded-lg"
-                  >
-                    Contact Socioryx <ArrowUpRight className="w-5 h-5" />
-                  </motion.span>
-                </Link>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => openContactForm("Marketing Audit Inquiry")}
+                  className="inline-flex items-center gap-2 px-10 py-5 text-[#F8F8FF] text-lg font-heading font-extrabold hover:bg-white/[0.05] transition-colors border border-[#F8F8FF]/10 rounded-lg"
+                >
+                  Contact Socioryx <ArrowUpRight className="w-5 h-5" />
+                </motion.button>
               </div>
             </motion.div>
           </SectionCard>

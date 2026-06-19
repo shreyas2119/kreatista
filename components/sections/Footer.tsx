@@ -33,7 +33,7 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Agency',
     links: [
-      { title: 'Free Audit', href: '/audit' },
+      { title: 'Free Audit', href: '/free-ai-marketing-audit' },
       { title: 'Blog',       href: '/blog' },
       { title: 'Portfolio',  href: '/portfolio' },
       { title: 'Services',   href: '/#services', sectionId: 'services' },

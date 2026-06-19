@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 export function AuditSideRibbon() {
   return (
     <Link
-      href="/audit"
+      href="/free-ai-marketing-audit"
       className="fixed right-0 top-[60%] md:top-1/2 -translate-y-1/2 z-40 group"
     >
       <div className="flex items-center gap-2 bg-[#E5E4E2] text-[#0f1419] px-2 py-4 rounded-l-lg shadow-xl shadow-black/30 hover:bg-[#D0CFD0] transition-all duration-300 hover:pr-5 hover:shadow-2xl hover:shadow-black/40 cursor-pointer animate-ribbon"
