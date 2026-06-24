@@ -15,13 +15,13 @@ export interface TeamMember {
 export const team: TeamMember[] = [
   {
     name: "Vansh Shrivastava",
-    role: "Cofounder & Managing Lead",
+    role: "Founder & Managing Lead",
     photo: "/images/team/vansh.webp",
     socials: { instagram: "https://www.instagram.com/vansh_pvtt_14/" },
   },
   {
     name: "Shreyas Choukade",
-    role: "Cofounder & Executive Lead",
+    role: "Operations Analyst",
     photo: "/images/team/shreyas_v2.jpeg",
     photoScale: 1.25,
     socials: { instagram: "https://www.instagram.com/shreyash_choukade/" },
