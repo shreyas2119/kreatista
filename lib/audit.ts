@@ -177,7 +177,7 @@ async function callOpenRouter(prompt: string): Promise<string> {
       "X-Title": "Socioryx AI Marketing Audit",
     },
     body: JSON.stringify({
-      model: "openai/gpt-oss-120b:free",
+      model: "poolside/laguna-xs-2.1:free",
       messages: [{ role: "user", content: prompt }],
       temperature: 0.7,
       max_tokens: 4096,
