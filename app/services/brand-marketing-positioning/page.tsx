@@ -46,7 +46,7 @@ const data: ServicePageData = {
   ctaSubject: "Interested in: Brand Marketing and Positioning",
 };
 
-const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Brand Marketing and Positioning Strategy", serviceType: "Brand Strategy", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/brand-marketing-positioning", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
+const serviceSchema = { "@context": "https://schema.org", "@type": "ProfessionalService", name: "Brand Marketing and Positioning Strategy", serviceType: "Brand Strategy", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/brand-marketing-positioning", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: data.faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Brand Marketing and Positioning", item: "https://socioryx.com/services/brand-marketing-positioning" }] };
 

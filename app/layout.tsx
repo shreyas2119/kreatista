@@ -14,6 +14,7 @@ import { AuditSideRibbon } from "@/components/ui/audit-side-ribbon";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from "next/script";
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -116,16 +117,33 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://socioryx.com/#organization",
+    name: "Socioryx",
+    url: "https://socioryx.com",
+    logo: "https://socioryx.com/og-image.png",
+    description: "Full-stack content marketing agency in India helping D2C brands, SaaS startups and creators grow through video, social media, influencer marketing and web design.",
+    foundingDate: "2024",
+    address: { "@type": "PostalAddress", addressCountry: "IN" },
+    sameAs: [
+      "https://www.instagram.com/socioryx_network/",
+      "https://www.linkedin.com/company/socioryx/",
+      "https://x.com/SocioryxN79343",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "work@socioryx.com",
+      url: "https://socioryx.com",
+    },
+  };
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
       <head>
+        <Script id="org-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
         <SmoothScrollProvider>

@@ -41,7 +41,7 @@ const data: ServicePageData = {
   ctaSubject: "Interested in: Social Media Management",
 };
 
-const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Social Media Management Services", serviceType: "Social Media Management", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/social-media-management", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
+const serviceSchema = { "@context": "https://schema.org", "@type": "ProfessionalService", name: "Social Media Management Services", serviceType: "Social Media Management", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/social-media-management", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: data.faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Social Media Management", item: "https://socioryx.com/services/social-media-management" }] };
 

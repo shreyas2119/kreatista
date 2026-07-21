@@ -41,7 +41,7 @@ const data: ServicePageData = {
   ctaSubject: "Interested in: Influencer Marketing",
 };
 
-const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "Influencer Marketing for D2C Brands", serviceType: "Influencer Marketing", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/influencer-marketing-d2c-brands", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
+const serviceSchema = { "@context": "https://schema.org", "@type": "ProfessionalService", name: "Influencer Marketing for D2C Brands", serviceType: "Influencer Marketing", provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" }, description: data.whatWeDo, areaServed: { "@type": "Country", name: "India" }, url: "https://socioryx.com/services/influencer-marketing-d2c-brands", offers: { "@type": "Offer", availability: "https://schema.org/InStock", areaServed: "IN" } };
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: data.faqs.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Influencer Marketing for D2C Brands", item: "https://socioryx.com/services/influencer-marketing-d2c-brands" }] };
 

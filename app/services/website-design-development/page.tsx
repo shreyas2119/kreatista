@@ -64,7 +64,7 @@ const data: ServicePageData = {
 
 const serviceSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": "ProfessionalService",
   name: "Website Design and Development",
   serviceType: "Web Design and Development",
   provider: { "@type": "Organization", name: "Socioryx", url: "https://socioryx.com" },
