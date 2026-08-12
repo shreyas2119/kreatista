@@ -5,7 +5,7 @@ import ServicePageLayout, { type ServicePageData } from "@/components/sections/S
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Video Production Services for D2C Brands India | Socioryx",
+  title: "Video Production Services for D2C Brands India",
   description: "Socioryx produces brand videos, product demos, Reels, and founder stories for D2C brands and SaaS startups in India. 4K production, editing, and motion graphics.",
   alternates: { canonical: "https://socioryx.com/services/video-production" },
   openGraph: { title: "Video Production Services for D2C Brands | Socioryx", description: "Brand videos, product demos, and Reels for D2C brands in India. 4K production, editing, and motion graphics.", url: "https://socioryx.com/services/video-production", images: [{ url: "https://socioryx.com/og-image.png", width: 1200, height: 630 }] },

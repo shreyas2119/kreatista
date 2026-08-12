@@ -165,7 +165,7 @@ export default function MarketingAudit() {
           >
             Free AI-Powered Analysis
           </motion.p>
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -173,7 +173,7 @@ export default function MarketingAudit() {
             className="text-4xl sm:text-6xl lg:text-7xl font-semibold text-[#F8F8FF] leading-none tracking-[-0.04em] mb-4 font-heading"
           >
             Get Your Free AI Marketing Audit
-          </motion.h2>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

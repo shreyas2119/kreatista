@@ -6,7 +6,7 @@ import ServicesShaderBg from "@/components/ui/services-shader-bg";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Services — Website, Content, Social Media & Video | Socioryx",
+  title: "Services — Website, Content, Social Media & Video",
   description: "One team for your website, content, social media, and video. Built for D2C brands and SaaS startups that are serious about growth.",
   alternates: { canonical: "https://socioryx.com/services" },
   openGraph: {

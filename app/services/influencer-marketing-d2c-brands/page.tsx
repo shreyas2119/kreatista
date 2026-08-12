@@ -5,7 +5,7 @@ import ServicePageLayout, { type ServicePageData } from "@/components/sections/S
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Influencer Marketing for D2C Brands in India | Socioryx",
+title: "Influencer Marketing for D2C Brands in India",
   description: "Socioryx connects D2C brands with the right influencers in India. Creator vetting, campaign management, and performance tracking for reach that actually converts.",
   alternates: { canonical: "https://socioryx.com/services/influencer-marketing-d2c-brands" },
   openGraph: { title: "Influencer Marketing for D2C Brands in India | Socioryx", description: "Connect with the right influencers in India. Creator vetting, campaign management, and tracking for D2C brands.", url: "https://socioryx.com/services/influencer-marketing-d2c-brands", images: [{ url: "https://socioryx.com/og-image.png", width: 1200, height: 630 }] },

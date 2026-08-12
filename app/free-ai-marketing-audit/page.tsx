@@ -4,7 +4,7 @@ import MarketingAudit from "@/components/sections/MarketingAudit";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Free AI Marketing Audit — Analyze Your Website in Seconds | Socioryx",
+  title: "Free AI Marketing Audit — Analyze Your Website in Seconds",
   description: "Get a free AI-powered marketing audit for your website. Instantly analyze SEO, content, branding, and conversion. Actionable insights to grow your business — no credit card required.",
   keywords: ["free marketing audit", "AI marketing audit", "website audit tool", "SEO audit", "brand audit", "conversion audit", "marketing analysis", "free website analyzer", "Socioryx"],
   openGraph: {

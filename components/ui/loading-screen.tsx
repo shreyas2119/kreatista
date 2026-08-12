@@ -55,9 +55,9 @@ export default function LoadingScreen() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-center"
           >
-            <h1 className="text-6xl sm:text-8xl font-semibold tracking-[-0.04em] text-[#F8F8FF] font-heading leading-none">
+            <div className="text-6xl sm:text-8xl font-semibold tracking-[-0.04em] text-[#F8F8FF] font-heading leading-none">
               Sociory<span className="text-red-500">X</span>
-            </h1>
+            </div>
           </motion.div>
 
           {/* Tagline */}

@@ -5,6 +5,7 @@ import Footer from "@/components/sections/Footer";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Socioryx collects, uses, and protects your personal information.",
+  alternates: { canonical: "https://socioryx.com/privacy" },
 };
 
 export default function PrivacyPage() {

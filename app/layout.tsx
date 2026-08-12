@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Space_Grotesk, Inter, Instrument_Serif, Lora, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
@@ -139,11 +139,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       email: "work@socioryx.com",
       url: "https://socioryx.com",
     },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Content Marketing Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design and Development", url: "https://socioryx.com/services/website-design-development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Brand Marketing and Positioning", url: "https://socioryx.com/services/brand-marketing-positioning" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Content Creation for Social Media", url: "https://socioryx.com/services/content-creation-social-media" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Management", url: "https://socioryx.com/services/social-media-management" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Influencer Marketing for D2C Brands", url: "https://socioryx.com/services/influencer-marketing-d2c-brands" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Video Production", url: "https://socioryx.com/services/video-production" } },
+      ],
+    },
+  };
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Socioryx",
+    url: "https://socioryx.com",
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://socioryx.com/#organization",
+      name: "Socioryx",
+    },
   };
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
       <head>
         <Script id="org-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
         <SmoothScrollProvider>

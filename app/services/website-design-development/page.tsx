@@ -5,7 +5,7 @@ import ServicePageLayout, { type ServicePageData } from "@/components/sections/S
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Website Design and Development for D2C Brands | Socioryx",
+  title: "Website Design and Development for D2C Brands",
   description: "Socioryx builds conversion-focused websites for D2C brands and SaaS startups in India. Mobile-first, SEO-ready, and designed to turn visitors into customers.",
   alternates: { canonical: "https://socioryx.com/services/website-design-development" },
   openGraph: {

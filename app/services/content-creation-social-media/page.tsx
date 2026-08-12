@@ -5,7 +5,7 @@ import ServicePageLayout, { type ServicePageData } from "@/components/sections/S
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Content Creation for Social Media | D2C Brands India | Socioryx",
+  title: "Content Creation for Social Media in India",
   description: "Socioryx creates social media content for D2C brands and SaaS startups in India. Reels, carousels, blog posts, and email copy that builds audiences and drives sales.",
   alternates: { canonical: "https://socioryx.com/services/content-creation-social-media" },
   openGraph: { title: "Content Creation for Social Media | Socioryx", description: "Social media content for D2C brands in India. Reels, carousels, and copy that builds audiences and drives sales.", url: "https://socioryx.com/services/content-creation-social-media", images: [{ url: "https://socioryx.com/og-image.png", width: 1200, height: 630 }] },

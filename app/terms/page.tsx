@@ -5,6 +5,7 @@ import Footer from "@/components/sections/Footer";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "The terms and conditions governing your use of socioryx.com.",
+  alternates: { canonical: "https://socioryx.com/terms" },
 };
 
 export default function TermsPage() {

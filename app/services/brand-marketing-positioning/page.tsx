@@ -5,7 +5,7 @@ import ServicePageLayout, { type ServicePageData } from "@/components/sections/S
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Brand Marketing and Positioning Strategy for D2C Brands | Socioryx",
+  title: "Brand Marketing and Positioning Strategy for D2C Brands",
   description: "Socioryx helps D2C brands and SaaS startups in India build clear positioning, messaging frameworks, and go-to-market strategies that make them the obvious choice.",
   alternates: { canonical: "https://socioryx.com/services/brand-marketing-positioning" },
   openGraph: {
