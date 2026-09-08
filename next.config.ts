@@ -33,10 +33,38 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
+    const linkHeader = [
+      '</.well-known/api-catalog>; rel="api-catalog"',
+      '</.well-known/ai-catalog.json>; rel="alternate"; type="application/json"; title="ARD Catalog"',
+      '</.well-known/agent-skills/index.json>; rel="alternate"; type="application/json"; title="Agent Skills"',
+      '</.well-known/mcp/server-card.json>; rel="alternate"; type="application/json"; title="MCP Server Card"',
+      '</.well-known/openid-configuration>; rel="openid-configuration"',
+      '</.well-known/oauth-protected-resource>; rel="oauth-protected-resource"',
+      '</auth.md>; rel="auth-md"; type="text/markdown"',
+    ].join(", ");
     return [
       {
         source: "/(.*)",
-        headers: securityHeaders,
+        headers: [...securityHeaders, { key: "Link", value: linkHeader }],
+      },
+      {
+        source: "/",
+        headers: [{ key: "Link", value: linkHeader }],
+      },
+      // well-known CORS + content-type helpers
+      {
+        source: "/.well-known/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Cache-Control", value: "public, max-age=3600" },
+        ],
+      },
+      {
+        source: "/.well-known/ai-catalog.json",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Content-Type", value: "application/json" },
+        ],
       },
       {
         // Cache static assets aggressively

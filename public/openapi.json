@@ -1,0 +1,25 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Socioryx API", "version": "1.0.0", "description": "Socioryx public API" },
+  "servers": [{ "url": "https://socioryx.com" }],
+  "paths": {
+    "/api/contact": {
+      "post": {
+        "summary": "Submit contact form",
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/audit/report": {
+      "post": {
+        "summary": "Request AI marketing audit",
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/uptime": {
+      "get": {
+        "summary": "Health check",
+        "responses": { "200": { "description": "OK" } }
+      }
+    }
+  }
+}

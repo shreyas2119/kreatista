@@ -15,6 +15,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from "next/script";
+import { WebMCP } from "@/components/webmcp";
 
 // Premium font system
 const spaceGrotesk = Space_Grotesk({ 
@@ -166,6 +167,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
       <head>
+        <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
         <Script id="org-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
         <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
@@ -183,6 +185,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <CookieConsent />
               <WhatsAppButton />
               <AuditSideRibbon />
+              <WebMCP />
             </ContactModalProvider>
           </AuthProvider>
         </SmoothScrollProvider>
