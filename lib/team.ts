@@ -21,7 +21,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Nehil Khare",
-    role: "Chief Executive Officer (CEO)",
+    role: "Content Executive Lead",
     photo: "/images/team/nehil.jpeg",
     socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
@@ -38,12 +38,12 @@ export const team: TeamMember[] = [
     //   photo: "/images/team/tanay.jpeg",
     //   socials: { instagram: "https://www.instagram.com/tanaypaliwal17/" },
     // },
-    {
-      name: "Srajan Soni",
-      role: "Video Editor",
-      photo: "/images/team/srajan_v2.jpeg",
-      socials: { instagram: "https://www.instagram.com/iam_srajan_soni/" },
-    },
+    // {
+    //   name: "Srajan Soni",
+    //   role: "Video Editor",
+    //   photo: "/images/team/srajan_v2.jpeg",
+    //   socials: { instagram: "https://www.instagram.com/iam_srajan_soni/" },
+    // },
     {
       name: "Suryansh Kumar",
       role: "Chief Technical Officer (CTO)",
@@ -57,12 +57,12 @@ export const team: TeamMember[] = [
     photo: "/images/team/arfaj.webp",
     socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
   },
-  {
-    name: "Sai Vyas",
-    role: "Chief Operating Officer (COO)",
-    photo: "/images/team/sai.jpeg",
-    socials: { instagram: "https://www.instagram.com/saivyas5013/" },
-  },
+  // {
+  //   name: "Sai Vyas",
+  //   role: "Chief Operating Officer (COO)",
+  //   photo: "/images/team/sai.jpeg",
+  //   socials: { instagram: "https://www.instagram.com/saivyas5013/" },
+  // },
   {
     name: "Sanskar Singh Bais",
     role: "Content & Script Writer",
