@@ -20,12 +20,6 @@ export const team: TeamMember[] = [
     socials: { instagram: "https://www.instagram.com/vansh_pvtt_14/" },
   },
   {
-    name: "Nehil Khare",
-    role: "Content Executive Lead",
-    photo: "/images/team/nehil.jpeg",
-    socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
-  },
-  {
     name: "Shreyas Choukade",
     role: "Operations Analyst",
     photo: "/images/team/shreyas_v2.jpeg",
@@ -51,11 +45,17 @@ export const team: TeamMember[] = [
       objectPosition: "center 50%",
       socials: { instagram: "https://www.instagram.com/suryanshh20/" },
     },
-  {
-    name: "MO Arfaj",
-    role: "Chief Marketing Officer (CMO)",
-    photo: "/images/team/arfaj.webp",
+    {
+      name: "MO Arfaj",
+      role: "Chief Marketing Officer (CMO)",
+      photo: "/images/team/arfaj.webp",
     socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
+  },
+  {
+    name: "Nehil Khare",
+    role: "Content Executive Lead",
+    photo: "/images/team/nehil.jpeg",
+    socials: { instagram: "https://www.instagram.com/nehil_khare_/" },
   },
   // {
   //   name: "Sai Vyas",
