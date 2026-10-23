@@ -163,34 +163,60 @@ Scoring (0-100):
 CRITICAL: Sound like an experienced senior marketing consultant at a growth agency. Be specific, actionable, and insightful. Recommendations should naturally align with services like website development, content marketing, social media management, video production, influencer marketing, and brand strategy. Do NOT sound like a generic SEO tool.`;
 }
 
+// ponytail: free-tier models rate-limit upstream; fall through the list instead of failing
+const AUDIT_MODELS = [
+  "poolside/laguna-s-2.1:free",
+  "poolside/laguna-xs-2.1:free",
+  "recursive/flint-v1.0:free",
+];
+
 async function callOpenRouter(prompt: string): Promise<string> {
   if (!OPENROUTER_API_KEY) {
-    throw new Error("OPENROUTER_API_KEY is not configured");
+    console.error("Audit: OPENROUTER_API_KEY is not configured");
+    throw new Error("Audit service is not configured");
   }
 
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-      "HTTP-Referer": "https://socioryx.com",
-      "X-Title": "Socioryx AI Marketing Audit",
-    },
-    body: JSON.stringify({
-      model: "poolside/laguna-xs-2.1:free",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
-      max_tokens: 4096,
-    }),
-  });
+  let lastError = "All models failed";
+  for (const model of AUDIT_MODELS) {
+    try {
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          "HTTP-Referer": "https://socioryx.com",
+          "X-Title": "Socioryx AI Marketing Audit",
+        },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: "user", content: prompt }],
+          temperature: 0.7,
+          max_tokens: 4096,
+        }),
+      });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`OpenRouter API error (${response.status}): ${errorText}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        lastError = `${model} -> HTTP ${response.status}: ${errorText.slice(0, 300)}`;
+        console.error(`OpenRouter error [${lastError}]`);
+        continue;
+      }
+
+      const json = await response.json();
+      const content = json.choices?.[0]?.message?.content;
+      if (!content) {
+        lastError = `${model} -> empty completion`;
+        console.error(`OpenRouter error [${lastError}]`);
+        continue;
+      }
+      return content;
+    } catch (err) {
+      lastError = `${model} -> ${err instanceof Error ? err.message : "unknown error"}`;
+      console.error(`OpenRouter error [${lastError}]`);
+    }
   }
 
-  const json = await response.json();
-  return json.choices[0].message.content;
+  throw new Error(`All audit models failed. Last error: ${lastError}`);
 }
 
 function parseJsonSafely(raw: string): any {
@@ -225,7 +251,8 @@ function parseJsonSafely(raw: string): any {
     try {
       return JSON.parse(jsonStr);
     } catch {
-      throw new Error("AI returned invalid JSON. Response:\n" + raw.slice(0, 500));
+      console.error("Audit: AI returned invalid JSON:", raw.slice(0, 500));
+      throw new Error("AI returned an invalid response");
     }
   }
 }

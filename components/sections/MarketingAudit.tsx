@@ -83,6 +83,7 @@ export default function MarketingAudit() {
     setError("");
     const interval = startProcessing();
 
+    let serverError = "";
     try {
       const response = await fetch("/api/audit/preview", {
         method: "POST",
@@ -93,17 +94,18 @@ export default function MarketingAudit() {
       fastForwardToEnd(interval);
 
       if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || "Failed to analyze website");
+        const data = await response.json().catch(() => ({}));
+        // Server messages are sanitized; anything else gets a generic fallback
+        serverError = typeof data.error === "string" ? data.error : "";
+        throw new Error("request failed");
       }
 
       const data = await response.json();
       setPreview(data.preview);
       setAuditState("preview");
-    } catch (err) {
+    } catch {
       clearInterval(interval);
-      const message = err instanceof Error ? err.message : "Something went wrong";
-      setError(message);
+      setError(serverError || "We couldn't analyze that website right now. Please try again in a minute.");
       setAuditState("error");
     }
   }, [url, startProcessing, fastForwardToEnd]);

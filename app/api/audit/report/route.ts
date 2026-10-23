@@ -97,7 +97,9 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Audit report error:", error);
     Sentry.captureException(error, { tags: { endpoint: "audit/report" } });
-    const message = error instanceof Error ? error.message : "Failed to generate report";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json(
+      { error: "We couldn't generate the report right now. Please try again in a minute." },
+      { status: 500 }
+    );
   }
 }

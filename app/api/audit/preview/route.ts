@@ -38,14 +38,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid URL format" }, { status: 400 });
     }
 
-    const scraped = await scrapeWebsite(normalizedUrl);
+    let scraped;
+    try {
+      scraped = await scrapeWebsite(normalizedUrl);
+    } catch (err) {
+      console.error("Audit scrape error:", err);
+      Sentry.captureException(err, { tags: { endpoint: "audit/preview", stage: "scrape" } });
+      return NextResponse.json(
+        { error: "We couldn't access that website. Please check the URL and try again." },
+        { status: 422 }
+      );
+    }
+
     const preview = await generatePreview(scraped);
 
     return NextResponse.json({ success: true, preview });
   } catch (error) {
     console.error("Audit preview error:", error);
     Sentry.captureException(error, { tags: { endpoint: "audit/preview" } });
-    const message = error instanceof Error ? error.message : "Failed to analyze website";
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json(
+      { error: "We couldn't analyze that website right now. Please try again in a minute." },
+      { status: 500 }
+    );
   }
 }
