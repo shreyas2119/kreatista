@@ -44,7 +44,7 @@ A modern, production-ready website for a full-stack content marketing agency bui
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/shreyas2119/kreatista.git
+git clone https://github.com/suryanshk0920/kreatista.git
 cd kreatista
 ```
 
@@ -115,24 +115,9 @@ See `CALENDLY_SETUP.md` for detailed integration guide.
 
 ## Deployment
 
-### Deploy to Netlify
+The project is hosted on **Vercel** and is connected to this repository (`suryanshk0920/kreatista`). Pushes to the `main` branch auto-deploy via Vercel. Environment variables are configured in the Vercel project settings (mirror of `.env.local`).
 
-1. Push your code to GitHub
-2. Go to [Netlify](https://netlify.com) and click "Add new site"
-3. Connect your GitHub repository
-4. Build settings (auto-detected):
-   - Build command: `npm run build`
-   - Publish directory: `.next`
-5. Add all environment variables from `.env.local`
-6. Deploy!
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com) and import your repository
-3. Vercel will auto-detect Next.js settings
-4. Add all environment variables from `.env.local`
-5. Deploy!
+To redeploy manually or preview changes, use the [Vercel dashboard](https://vercel.com).
 
 ## Build for Production
 
