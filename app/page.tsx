@@ -10,22 +10,26 @@ const MeetTheTeam = dynamic(() => import("@/components/sections/MeetTheTeam"));
 const SocialProof = dynamic(() => import("@/components/sections/SocialProof"));
 const CTA = dynamic(() => import("@/components/sections/CTA"));
 const EmailStrip = dynamic(() => import("@/components/sections/EmailStrip"));
-const Footer = dynamic(() => import("@/components/sections/Footer"));
+const CinematicFooter = dynamic(() =>
+  import("@/components/ui/motion-footer").then((mod) => mod.CinematicFooter)
+);
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <LogoStrip />
-      <Services />
-      <HowItWorks />
-      <Testimonials />
-      <MeetTheTeam />
-      <SocialProof />
-      <CTA />
-      <EmailStrip />
-      <Footer />
-    </main>
+    <>
+      <main className="relative z-10 bg-[#0f1419]">
+        <Navbar />
+        <Hero />
+        <LogoStrip />
+        <Services />
+        <HowItWorks />
+        <Testimonials />
+        <MeetTheTeam />
+        <SocialProof />
+        <CTA />
+        <EmailStrip />
+      </main>
+      <CinematicFooter />
+    </>
   );
 }

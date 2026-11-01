@@ -28,6 +28,7 @@
   --secondary: #B8C5D6;
   --secondary-foreground: #0f1419;
   --accent: #E5E4E2;
+  --destructive: #e11d48;
   --popover: #1a1f26;
   --popover-foreground: #F8F8FF;
   --radius: 0.25rem;
@@ -45,6 +46,7 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
   
   /* Premium font system */
   --font-family-heading: var(--font-heading);

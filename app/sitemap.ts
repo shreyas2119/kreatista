@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/blog`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/services`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/portfolio`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/portfolio/websites`, lastModified: new Date("2026-10-31T17:00:00.000Z"), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/team`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/free-ai-marketing-audit`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/services/website-design-development`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },

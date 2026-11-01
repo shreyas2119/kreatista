@@ -192,6 +192,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SpeedInsights />
         <Analytics />
         <GoogleAnalytics gaId="G-T9V5N8CLN9" />
+        <Script
+          src="/widget.js"
+          data-tenant="socioryx"
+          data-api="https://agent-core.socioryx.workers.dev"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
