@@ -16,6 +16,7 @@ const services = [
     icon: Globe,
     span: "lg:col-span-8",
     flagship: true,
+    href: "/portfolio/websites",
   },
   {
     title: "End-to-End Social Media Management",
@@ -109,7 +110,7 @@ export default function Services() {
                 className={`${s.span} group relative overflow-hidden cursor-pointer rounded-xl ${
                   s.accent ? "bg-[#E5E4E2]" : "bg-[#151a21] hover:bg-[#222531]"
                 } transition-colors duration-500`}
-                onClick={() => openCalendly(`Interested in: ${s.title}`)}
+                onClick={s.href ? undefined : () => openCalendly(`Interested in: ${s.title}`)}
               >
                 <div className="p-6 sm:p-8 relative z-10 flex flex-col h-full min-h-[180px] sm:min-h-[220px]">
                   <Icon className={`w-8 h-8 mb-5 ${s.accent ? "text-[#0f1419]" : "text-[#E5E4E2]"}`} />
@@ -124,9 +125,18 @@ export default function Services() {
                   <p className={`text-base leading-relaxed mb-6 flex-1 font-body ${s.accent ? "text-[#0f1419]/80" : "text-[#B8C5D6]/60"}`}>
                     {s.desc}
                   </p>
-                  <span className={`inline-flex items-center gap-1.5 text-xs font-medium group-hover:gap-3 transition-all duration-300 font-body ${s.accent ? "text-[#0f1419]" : "text-[#E5E4E2]"}`}>
-                    Learn more <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
+                  {s.href ? (
+                    <Link
+                      href={s.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium group-hover:gap-3 transition-all duration-300 font-body text-[#E5E4E2] after:absolute after:inset-0 after:content-['']"
+                    >
+                      Learn more <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  ) : (
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-medium group-hover:gap-3 transition-all duration-300 font-body ${s.accent ? "text-[#0f1419]" : "text-[#E5E4E2]"}`}>
+                      Learn more <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  )}
                 </div>
 
                 {/* Background image — subtle with parallax */}
