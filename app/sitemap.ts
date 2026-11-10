@@ -13,20 +13,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  // No lastModified on static pages: a hardcoded date is a false freshness signal.
   return [
-    { url: base, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${base}/blog`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/services`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/portfolio`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/portfolio/websites`, lastModified: new Date("2026-10-31T17:00:00.000Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/team`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/free-ai-marketing-audit`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/services/website-design-development`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/services/brand-marketing-positioning`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/services/content-creation-social-media`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/services/social-media-management`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/services/influencer-marketing-d2c-brands`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${base}/services/video-production`, lastModified: new Date("2026-07-21T15:35:48.874Z"), changeFrequency: "monthly", priority: 0.8 },
+    { url: base, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${base}/about`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/contact`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/services`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/portfolio`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/portfolio/websites`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/portfolio/indore-dental-hospital`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/portfolio/puja-shraddha`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/team`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/free-ai-marketing-audit`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/services/website-design-development`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/services/brand-marketing-positioning`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/services/content-creation-social-media`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/services/social-media-management`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/services/influencer-marketing-d2c-brands`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/services/video-production`, changeFrequency: "monthly", priority: 0.8 },
     ...postUrls,
   ];
 }

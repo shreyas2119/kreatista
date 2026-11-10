@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Brand Marketing and Positioning Strategy for D2C Brands",
@@ -36,6 +36,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "For Brands That Are Being Ignored",
   whoIsItFor: "This service is for D2C founders whose product is good but whose marketing is not converting, SaaS startups preparing for a launch or rebrand, and creators who want to build a recognisable personal brand. If you are posting content and running ads but not seeing the results you expect, unclear positioning is usually the root cause.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "What is brand positioning?", a: "Brand positioning is the process of defining how your brand is different from competitors and why your target audience should choose you. It covers your unique value proposition, your target customer, and the language you use to communicate both." },
     { q: "How long does a positioning project take?", a: "A full brand positioning project typically takes 2 to 4 weeks. This includes the audit, workshop, framework development, and one round of revisions." },
     { q: "Do I need brand positioning if I am just starting out?", a: "Yes, especially if you are just starting out. Getting your positioning right before you invest in content, ads, or a website saves significant time and money. It is much harder to fix positioning after you have built everything around the wrong message." },
@@ -51,5 +52,5 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Brand Marketing and Positioning", item: "https://socioryx.com/services/brand-marketing-positioning" }] };
 
 export default function BrandMarketingPage() {
-  return (<><Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
+  return (<><script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
 }

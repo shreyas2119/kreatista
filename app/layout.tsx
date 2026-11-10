@@ -124,11 +124,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Organization",
     "@id": "https://socioryx.com/#organization",
     name: "Socioryx",
+    legalName: "Socioryx Network",
+    slogan: "Raise Yourself Extraordinary",
     url: "https://socioryx.com",
     logo: "https://socioryx.com/og-image.png",
     description: "Full-stack content marketing agency in India helping D2C brands, SaaS startups and creators grow through video, social media, influencer marketing and web design.",
     foundingDate: "2024",
     address: { "@type": "PostalAddress", addressCountry: "IN" },
+    areaServed: { "@type": "Country", name: "India" },
+    knowsAbout: [
+      "Content Marketing",
+      "Social Media Management",
+      "Influencer Marketing",
+      "Website Design and Development",
+      "Video Production",
+      "Brand Positioning",
+    ],
     sameAs: [
       "https://www.instagram.com/socioryx_network/",
       "https://www.linkedin.com/company/socioryx/",
@@ -139,6 +150,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       contactType: "customer service",
       email: "work@socioryx.com",
       url: "https://socioryx.com",
+      areaServed: "IN",
+      availableLanguage: ["en", "hi"],
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -165,11 +178,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
   };
   return (
-    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
+    <html lang="en-IN" className={`dark ${spaceGrotesk.variable} ${inter.variable} ${instrumentSerif.variable} ${lora.variable} ${dmSans.variable}`}>
       <head>
         <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
-        <Script id="org-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
-        <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        <script id="org-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <script id="website-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
       <body className="bg-[#0f1419] text-[#F8F8FF] antialiased">
         <SmoothScrollProvider>
@@ -193,7 +206,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <GoogleAnalytics gaId="G-T9V5N8CLN9" />
         <Script
-          src="/widget.js"
+          src="/widget.js?v=20261110"
           data-tenant="socioryx"
           data-api="https://agent-core.socioryx.workers.dev"
           strategy="afterInteractive"

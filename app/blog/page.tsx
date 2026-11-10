@@ -16,8 +16,25 @@ export const revalidate = 60; // revalidate every 60s
 export default async function BlogPage() {
   const posts = await getPublishedPosts();
 
+  const listSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Socioryx Blog",
+    url: "https://socioryx.com/blog",
+    itemListElement: posts.map((post, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: post.title,
+      url: `https://socioryx.com/blog/${post.slug}`,
+    })),
+  };
+
   return (
     <main className="bg-[#0f1419]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }}
+      />
       <Navbar />
       <section className="pt-32 pb-24 px-5 sm:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">

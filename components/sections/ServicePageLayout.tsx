@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useContactModal } from "@/components/providers/contact-modal";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import FaqList from "@/components/ui/faq-list";
+import { caseStudies } from "@/lib/case-studies";
 
 export interface ServicePageData {
   slug: string;
@@ -141,24 +142,38 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
                 </p>
               </motion.div>
 
+              {/* Proof */}
+              <motion.div {...fadeUp(0)}>
+                <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">Proof</p>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-[#F8F8FF] tracking-[-0.03em] mb-6 font-heading">
+                  Live client work
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {caseStudies.map((study) => (
+                    <Link
+                      key={study.slug}
+                      href={`/portfolio/${study.slug}`}
+                      className="group bg-[#151a21] border border-[#F8F8FF]/[0.06] rounded-xl p-5 hover:border-[#F8F8FF]/[0.14] transition-colors"
+                    >
+                      <p className="text-[10px] uppercase tracking-[0.16em] text-[#B8C5D6]/40 font-body mb-2">{study.industry}</p>
+                      <p className="text-base font-semibold text-[#F8F8FF] font-heading mb-1">{study.client}</p>
+                      <p className="text-sm text-[#B8C5D6]/55 font-body leading-relaxed mb-3">{study.headline}</p>
+                      <span className="inline-flex items-center gap-1.5 text-sm text-[#E5E4E2] font-body">
+                        Read the case study
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+
               {/* FAQ */}
               <motion.div {...fadeUp(0)}>
                 <p className="text-xs font-medium tracking-[0.2em] uppercase text-[#E5E4E2] mb-3 font-body">FAQ</p>
                 <h2 className="text-2xl sm:text-3xl font-semibold text-[#F8F8FF] tracking-[-0.03em] mb-8 font-heading">
                   Frequently Asked Questions
                 </h2>
-                <Accordion type="single" collapsible className="w-full">
-                  {data.faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={`item-${i}`}>
-                      <AccordionTrigger className="text-base font-body font-medium text-left">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-[15px]">
-                        {faq.a}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                <FaqList items={data.faqs} />
               </motion.div>
 
             </div>

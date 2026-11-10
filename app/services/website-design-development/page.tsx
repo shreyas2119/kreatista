@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Website Design and Development for D2C Brands",
@@ -48,6 +48,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "Built for D2C Brands and SaaS Startups",
   whoIsItFor: "This service is for D2C brand founders who need a website that sells, SaaS startups that need a site that converts trial signups, and creators who need a professional online presence. If your current website is not generating leads or sales, or if you are launching a new brand and need to get it right from the start, this is for you.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "How long does it take to build a website?", a: "A standard brand website takes 3 to 6 weeks from kickoff to launch, depending on the number of pages and complexity. We give you a clear timeline at the start of the project." },
     { q: "Do you handle copywriting as well?", a: "Yes. We write the copy for your website as part of the project. Good design and weak copy is a wasted investment. We make sure both work together." },
     { q: "Will my website rank on Google?", a: "We build every site with on-page SEO best practices: proper heading structure, meta tags, fast load times, and clean code. Ranking for competitive keywords takes time and ongoing content, but your site will be technically ready from day one." },
@@ -97,9 +98,9 @@ const breadcrumbSchema = {
 export default function WebsiteDesignPage() {
   return (
     <>
-      <Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Navbar />
       <ServicePageLayout data={data} />
       <Footer />

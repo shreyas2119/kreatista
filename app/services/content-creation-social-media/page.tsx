@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Content Creation for Social Media in India",
@@ -31,6 +31,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "For Brands That Need Content That Works",
   whoIsItFor: "This service is for D2C founders who know they need to post consistently but do not have the time or team to do it well, SaaS startups that need educational content to build trust with their audience, and creators who want to scale their output without burning out.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "What types of content do you create?", a: "We create Reels, carousels, static posts, Stories, blog articles, email newsletters, and ad copy. The mix depends on your platform priorities and audience." },
     { q: "Do you post the content or just create it?", a: "Content creation covers production and delivery of final files. If you want us to handle posting, scheduling, and community management as well, that falls under our Social Media Management service." },
     { q: "How many pieces of content do you produce per month?", a: "This depends on your package. We discuss your platform needs and posting frequency during the strategy call and build a plan that fits your goals and budget." },
@@ -46,5 +47,5 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Content Creation for Social Media", item: "https://socioryx.com/services/content-creation-social-media" }] };
 
 export default function ContentCreationPage() {
-  return (<><Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
+  return (<><script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
 }

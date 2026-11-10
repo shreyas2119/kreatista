@@ -3,7 +3,6 @@ import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicesPageContent from "@/components/sections/ServicesPageContent";
 import ServicesShaderBg from "@/components/ui/services-shader-bg";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Services — Website, Content, Social Media & Video",
@@ -51,8 +50,8 @@ const breadcrumbSchema = {
 export default function ServicesPage() {
   return (
     <main className="bg-[#0f1419] relative">
-      <Script id="services-list-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
-      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script id="services-list-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+      <script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <ServicesShaderBg />
       <div className="relative z-10">
         <Navbar />

@@ -45,12 +45,12 @@ export const team: TeamMember[] = [
       objectPosition: "center 50%",
       socials: { instagram: "https://www.instagram.com/suryanshh20/" },
     },
-    {
-      name: "MO Arfaj",
-      role: "Chief Marketing Officer (CMO)",
-      photo: "/images/team/arfaj.webp",
-    socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
-  },
+  //   {
+  //     name: "MO Arfaj",
+  //     role: "Chief Marketing Officer (CMO)",
+  //     photo: "/images/team/arfaj.webp",
+  //   socials: { linkedin: "https://www.linkedin.com/in/mo-arfaj-779527380/" },
+  // },
   {
     name: "Nehil Khare",
     role: "Content Executive Lead",

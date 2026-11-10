@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Social Media Management Services for D2C Brands India",
@@ -31,6 +31,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "For Founders Who Cannot Afford to Ignore Social Media",
   whoIsItFor: "This service is for D2C founders who know social media matters but do not have the time or team to do it consistently, SaaS startups that need to build an audience before their next funding round or product launch, and creators who want to scale their presence without managing the day-to-day themselves.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "Which platforms do you manage?", a: "We primarily manage Instagram and LinkedIn. We also handle YouTube Shorts, Twitter/X, and Facebook depending on your audience. We recommend the right platforms based on your category and target customer." },
     { q: "Do you create the content or just post it?", a: "We create everything. Content creation is included in our social media management service. You do not need a separate content team." },
     { q: "How much involvement is required from my side?", a: "Minimal. We handle everything. Most clients do a monthly 30-minute check-in call to review performance and align on upcoming campaigns. Beyond that, we run independently." },
@@ -46,5 +47,5 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Social Media Management", item: "https://socioryx.com/services/social-media-management" }] };
 
 export default function SocialMediaManagementPage() {
-  return (<><Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
+  return (<><script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
 }

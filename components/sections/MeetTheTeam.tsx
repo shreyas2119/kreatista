@@ -37,7 +37,7 @@ function FloatingPaths({ position }: { position: number }) {
 }
 
 export default function MeetTheTeam() {
-  const title = "The Minds Behind SocioryX";
+  const title = "The Minds Behind Socioryx";
   const words = title.split(" ");
 
   return (

@@ -372,6 +372,12 @@ export function CinematicFooter() {
                 <MagneticButton as={Link} href="/free-ai-marketing-audit" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Free Audit
                 </MagneticButton>
+                <MagneticButton as={Link} href="/about" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                  About
+                </MagneticButton>
+                <MagneticButton as={Link} href="/contact" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
+                  Contact
+                </MagneticButton>
                 <MagneticButton as={Link} href="/#team" className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">
                   Team
                 </MagneticButton>

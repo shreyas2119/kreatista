@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Video Production Services for D2C Brands India",
@@ -31,6 +31,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "For Brands That Need Video That Performs",
   whoIsItFor: "This service is for D2C brands that need product videos, unboxing content, or brand films for their website and social media, SaaS startups that need explainer videos or founder story content, and creators who want professional production quality for their YouTube or Instagram content.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "What types of videos do you produce?", a: "We produce brand films, product demos, founder stories, testimonial videos, Reels and short-form content, explainer videos, and ad creatives. The format depends on your platform and objective." },
     { q: "Do you handle scripting?", a: "Yes. Scripting is included in every video production project. A well-written script is the foundation of a video that converts." },
     { q: "How long does a video production project take?", a: "A short-form Reel or product video typically takes 1 to 2 weeks from brief to delivery. A full brand film takes 3 to 5 weeks depending on complexity." },
@@ -46,5 +47,5 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Video Production", item: "https://socioryx.com/services/video-production" }] };
 
 export default function VideoProductionPage() {
-  return (<><Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
+  return (<><script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
 }

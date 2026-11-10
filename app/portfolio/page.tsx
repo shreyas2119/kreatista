@@ -5,7 +5,7 @@ import PortfolioPageContent from "@/components/sections/PortfolioPageContent";
 
 export const metadata: Metadata = {
   title: "Portfolio — Client Work & Results",
-  description: "View Socioryx's portfolio — real campaigns, content strategies, and results for D2C brands and SaaS startups. Sign in to access the full deck.",
+  description: "Socioryx portfolio — public case studies for Indore Dental Hospital and Puja Shraddha, plus D2C campaigns, SaaS content strategies, and creator growth work.",
   alternates: { canonical: "https://socioryx.com/portfolio" },
 };
 

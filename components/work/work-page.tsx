@@ -610,6 +610,7 @@ export function WorkPage({ className = "" }: { className?: string }) {
                   <p>What shipped: a doctor profile, before and after drag sliders, booking by treatment and time slot, FAQs, and patient stories. Next.js, local search, mobile-first.</p>
                 </div>
                 <Pill href="https://www.indoredental.co.in/" className="roll visit" external>Visit indoredental.co.in</Pill>
+                <Pill href="/portfolio/indore-dental-hospital" className="roll calm">Read the case study</Pill>
               </article>
 
               <article className="case rise" id="case-puja">
@@ -633,6 +634,7 @@ export function WorkPage({ className = "" }: { className?: string }) {
                   <p>What shipped: pujas by occasion, pandits by city and language, price shown before booking, samagri lists, and same-day help. New cities slot in without a redesign.</p>
                 </div>
                 <Pill href="https://pujashraddha.com" className="roll visit" external>Visit pujashraddha.com</Pill>
+                <Pill href="/portfolio/puja-shraddha" className="roll calm">Read the case study</Pill>
               </article>
             </div>
 

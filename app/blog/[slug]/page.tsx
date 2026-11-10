@@ -44,8 +44,54 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const content = (post.content ?? "").replace(/^#\s+.+\n?/, "");
 
+  const published = post.published_at ?? post.created_at;
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt ?? undefined,
+    image: post.cover_image ?? "https://socioryx.com/og-image.png",
+    datePublished: published,
+    // shortcut: posts have no updated_at column; modified equals published until one exists
+    dateModified: published,
+    author: {
+      "@type": post.author.trim().toLowerCase() === "socioryx" ? "Organization" : "Person",
+      name: post.author,
+      url: "https://socioryx.com/team",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": "https://socioryx.com/#organization",
+      name: "Socioryx",
+      logo: { "@type": "ImageObject", url: "https://socioryx.com/og-image.png" },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://socioryx.com/blog/${post.slug}` },
+    url: `https://socioryx.com/blog/${post.slug}`,
+    ...(post.tags?.length ? { keywords: post.tags.join(", ") } : {}),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://socioryx.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://socioryx.com/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <main className="bg-[#0f1419] min-h-screen">
+      <script
+        id="blog-post-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        id="blog-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar />
 
       <article className="pt-32 pb-32 px-5">

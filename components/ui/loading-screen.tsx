@@ -56,7 +56,7 @@ export default function LoadingScreen() {
             className="text-center"
           >
             <div className="text-6xl sm:text-8xl font-semibold tracking-[-0.04em] text-[#F8F8FF] font-heading leading-none">
-              Sociory<span className="text-red-500">X</span>
+              Sociory<span className="text-red-500">x</span>
             </div>
           </motion.div>
 
@@ -67,7 +67,7 @@ export default function LoadingScreen() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
             className="mt-5 text-xs sm:text-sm tracking-[0.22em] uppercase text-[#F8F8FF] font-body italic"
           >
-            Raise Yourself as an Extraordinary
+            Raise Yourself Extraordinary
           </motion.p>
 
           {/* Progress bar */}

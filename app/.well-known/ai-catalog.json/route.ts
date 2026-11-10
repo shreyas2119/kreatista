@@ -44,6 +44,49 @@ export async function GET() {
         ],
       },
       {
+        identifier: "urn:air:socioryx.com:case:indore-dental",
+        displayName: "Indore Dental Hospital website case study",
+        type: "text/html",
+        url: `${base}/portfolio/indore-dental-hospital`,
+        representativeQueries: [
+          "website for dental hospital india",
+          "dental clinic website design case study",
+          "who made the Indore Dental Hospital website",
+        ],
+      },
+      {
+        identifier: "urn:air:socioryx.com:case:puja-shraddha",
+        displayName: "Puja Shraddha booking platform case study",
+        type: "text/html",
+        url: `${base}/portfolio/puja-shraddha`,
+        representativeQueries: [
+          "online puja booking platform case study",
+          "booking website for religious services india",
+          "who built the Puja Shraddha platform",
+        ],
+      },
+      {
+        identifier: "urn:air:socioryx.com:page:about",
+        displayName: "About Socioryx",
+        type: "text/html",
+        url: `${base}/about`,
+        representativeQueries: [
+          "what does Socioryx do",
+          "who is behind Socioryx",
+          "content marketing agency india about",
+        ],
+      },
+      {
+        identifier: "urn:air:socioryx.com:page:contact",
+        displayName: "Contact Socioryx",
+        type: "text/html",
+        url: `${base}/contact`,
+        representativeQueries: [
+          "contact Socioryx",
+          "book a content marketing agency call india",
+        ],
+      },
+      {
         identifier: "urn:air:socioryx.com:mcp:server",
         displayName: "Socioryx MCP Server",
         type: "application/mcp-server-card+json",

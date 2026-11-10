@@ -14,10 +14,6 @@ interface TeamShowcaseProps {
 export default function TeamShowcase({ members }: TeamShowcaseProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  const col1 = members.filter((_, i) => i % 3 === 0);
-  const col2 = members.filter((_, i) => i % 3 === 1);
-  const col3 = members.filter((_, i) => i % 3 === 2);
-
   return (
     <>
       {/* Mobile — simple 2-col grid */}
@@ -53,23 +49,11 @@ export default function TeamShowcase({ members }: TeamShowcaseProps) {
 
       {/* Desktop — staggered showcase */}
       <div className="hidden lg:flex flex-row items-center justify-center gap-20 select-none w-full max-w-6xl mx-auto py-8 px-16">
-        {/* Photo grid */}
-        <div className="flex gap-4 flex-shrink-0">
-          <div className="flex flex-col gap-4">
-            {col1.map((member) => (
-              <PhotoCard key={member.name} member={member} className="w-[210px] h-[240px]" hoveredId={hoveredId} onHover={setHoveredId} />
-            ))}
-          </div>
-          <div className="flex flex-col gap-4 mt-[100px]">
-            {col2.map((member) => (
-              <PhotoCard key={member.name} member={member} className="w-[230px] h-[255px]" hoveredId={hoveredId} onHover={setHoveredId} />
-            ))}
-          </div>
-          <div className="flex flex-col gap-4 mt-[50px]">
-            {col3.map((member) => (
-              <PhotoCard key={member.name} member={member} className="w-[218px] h-[242px]" hoveredId={hoveredId} onHover={setHoveredId} />
-            ))}
-          </div>
+        {/* Photo grid — 3 across, last row centered */}
+        <div className="flex flex-wrap justify-center gap-4 flex-shrink-0 w-[662px]">
+          {members.map((member) => (
+            <PhotoCard key={member.name} member={member} className="w-[210px] h-[240px]" hoveredId={hoveredId} onHover={setHoveredId} />
+          ))}
         </div>
 
         {/* Member list */}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
 import ServicePageLayout, { type ServicePageData } from "@/components/sections/ServicePageLayout";
-import Script from "next/script";
+import { serviceStartFaqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
 title: "Influencer Marketing for D2C Brands in India",
@@ -31,6 +31,7 @@ const data: ServicePageData = {
   whoIsItForTitle: "For D2C Brands Ready to Scale Through Creators",
   whoIsItFor: "This service is for D2C brands that want to reach new audiences through trusted voices in their category, brands launching a new product and needing rapid awareness, and founders who have tried influencer marketing before but did not see results because of poor creator selection.",
   faqs: [
+    ...serviceStartFaqs,
     { q: "What is the difference between micro and macro influencers?", a: "Micro-influencers have between 10,000 and 100,000 followers. Macro-influencers have over 100,000. For D2C brands in India, micro-influencers typically deliver higher engagement rates and better conversion because their audiences are more niche and trust their recommendations more." },
     { q: "How do you measure the success of an influencer campaign?", a: "We track reach, engagement, click-through rate, and conversions using unique discount codes and UTM-tracked links. Every campaign ends with a performance report." },
     { q: "Do you work with regional language influencers?", a: "Yes. We work with creators who produce content in Hindi, Tamil, Telugu, Kannada, and other regional languages for brands targeting specific geographic markets in India." },
@@ -46,5 +47,5 @@ const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEn
 const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://socioryx.com" }, { "@type": "ListItem", position: 2, name: "Services", item: "https://socioryx.com/services" }, { "@type": "ListItem", position: 3, name: "Influencer Marketing for D2C Brands", item: "https://socioryx.com/services/influencer-marketing-d2c-brands" }] };
 
 export default function InfluencerMarketingPage() {
-  return (<><Script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
+  return (<><script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} /><script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /><script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} /><Navbar /><ServicePageLayout data={data} /><Footer /></>);
 }

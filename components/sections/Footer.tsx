@@ -33,6 +33,8 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Agency',
     links: [
+      { title: 'About',      href: '/about' },
+      { title: 'Contact',    href: '/contact' },
       { title: 'Free Audit', href: '/free-ai-marketing-audit' },
       { title: 'Blog',       href: '/blog' },
       { title: 'Portfolio',  href: '/portfolio' },
@@ -101,10 +103,10 @@ export default function Footer() {
         {/* Brand */}
         <AnimatedContainer className="space-y-4">
           <span className="text-xl font-extrabold text-[#F8F8FF] tracking-[-0.02em] block font-heading">
-            SOCIO<span className="text-[#E5E4E2]">RYX</span>
+            Sociory<span className="text-[#E5E4E2]">x</span>
           </span>
-          <p className="text-sm text-[#B8C5D6]/40 leading-relaxed max-w-[200px] font-body">
-            Architecting digital dominance for the next generation of industry leaders.
+          <p className="text-sm text-[#B8C5D6]/40 leading-relaxed max-w-[220px] font-body">
+            Socioryx is a full-stack content marketing agency in India, founded in 2024. One team for websites, brand, content, social, influencer marketing, and video.
           </p>
           <button
             onClick={() => openContactForm()}
@@ -113,7 +115,7 @@ export default function Footer() {
             Contact Us
           </button>
           <p className="text-sm text-[#B8C5D6]/30 font-body pt-4">
-            © {new Date().getFullYear()} Socioryx Agency. All rights reserved.
+            © {new Date().getFullYear()} Socioryx. All rights reserved.
           </p>
         </AnimatedContainer>
 
@@ -155,7 +157,7 @@ export default function Footer() {
           <a href="/terms" className="underline underline-offset-2 hover:text-[#B8C5D6]/50 transition-colors">Terms of Service</a>.
         </p>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
-          <span className="text-sm text-[#B8C5D6]/20 font-body">Based in India</span>
+          <span className="text-sm text-[#B8C5D6]/20 font-body">Founded 2024 · Based in India</span>
           <span className="text-sm text-[#B8C5D6]/20 font-body">Global Production</span>
         </div>
       </div>

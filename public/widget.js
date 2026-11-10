@@ -1,5 +1,5 @@
 (function() {
-  var scriptEl = document.currentScript || document.querySelector('script[src="/widget.js"]');
+  var scriptEl = document.currentScript || document.querySelector('script[src^="/widget.js"]');
   var tenantId = (scriptEl && scriptEl.getAttribute('data-tenant')) || 'socioryx';
   var apiBase = (scriptEl && scriptEl.getAttribute('data-api')) || 'https://agent-core.socioryx.workers.dev';
   var sessionId = 'sess_' + Math.random().toString(36).substring(2, 15);
@@ -7,7 +7,8 @@
   // Inject CSS
   var link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = '/widget.css';
+  // Versioned so a cached old stylesheet (right-side launcher) can never win.
+  link.href = '/widget.css?v=20261110';
   document.head.appendChild(link);
 
   // Build widget DOM
@@ -27,6 +28,7 @@
     '  <div id="socioryx-chat-messages" role="log" aria-label="Chat messages" aria-live="polite">',
     '    <div class="socioryx-msg bot">Hi! Ask me about our websites, social media, or our results, like the 6.5M-view Reel or our 21% LinkedIn reply rate.</div>',
     '  </div>',
+    '  <div id="socioryx-chat-chips" role="group" aria-label="Suggested questions"></div>',
     '  <div id="socioryx-chat-input-area">',
     '    <input id="socioryx-chat-input" type="text" placeholder="Type your question..." maxlength="1000" />',
     '    <button id="socioryx-chat-send">Send</button>',
@@ -44,6 +46,25 @@
   var teaser = document.getElementById('socioryx-chat-teaser');
   var teaserText = teaser.querySelector('.socioryx-teaser-text');
   var teaserClose = teaser.querySelector('.socioryx-teaser-close');
+  var chipWrap = document.getElementById('socioryx-chat-chips');
+
+  var quickQuestions = [
+    'What services do you offer?',
+    'How did a Reel hit 6.5M views?',
+    'How do you get a 21% reply rate on LinkedIn?',
+    'What does a new website take?'
+  ];
+  quickQuestions.forEach(function(question) {
+    var chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'socioryx-chip';
+    chip.textContent = question;
+    chip.addEventListener('click', function() {
+      input.value = question;
+      sendMessage();
+    });
+    chipWrap.appendChild(chip);
+  });
 
   var isOpen = false;
   var isSending = false;
@@ -124,6 +145,7 @@
     var text = input.value.trim();
     if (!text || isSending) return;
 
+    chipWrap.hidden = true;
     isSending = true;
     sendBtn.disabled = true;
     addMessage(text, 'user');

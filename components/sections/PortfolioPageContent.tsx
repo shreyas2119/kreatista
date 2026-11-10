@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Unlock, ArrowRight, LogOut, FileText, Clock } from "lucide-react";
+import Link from "next/link";
+import { Lock, Unlock, ArrowRight, ArrowUpRight, LogOut, FileText, Clock } from "lucide-react";
 import { useAuth } from "@/components/providers/auth-provider";
 import { AuthModal } from "@/components/ui/auth-modal";
+import { caseStudies } from "@/lib/case-studies";
 import type { User } from "firebase/auth";
 import { getIdToken, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -93,7 +95,7 @@ export default function PortfolioPageContent() {
                 Our Work
               </p>
               <h1 className="text-4xl sm:text-5xl font-semibold tracking-[-0.04em] leading-[1.1] text-[#F8F8FF] mb-5 font-heading">
-                See What We've Built
+                See What We&apos;ve Built
               </h1>
               <p className="text-[#B8C5D6]/60 text-base leading-relaxed mb-10 font-body">
                 Our portfolio deck covers D2C brand campaigns, SaaS content strategies, and creator growth playbooks with real numbers.
@@ -210,6 +212,44 @@ export default function PortfolioPageContent() {
             </motion.div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Public case studies — crawlable without sign-in */}
+      <section className="px-5 sm:px-8 pb-32">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#F8F8FF] tracking-[-0.03em] mb-3 font-heading">
+            Live client work
+          </h2>
+          <p className="text-sm text-[#B8C5D6]/55 font-body mb-8 max-w-xl">
+            Two public case studies: what the business needed, what shipped, and the numbers the client publishes.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {caseStudies.map((study) => (
+              <Link
+                key={study.slug}
+                href={`/portfolio/${study.slug}`}
+                className="group bg-[#151a21] border border-[#F8F8FF]/[0.07] rounded-2xl overflow-hidden hover:border-[#F8F8FF]/[0.16] transition-colors"
+              >
+                <img src={study.image} alt={study.alt} className="w-full h-44 object-cover object-top" loading="lazy" />
+                <div className="p-5">
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-[#B8C5D6]/40 font-body mb-2">{study.industry}</p>
+                  <h3 className="text-lg font-semibold text-[#F8F8FF] font-heading mb-1">{study.client}</h3>
+                  <span className="inline-flex items-center gap-1.5 text-sm text-[#E5E4E2] font-body">
+                    Read the case study
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <Link
+            href="/portfolio/websites"
+            className="inline-flex items-center gap-2 mt-8 text-sm text-[#B8C5D6]/60 hover:text-[#E5E4E2] transition-colors font-body"
+          >
+            How a website project unfolds
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </section>
 

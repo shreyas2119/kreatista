@@ -29,10 +29,21 @@ export default function TeamPageContent() {
           <h1
             className="text-5xl sm:text-7xl lg:text-8xl font-semibold tracking-[-0.04em] leading-none text-[#F8F8FF] mb-5 font-heading"
           >
-            The Minds Behind<br className="hidden sm:block" /> Sociory<span className="text-red-500">X</span>
+            The Minds Behind<br className="hidden sm:block" /> Sociory<span className="text-red-500">x</span>
           </h1>
-          <p className="text-sm sm:text-base text-[#B8C5D6]/80 max-w-lg leading-relaxed font-body">
+          <p className="text-sm sm:text-base text-[#B8C5D6]/80 max-w-lg leading-relaxed font-body mb-4">
             A collective of strategists, creators, and builders obsessed with making brands impossible to ignore.
+          </p>
+          <p className="text-sm sm:text-base text-[#B8C5D6]/60 max-w-lg leading-relaxed font-body">
+            Founded in 2024, the team runs all six Socioryx services in-house — websites, brand positioning,
+            content, social media, influencer marketing, and video. Recent builds include{" "}
+            <Link href="/portfolio/indore-dental-hospital" className="text-[#E5E4E2] underline underline-offset-4 decoration-[#E5E4E2]/30 hover:decoration-[#E5E4E2]/70 transition-colors">
+              Indore Dental Hospital
+            </Link>{" "}
+            and{" "}
+            <Link href="/portfolio/puja-shraddha" className="text-[#E5E4E2] underline underline-offset-4 decoration-[#E5E4E2]/30 hover:decoration-[#E5E4E2]/70 transition-colors">
+              Puja Shraddha
+            </Link>.
           </p>
         </motion.div>
       </section>
